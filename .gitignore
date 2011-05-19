@@ -24,12 +24,15 @@
 *.lib
 *.sbr
 *.sdf
+*.mdf
+*.ldf
 ipch/
 obj/
 [Bb]in
 [Dd]ebug*/
 [Rr]elease*/
 Ankh.NoLoad
+App_Data
 
 #Tooling
 _ReSharper*/
