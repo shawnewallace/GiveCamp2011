@@ -131,7 +131,7 @@ namespace Web.Controllers
 
             return Json(new
             {
-                Venues = venues,
+                Venues = venues.Select(v => v).Distinct(),
                 Count = count
             },JsonRequestBehavior.AllowGet);
         }
