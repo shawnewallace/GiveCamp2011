@@ -16,11 +16,15 @@
             <div id="logindisplay">
                 @Html.Partial("_LogOnPartial")
             </div>
+            <br />
             <nav>
                 <ul id="menu">
+                    <li>@Html.ActionLink("Public Home", "PublicIndex", "Home")</li>
                     <li>@Html.ActionLink("Admin Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("Artists", "Index", "Artist")</li>
                     <li>@Html.ActionLink("Venues", "Index", "Venue")</li>
+                    <li>@Html.ActionLink("Art Types", "Index", "ArtistType")</li>
+                    <li>@Html.ActionLink("Art Categories", "Index", "ArtistSubType")</li>
                 </ul>
             </nav>
         </header>

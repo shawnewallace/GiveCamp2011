@@ -23,6 +23,27 @@
             @Html.EditorFor(model => model.FirstName)
             @Html.ValidationMessageFor(model => model.FirstName)
         </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ArtistType)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.ArtistTypeId, (SelectList)ViewBag.ArtistTypes)
+            @Html.ValidationMessageFor(model => model.ArtistTypeId)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ArtistSubType)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.ArtistSubTypeId, (SelectList)ViewBag.ArtistSubTypes)
+            @Html.ValidationMessageFor(model => model.ArtistSubTypeId)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.OtherNotes)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.OtherNotes)
+            @Html.ValidationMessageFor(model => model.OtherNotes)
+        </div>
 
         <p>
             <input type="submit" value="Save" />
@@ -33,3 +54,11 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+
+<script type="text/javascript">
+    $.ajaxSetup({ cache: false });
+
+    $('#ArtistTypeId').change(function () {
+        $('#ArtistSubTypeId').load("/ArtistSubType/AjaxGet/" + $(this).val());
+    });
+</script>

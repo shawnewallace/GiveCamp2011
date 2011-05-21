@@ -15,5 +15,10 @@ namespace Web.Controllers
 
             return View();
         }
+
+        public ActionResult PublicIndex()
+        {
+            return View();
+        }
     }
 }
