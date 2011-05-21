@@ -6,10 +6,6 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Lib.Common;
-<<<<<<< HEAD
-using Telerik.Web.Mvc;
-=======
->>>>>>> 9a70e7daccb592930f3d89606a68fd5beae33a3a
 using Web.Models;
 
 namespace Web.Controllers
@@ -40,13 +36,11 @@ namespace Web.Controllers
             }
         }
 
-<<<<<<< HEAD
         private IQueryable<ArtistModel> _artists;
         private IQueryable<ArtistModel> Artists
         {
             get { return  _artists ?? Db.Artists.AsQueryable(); }
         }
-=======
        
         public ViewResult UnapprovedArt()
         {
@@ -67,7 +61,6 @@ namespace Web.Controllers
             return View("UnapprovedArt", GetUnapprovedArt());
         }
 
->>>>>>> 9a70e7daccb592930f3d89606a68fd5beae33a3a
         //
         // GET: /Artist/
 
@@ -76,11 +69,7 @@ namespace Web.Controllers
             //List<ArtistModel> artists = Db.Artists.ToList();
             LoadDropDowns(null, null);
 
-<<<<<<< HEAD
-            return View(Artists);
-=======
             return View(Db.Artists.ToList());
->>>>>>> 9a70e7daccb592930f3d89606a68fd5beae33a3a
         }
 
         // GET: /Artist/Details/5
@@ -118,10 +107,6 @@ namespace Web.Controllers
 
         //
         // GET: /Artist/Edit/5
-<<<<<<< HEAD
-=======
-
->>>>>>> 9a70e7daccb592930f3d89606a68fd5beae33a3a
         public ActionResult Edit(int id)
         {
             ArtistModel artistmodel = Db.Artists.Find(id);
@@ -176,9 +161,6 @@ namespace Web.Controllers
             base.Dispose(disposing);
         }
 
-<<<<<<< HEAD
-
-=======
         public JsonResult Find(string searchTerms = "")
         {
             //firstname
@@ -194,8 +176,8 @@ namespace Web.Controllers
             {
                 results.AddRange(
                     
-                    Db.Artists.Where(a => a.FirstName.Data.Contains(term)
-                        || a.LastName.Data.Contains(term)
+                    Db.Artists.Where(a => a.FirstName.Contains(term)
+                        || a.LastName.Contains(term)
                         || a.ArtistType.ArtistType.Contains(term)
                         || a.ArtistSubType.ArtistSubType.Contains(term)
                     ).ToList()
@@ -213,6 +195,5 @@ namespace Web.Controllers
                 Count = count
             }, JsonRequestBehavior.AllowGet);
         }
->>>>>>> 9a70e7daccb592930f3d89606a68fd5beae33a3a
     }
 }

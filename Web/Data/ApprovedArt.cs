@@ -61,16 +61,6 @@ namespace Web.Data
             GetResizedImage(file).Save(GetFullCoverFlowPath()+Path.GetFileNameWithoutExtension(file) + ".png");
         }
 
-        //public static void PrepareCoverFlowCache()
-        //{
-        //    Dictionary<string, List<string>> newCache = new Dictionary<string, List<string>>();
-        //    foreach (var fileName in GetCoverFlowFiles())
-        //    {
-        //        Regex r = new Regex(fileName);
-        //        Match m = r.Match(ImageService.IMAGE_FILE_CAPTURE_EXPRESSION);
-        //    }
-        //}
-
         private static Image ResizeImage(Image fullSizeImage, int thumbWidth, int thumbHeight)
         {
             Image.GetThumbnailImageAbort dummyCallBack = new System.Drawing.Image.GetThumbnailImageAbort(()=>false);
@@ -99,7 +89,11 @@ namespace Web.Data
             var fullFileName = HttpContext.Current.ApplicationInstance.Server.MapPath(UNAPPROVED_IMAGE_DIRECTORY) + rawFileName;
             var targetFileName = HttpContext.Current.ApplicationInstance.Server.MapPath(APPROVED_IMAGE_DIRECTORY) + rawFileName;
 
-            try { File.Move(fullFileName, targetFileName); }
+            try
+            {
+                File.Move(fullFileName, targetFileName);
+                StoreCoverFlowImage(targetFileName);
+            }
             catch (Exception)
             {
             }
