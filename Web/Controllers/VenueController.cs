@@ -8,7 +8,7 @@ namespace Web.Controllers
 {
     public class VenueController : Controller
     {
-        public ActionResult Index()
+        public ViewResult Index()
         {
             return View();
         }
