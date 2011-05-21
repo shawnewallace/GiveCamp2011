@@ -23,6 +23,11 @@
     <div class="display-field">
         @Html.DisplayFor(model => model.ArtistSubType.ArtistSubType)
     </div>
+
+    <div class="display-label">Other Notes</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.OtherNotes);
+    </div>
 </fieldset>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |

@@ -66,7 +66,7 @@ namespace Web.Controllers
         public ActionResult Edit(int id)
         {
             ArtistSubTypeModel artistsubtypemodel = db.ArtistSubTypes.Find(id);
-            ViewData["ArtistTypes"] = new SelectList(db.ArtistTypes.ToList(), "Id", "ArtistType", artistsubtypemodel.ArtistType.Id);
+            ViewData["ArtistTypes"] = new SelectList(db.ArtistTypes.ToList(), "Id", "ArtistType", artistsubtypemodel.ArtistTypeId);
             return View(artistsubtypemodel);
         }
 
@@ -79,10 +79,21 @@ namespace Web.Controllers
             if (ModelState.IsValid)
             {
                 db.Entry(artistsubtypemodel).State = EntityState.Modified;
+
+                foreach (ArtistModel artist in db.Artists.ToList())
+                {
+                    if (artist.ArtistSubTypeId == artistsubtypemodel.Id && artist.ArtistTypeId != artistsubtypemodel.ArtistTypeId)
+                    {
+                        artist.ArtistTypeId = artistsubtypemodel.ArtistTypeId;
+                        db.Entry(artist).State = EntityState.Modified;
+                    }
+                }
+                
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewData["ArtistTypes"] = new SelectList(db.ArtistTypes.ToList(), "Id", "ArtistType", artistsubtypemodel.ArtistType.Id);
+
+            ViewData["ArtistTypes"] = new SelectList(db.ArtistTypes.ToList(), "Id", "ArtistType", artistsubtypemodel.ArtistTypeId);
             return View(artistsubtypemodel);
         }
 

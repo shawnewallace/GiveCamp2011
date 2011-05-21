@@ -27,8 +27,8 @@
             @Html.LabelFor(model => model.ArtistType)
         </div>
         <div class="editor-field">
-            @Html.DropDownListFor(model => model.ArtistType.Id, ViewBag.ArtistTypes as SelectList)
-            @Html.ValidationMessageFor(model => model.ArtistType.Id)
+            @Html.DropDownListFor(model => model.ArtistTypeId, (SelectList)ViewBag.ArtistTypes)
+            @Html.ValidationMessageFor(model => model.ArtistTypeId)
         </div>
 
         <p>

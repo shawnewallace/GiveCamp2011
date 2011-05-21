@@ -13,6 +13,7 @@ namespace Web.Models
         [Column] public string FirstName { get; set; }
         [Column] public int? ArtistTypeId { get; set; }
         [Column] public int? ArtistSubTypeId { get; set; }
+        [Column] public string OtherNotes { get; set; }
 
         internal EntityRef<ArtistTypeModel> _artistType;
         internal EntityRef<ArtistSubTypeModel> _artistSubType;

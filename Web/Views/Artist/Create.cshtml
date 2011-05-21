@@ -36,6 +36,13 @@
             @Html.DropDownListFor(model => model.ArtistSubTypeId, (SelectList)ViewBag.ArtistSubTypes)
             @Html.ValidationMessageFor(model => model.ArtistSubTypeId)
         </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.OtherNotes)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.OtherNotes)
+            @Html.ValidationMessageFor(model => model.OtherNotes)
+        </div>
 
         <p>
             <input type="submit" value="Create" />
