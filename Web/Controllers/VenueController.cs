@@ -25,8 +25,9 @@ namespace Web.Controllers
         public ViewResult Details(int id)
         {
             VenueModel model = Db.Venues.Find(id);
-            if (model.Id <= 0)
+            if (model == null || model.Id < 1)
             {
+                TempData["BadNumber"] = id;
                 return View("NoVenue");
             }
             return View(model);
