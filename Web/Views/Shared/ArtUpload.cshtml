@@ -4,13 +4,13 @@
     <legend>Unapproved Art</legend>
     @foreach (var item in Web.Data.ImageService.GetUnapprovedArt().Where(f => f.Contains(String.Format("/{0:00000}_", Model))))
     { 
-                <img src="@item" alt="Alternate Text" />
+                <img src="@item" alt="Alternate Text" class="restrict-size" />
     }
 </fieldset>
 <fieldset>
     <legend>Approved Art</legend>
     @foreach (var item in Web.Data.ImageService.GetApprovedArt().Where(f => f.Contains(String.Format("/{0:00000}_", Model))))
     {
-        <img src="@item" />
+        <img src="@item" class="restrict-size" />
     }
 </fieldset>

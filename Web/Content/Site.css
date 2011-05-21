@@ -341,3 +341,9 @@ div#title {
 .tri-state {
     width: 6em;
 }
+
+.restrict-size
+{
+	max-height: 500px;
+	max-width: 250px;
+}
