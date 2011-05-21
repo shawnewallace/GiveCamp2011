@@ -15,8 +15,7 @@ namespace Web.Models
         [Column] public int ArtistTypeId { get; set; }
 
         internal EntityRef<ArtistTypeModel> _artistType;
-        
-        [Association(ThisKey = "ArtistTypeId", OtherKey="Id", Storage = "_artistType")]
+        [Association(ThisKey = "ArtistTypeId", OtherKey="Id", IsForeignKey=true, Storage = "_artistType")]
         public ArtistTypeModel ArtistType
         {
             get { return _artistType.Entity; }
