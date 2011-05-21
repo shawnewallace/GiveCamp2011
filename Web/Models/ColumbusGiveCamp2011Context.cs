@@ -20,6 +20,10 @@ namespace Web.Models
     {
         public IDbSet<ArtistModel> Artists { get; set; }
         public IDbSet<VenueModel> Venues { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+        }
     }
 
     public class ColumbusGiveCamp2011Initializer : DropCreateDatabaseIfModelChanges<ColumbusGiveCamp2011Context>
