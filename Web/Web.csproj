@@ -534,6 +534,7 @@
     <Content Include="Content\CoverFlow\jeffwatch.jpg" />
     <Content Include="Content\CoverFlow\plasticbeach.jpg" />
     <Content Include="Content\CoverFlow\Seagull-Stealing-Chips.gif" />
+    <Content Include="Content\global.css" />
     <Content Include="Content\jqueryuicoverflow-ii\external\images\button_bg.png" />
     <Content Include="Content\jqueryuicoverflow-ii\external\images\datepicker.gif" />
     <Content Include="Content\jqueryuicoverflow-ii\external\images\icon_sprite.png" />
