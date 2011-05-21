@@ -35,6 +35,13 @@ namespace Web.Controllers
             return View(sitemodel);
         }
 
+        public PartialViewResult PublicDetails()
+        {
+            var model = Db.SiteModels.FirstOrDefault();
+
+            return PartialView("_PublicDetails", model);
+        }
+
         //
         // GET: /SiteModels/Create
 
