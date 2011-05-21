@@ -12,16 +12,25 @@ namespace Web.Models
         public int Id { get; set; }
         [Required]
         public string Name { get; set; }
+        [Required]
         public string Address { get; set; }
+        [Required]
         public string City { get; set; }
+
+        [Required]
         public string State { get; set; }
 
+        [Required]
         [RegularExpression(Constants.REGEX_ZIP_CODE)]
         public string Zip { get; set; }
 
+        [Required]
         [RegularExpression(Constants.REGEX_PHONE_NUMBER)]
         public string PhoneNumber { get; set; }
 
+        [Required]
         public string Hours { get; set; }
+
+        public List<SiteLink> siteLinks { get; set; }
     }
 }

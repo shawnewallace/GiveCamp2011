@@ -48,6 +48,25 @@ namespace Web.Models
 									 }
 							 };
 			venues.ForEach(d => context.Venues.Add(d));
+            var siteModels = new List<SiteModel>
+							 {
+								 new SiteModel
+									 {
+										 Name = "Gallery 202 Co-op",
+										 Address = "38 North State St",
+										 City = "Westerville",
+										 State = "OH",
+										 Zip = "43081",
+										 PhoneNumber = "614.890.8202", 
+                                          Hours = "Wed. 12-6pm, Thurs/Fri 12-4pm, Sat. 11-3 pm",
+                                           siteLinks = new List<SiteLink>() {
+                                               new SiteLink() { Destination = "http://www.google.com", Name = "google" },
+                                               new SiteLink() { Destination = "http://www.woot.com" , Name = "Woot" },
+                                           }
+									 }
+							 };
+            siteModels.ForEach(d => context.SiteModels.Add(d));
+
 		}
 	}
 }

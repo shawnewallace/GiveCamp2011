@@ -64,7 +64,7 @@ namespace Web.Controllers
  
         public ActionResult Edit(int id)
         {
-            SiteModel sitemodel = Db.SiteModels.Single(x => x.Id == id);
+            SiteModel sitemodel = Db.SiteModels.Include("siteLinks").Single(x => x.Id == id);
             return View(sitemodel);
         }
 
