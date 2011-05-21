@@ -18,5 +18,17 @@ namespace Web.Controllers
         private IColumbusGiveCamp2011Context _db;
 
         public IEnumerable<string> GetAllCoverFlowArt() { return ImageService.GetCoverFlowArt();}
+
+        public IEnumerable<string> GetUnapprovedArt() { return ImageService.GetUnapprovedArt(); }
+
+        public void ApproveSubmittedImage(string image)
+        {
+            ImageService.ApproveArt(image);
+        }
+
+        public void RejectSubmittedImage(string image)
+        {
+            ImageService.RejectArt(image);
+        }
     }
 }

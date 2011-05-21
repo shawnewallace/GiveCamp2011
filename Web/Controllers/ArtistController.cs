@@ -41,6 +41,25 @@ namespace Web.Controllers
             return PartialView("_CoverFlow", GetAllCoverFlowArt());
         }
 
+        public ViewResult UnapprovedArt()
+        {
+            return View(GetUnapprovedArt());
+        }
+
+        public ViewResult ApproveImage(string imageToApprove)
+        {
+            ApproveSubmittedImage(imageToApprove);
+
+            return View("UnapprovedArt", GetUnapprovedArt());
+        }
+
+        public ViewResult RejectImage(string imageToReject)
+        {
+            RejectSubmittedImage(imageToReject);
+
+            return View("UnapprovedArt", GetUnapprovedArt());
+        }
+
         //
         // GET: /Artist/
 
