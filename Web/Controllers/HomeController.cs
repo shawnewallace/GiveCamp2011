@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace Web.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : ColumbusGiveCamp2011ControllerBase
     {
         [Authorize]
         public ActionResult Index()
