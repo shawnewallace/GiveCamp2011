@@ -16,6 +16,7 @@ namespace Web.Models
         public Entry<string> City { get; set; }
         public Entry<string> State { get; set; }
         public Entry<string> Zip { get; set; }
+        public Entry<string> Phone { get; set; }
         public Entry<string> CellPhone { get; set; }
         public Entry<string> Email { get; set; }
         public Entry<DateTime> Dob { get; set; }
