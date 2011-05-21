@@ -47,6 +47,9 @@
     <Reference Include="pnunit.framework">
       <HintPath>..\packages\NUnit.2.5.10.11092\lib\pnunit.framework.dll</HintPath>
     </Reference>
+    <Reference Include="Should, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\Externals\Should.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
@@ -63,10 +66,16 @@
   <ItemGroup>
     <Compile Include="Controllers\ArtistControllerTests\FindTests.cs" />
     <Compile Include="Controllers\VenueControllerTests\FakeArtistSet.cs" />
+    <Content Include="Controllers\SiteModelControllerTests\DetailsTests.cs.txt" />
+    <Content Include="Controllers\SiteModelControllerTests\FakeColumbusGiveCamp2011Context.cs.txt" />
+    <Content Include="Controllers\SiteModelControllerTests\FakeDbSet.cs.txt" />
+    <Compile Include="Controllers\SiteModelControllerTests\FakeSiteModelSet.cs" />
+    <Compile Include="Controllers\SiteModelControllerTests\IndexTests.cs" />
     <Compile Include="Controllers\VenueControllerTests\DetailsTests.cs" />
     <Compile Include="Controllers\VenueControllerTests\FakeColumbusGiveCamp2011Context.cs" />
     <Compile Include="Controllers\VenueControllerTests\FakeDbSet.cs" />
     <Compile Include="Controllers\VenueControllerTests\FakeVenueSet.cs" />
+    <Compile Include="Controllers\VenueControllerTests\FindTests.cs" />
     <Compile Include="Controllers\VenueControllerTests\IndexTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />

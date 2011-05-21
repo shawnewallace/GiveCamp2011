@@ -1,8 +1,18 @@
 ﻿@{
-    ViewBag.Title = "NoVenue";
+    ViewBag.Title = "No Venue";
 }
+<h2>Wait.....Where?</h2>
 
-<h2>NoVenue</h2>
-
-<h1>I'm sorry. I could not find that venue.</h1>
+<table border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td>
+            <h1>I'm not sure where you wanted to go, but I'm pretty sure it's not here (I could not find venue @TempData["BadNumber"]).</h1>
+        </td>
+    </tr>
+    <tr>
+        <td style="text-align:center">
+            <img src="../../Content/images/penguins_4_bg_010101.jpg"  alt="Venue " + @TempData["BadNumber"].ToString() + " not found" title="His name is Bob, and his stare creeps us out, too."  />
+        </td>
+    </tr>
+</table>
 

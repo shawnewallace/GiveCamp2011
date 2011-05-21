@@ -13,6 +13,7 @@ namespace Web.Models
 		IDbSet<VenueModel> Venues { get; set; }
 		IDbSet<ArtistTypeModel> ArtistTypes { get; set; }
 		IDbSet<ArtistSubTypeModel> ArtistSubTypes { get; set; }
+        IDbSet<SiteModel> SiteModels { get; set; } 
 		int SaveChanges();
 		DbEntityEntry Entry(object entity);
 		void Dispose();
@@ -24,7 +25,7 @@ namespace Web.Models
 		public IDbSet<VenueModel> Venues { get; set; }
 		public IDbSet<ArtistTypeModel> ArtistTypes { get; set; }
 		public IDbSet<ArtistSubTypeModel> ArtistSubTypes { get; set; }
-
+        public IDbSet<SiteModel> SiteModels { get; set; } 
 		protected override void OnModelCreating(DbModelBuilder modelBuilder)
 		{
 		}
@@ -47,6 +48,25 @@ namespace Web.Models
 									 }
 							 };
 			venues.ForEach(d => context.Venues.Add(d));
+            var siteModels = new List<SiteModel>
+							 {
+								 new SiteModel
+									 {
+										 Name = "Gallery 202 Co-op",
+										 Address = "38 North State St",
+										 City = "Westerville",
+										 State = "OH",
+										 Zip = "43081",
+										 PhoneNumber = "614.890.8202", 
+                                          Hours = "Wed. 12-6pm, Thurs/Fri 12-4pm, Sat. 11-3 pm",
+                                           siteLinks = new List<SiteLink>() {
+                                               new SiteLink() { Destination = "http://www.google.com", Name = "google" },
+                                               new SiteLink() { Destination = "http://www.woot.com" , Name = "Woot" },
+                                           }
+									 }
+							 };
+            siteModels.ForEach(d => context.SiteModels.Add(d));
+
 		}
 	}
 }

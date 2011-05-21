@@ -215,20 +215,20 @@ input[type="submit"] {
 ----------------------------------------------------------*/
 
 table {
-    border: solid 1px #e8eef4;
+    border: solid 1px #12eb87;
     border-collapse: collapse;
 }
 
 table td {
     padding: 5px;
-    border: solid 1px #e8eef4;
+    border: solid 1px #12eb87;
 }
 
 table th {
     padding: 6px 5px;
-    text-align: left;
-    background-color: #e8eef4;
-    border: solid 1px #e8eef4;
+    text-align: center;
+    background-color: #12eb87;
+    border: solid 1px #12eb87;
 }
 
 /* MISC  
