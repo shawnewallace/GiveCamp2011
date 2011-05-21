@@ -61,6 +61,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\VenueControllerTests\DetailsTests.cs" />
     <Compile Include="Controllers\VenueControllerTests\FakeColumbusGiveCamp2011Context.cs" />
     <Compile Include="Controllers\VenueControllerTests\FakeDbSet.cs" />
     <Compile Include="Controllers\VenueControllerTests\FakeVenueSet.cs" />

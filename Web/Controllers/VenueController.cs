@@ -21,6 +21,10 @@ namespace Web.Controllers
         public ViewResult Details(int id)
         {
             VenueModel model = Db.Venues.Find(id);
+            if (model.Id <= 0)
+            {
+                return View("NoVenue");
+            }
             return View(model);
         }
 
