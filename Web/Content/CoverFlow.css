@@ -15,10 +15,3 @@
    left: 0px;
    margin-top: 16px;
 }
-#coverflow img {
-   width: 86px;
-   height: 86px;
-   float: left;
-   position: relative;
-   margin: -12px;
-}

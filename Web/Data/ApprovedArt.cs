@@ -23,7 +23,7 @@ namespace Web.Data
         private const string ART_FORMAT =  "Artist_{0}_Image_{1}.{3}";
         private const string IMAGE_FILE_CAPTURE_EXPRESSION = @"Artist_(\d+)_Image_(.+)\.png";
         private const string IMAGE_FILE_EXPRESSION = "*png";
-        private const byte PREFERRED_COVERFLOW_WIDTH = 86;
+        private const byte PREFERRED_COVERFLOW_WIDTH = 130;
 
         //private static Dictionary<string, List<string>> _coverFlowCache;
 
