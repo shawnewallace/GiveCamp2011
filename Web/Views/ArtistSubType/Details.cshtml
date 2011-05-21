@@ -1,0 +1,24 @@
+﻿@model Web.Models.ArtistSubTypeModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>ArtistTypeModel</legend>
+
+    <div class="display-label">Artist Subtype</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ArtistSubType)
+    </div>
+    <div class="display-label">Artist Type</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ArtistType.ArtistType)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
