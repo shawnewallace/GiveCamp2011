@@ -9,39 +9,39 @@ namespace Web.Models
     {
         public ArtistModel()
         {
-            FirstName = new TextEntry();
-            LastName = new TextEntry();
-            Address1 = new TextEntry();
-            Address2 = new TextEntry();
-            City = new TextEntry();
-            State = new TextEntry();
-            Zip = new TextEntry();
-            Phone = new TextEntry();
-            CellPhone = new TextEntry();
-            Email = new TextEntry();
-            Dob = new DateEntry();
-            Website = new TextEntry();
-            Twitter = new TextEntry();
-            Facebook = new TextEntry();
+            FirstName = new Entry<string>();
+            LastName = new Entry<string>();
+            Address1 = new Entry<string>();
+            Address2 = new Entry<string>();
+            City = new Entry<string>();
+            State = new Entry<string>();
+            Zip = new Entry<string>();
+            Phone = new Entry<string>();
+            CellPhone = new Entry<string>();
+            Email = new Entry<string>();
+            Dob = new Entry<DateTime>();
+            Website = new Entry<string>();
+            Twitter = new Entry<string>();
+            Facebook = new Entry<string>();
         }
 
         public int Id { get; set; }
         
-        public TextEntry FirstName { get; set; }
-        public TextEntry LastName { get; set; }
-        public TextEntry Address1 { get; set; }
-        public TextEntry Address2 { get; set; }
-        public TextEntry City { get; set; }
-        public TextEntry State { get; set; }
-        public TextEntry Zip { get; set; }
-        public TextEntry Phone { get; set; }
-        public TextEntry CellPhone { get; set; }
-        public TextEntry Email { get; set; }
-        public DateEntry Dob { get; set; }
+        public Entry<string> FirstName { get; set; }
+        public Entry<string> LastName { get; set; }
+        public Entry<string> Address1 { get; set; }
+        public Entry<string> Address2 { get; set; }
+        public Entry<string> City { get; set; }
+        public Entry<string> State { get; set; }
+        public Entry<string> Zip { get; set; }
+        public Entry<string> Phone { get; set; }
+        public Entry<string> CellPhone { get; set; }
+        public Entry<string> Email { get; set; }
+        public Entry<DateTime> Dob { get; set; }
 
-        public TextEntry Website { get; set; }
-        public TextEntry Twitter { get; set; }
-        public TextEntry Facebook { get; set; }
+        public Entry<string> Website { get; set; }
+        public Entry<string> Twitter { get; set; }
+        public Entry<string> Facebook { get; set; }
 
         public bool ResidentOfWesterville { get; set; }
         public bool WorkInWesterville { get; set; }

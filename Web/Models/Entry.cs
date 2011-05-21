@@ -6,9 +6,9 @@ using System.Web;
 namespace Web.Models
 {
     [Complex]
-    public class TextEntry
+    public class Entry<TData>
     {
-        public string Data { get; set; }
+        public TData Data { get; set; }
         public bool Enabled { get; set; }
     }
 
@@ -19,10 +19,10 @@ namespace Web.Models
     //    public bool Enabled { get; set; }
     //}
 
-    [Complex]
-    public class DateEntry
-    {
-        public DateTime Data { get; set; }
-        public bool Enabled { get; set; }
-    }
+    //[Complex]
+    //public class DateEntry
+    //{
+    //    public DateTime Data { get; set; }
+    //    public bool Enabled { get; set; }
+    //}
 }
