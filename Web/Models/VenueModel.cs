@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Web.Helpers;
 
 namespace Web.Models
 {
@@ -10,9 +11,11 @@ namespace Web.Models
         public string Address { get; set; }
         public string City { get; set; }
         public string State { get; set; }
+
+        [RegularExpression(Constants.REGEX_ZIP_CODE)]
         public string Zip { get; set; }
 
-        [RegularExpression(@"^\+?\(?\d+\)?(\s|\-|\.)?\d{1,3}(\s|\-|\.)?\d{4}[\s]*[\d]*$")]
+        [RegularExpression(Constants.REGEX_PHONE_NUMBER)]
         public string PhoneNumber { get; set; }
     }
 }
