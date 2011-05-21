@@ -14,6 +14,7 @@
     <AssemblyName>Web</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>false</UseIISExpress>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -175,6 +176,7 @@
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\ArtistModel.cs" />
     <Compile Include="Models\ColumbusGiveCamp2011Context.cs" />
+    <Compile Include="Models\VenueModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

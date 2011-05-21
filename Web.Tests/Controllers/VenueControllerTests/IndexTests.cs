@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using NUnit.Framework;
 using Web.Controllers;
+using System.Web.Mvc;
+using Web.Models;
 
 namespace Web.UI.Tests.Controllers.VenueControllerTests
 {
@@ -11,25 +13,33 @@ namespace Web.UI.Tests.Controllers.VenueControllerTests
     public class IndexTests
     {
         private VenueController _controller;
+        private ViewResult result;
 
         [SetUp]
         public void Setup()
         {
             _controller = new VenueController();
+            result = _controller.Index();
         }
 
         [Test]
         public void Smoke_Test()
         {
-            var result = _controller.Index();
         }
 
         [Test]
         public void renders_index_view()
         {
-            var result = _controller.Index();
+            Assert.AreEqual("Index",result.ViewName);
+        }
 
-            Assert.That(result.ViewName == "Index");
+        [Test]
+        public void index_view_should_have_list_of_venues()
+        {
+            var venueList = result.ViewBag.VenueList;
+            var x = result.Model;
+
+            Assert.That(x.GetType() == typeof(List<VenueModel>));
         }
     }
 }
