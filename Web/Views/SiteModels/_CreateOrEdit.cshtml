@@ -1,0 +1,60 @@
+@model Web.Models.SiteModel
+
+@* This partial view defines form fields that will appear when creating and editing entities *@
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.Name)
+</div>
+<div class="editor-field">
+    @Html.TextBoxFor(model => model.Name, new { data_bind = "value: name" })
+    @Html.ValidationMessageFor(model => model.Name)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.Address)
+</div>
+<div class="editor-field">
+    @Html.TextBoxFor(model => model.Address, new { data_bind = "value: Address" })
+    @Html.ValidationMessageFor(model => model.Address)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.City)
+</div>
+<div class="editor-field">
+    @Html.TextBoxFor(model => model.City, new { data_bind = "value: City" })    
+    @Html.ValidationMessageFor(model => model.City)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.State)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.State)
+    @Html.ValidationMessageFor(model => model.State)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.Zip)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.Zip)
+    @Html.ValidationMessageFor(model => model.Zip)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.PhoneNumber)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.PhoneNumber)
+    @Html.ValidationMessageFor(model => model.PhoneNumber)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.Hours)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.Hours)
+    @Html.ValidationMessageFor(model => model.Hours)
+</div>
+

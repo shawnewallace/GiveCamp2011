@@ -1,0 +1,44 @@
+@model Web.Models.SiteModel
+@{
+    ViewBag.Title = "Details";
+}
+<h2>
+    Details</h2>
+<fieldset>
+    <legend>SiteModel</legend>
+    <div class="display-label">
+        Name</div>
+    <div class="display-field">@Model.Name</div>
+    <div class="display-label">
+        Address</div>
+    <div class="display-field">@Model.Address</div>
+    <div class="display-label">
+        City</div>
+    <div class="display-field">@Model.City</div>
+    <div class="display-label">
+        State</div>
+    <div class="display-field">@Model.State</div>
+    <div class="display-label">
+        Zip</div>
+    <div class="display-field">@Model.Zip</div>
+    <div class="display-label">
+        PhoneNumber</div>
+    <div class="display-field">@Model.PhoneNumber</div>
+    <div class="display-label">
+        Hours</div>
+    <div class="display-field">@Model.Hours</div>
+    <div class="display-label">
+        Site Links</div>
+    <div class="display-field">
+        <ul>
+            @foreach (var item in Model.siteLinks)
+            {
+                <li><a href="@item.Destination" target="_blank">@item.Name</a></li>
+            }
+        </ul>
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -3,10 +3,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Web.Models;
+using System.Collections.Generic;
 
 namespace Web.Controllers
 {
-    [Authorize]
+    [Authorize(Roles="Admin")]
     public class VenueController : ColumbusGiveCamp2011ControllerBase
     {
         public ViewResult Index()
@@ -35,7 +36,6 @@ namespace Web.Controllers
 
         //
         // GET: /Venue/Create
-
         public ActionResult Create()
         {
             return View();
@@ -59,7 +59,6 @@ namespace Web.Controllers
 
         //
         // GET: /Venue/Edit/5
-
         public ActionResult Edit(int id)
         {
             VenueModel model = Db.Venues.Find(id);
@@ -68,7 +67,6 @@ namespace Web.Controllers
 
         //
         // POST: /Venue/Edit/5
-
         [HttpPost]
         public ActionResult Edit(VenueModel model)
         {
@@ -83,7 +81,6 @@ namespace Web.Controllers
 
         //
         // GET: /Venue/Delete/5
-
         public ActionResult Delete(int id)
         {
             VenueModel model = Db.Venues.Find(id);
@@ -106,6 +103,33 @@ namespace Web.Controllers
         {
             Db.Dispose();
             base.Dispose(disposing);
+        }
+
+        public JsonResult Find(string searchTerms = "")
+        {
+            var terms = searchTerms.Split(' ');
+            var venues = Db.Venues.AsEnumerable<VenueModel>();
+
+            if (searchTerms != string.Empty)
+            {
+                List<VenueModel> result = new List<VenueModel>();
+
+                foreach (var term in terms)
+                {
+                    venues = venues.Where(v => v.Name.Contains(term)
+                        || v.Address.Contains(term));
+                    result.AddRange(venues);
+                }
+                venues = result;
+            }
+
+            int count = venues.Count();
+
+            return Json(new
+            {
+                Venues = venues.Select(v => v).Distinct(),
+                Count = count
+            },JsonRequestBehavior.AllowGet);
         }
     }
 }

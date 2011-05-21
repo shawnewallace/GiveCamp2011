@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Collections;
+using System.Web.Mvc;
 
 namespace Lib.Common {
     
@@ -88,5 +89,16 @@ namespace Lib.Common {
 
 			return false;
 		}
+
+        public static JsonResult ToJsonList(this IEnumerable enumObj)
+        {
+            var jsonResult = new JsonResult
+            {
+                Data = (from object e in enumObj
+                        select e).ToList(),
+                JsonRequestBehavior = JsonRequestBehavior.AllowGet
+            };
+            return jsonResult;
+        }
 	}
 }
