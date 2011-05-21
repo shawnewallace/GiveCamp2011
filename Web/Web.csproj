@@ -191,6 +191,8 @@
     <Compile Include="Controllers\ArtistTypeController.cs" />
     <Compile Include="Controllers\ColumbusGiveCamp2011ControllerBase.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Models\SearchResult.cs" />
+    <Compile Include="Models\SearchResultType.cs" />
     <Compile Include="Controllers\SiteModelsController.cs" />
     <Compile Include="Controllers\VenueController.cs" />
     <Compile Include="Data\ApprovedArt.cs" />
