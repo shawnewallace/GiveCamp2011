@@ -10,7 +10,6 @@ using Web.Models;
 
 namespace Web.Controllers
 {
-    [Authorize(Roles = "Admin")]
     public class ArtistController : ColumbusGiveCamp2011ControllerBase
     {
         private void LoadDropDowns(int? artistTypeId, int? artistSubTypeId)
