@@ -5,7 +5,6 @@ using System.Web;
 
 namespace Web.Models
 {
-    [Complex]
     public class Entry<TData>
     {
         public TData Data { get; set; }
