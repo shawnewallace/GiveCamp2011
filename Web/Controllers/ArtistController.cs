@@ -13,11 +13,33 @@ namespace Web.Controllers
     {
         private ColumbusGiveCamp2011Context db = new ColumbusGiveCamp2011Context();
 
+        private void LoadDropDowns(int? id)
+        {
+            List<ArtistTypeModel> artistTypes = db.ArtistTypes.ToList();
+
+            if (artistTypes.Count < 1)
+            {
+                ViewData["ArtistTypes"] = new SelectList(new List<ArtistTypeModel>());
+                ViewData["ArtistSubTypes"] = new SelectList(new List<ArtistSubTypeModel>());
+            }
+            else
+            {
+                if (!id.HasValue) id = artistTypes[0].Id;
+                ViewData["ArtistTypes"] = new SelectList(artistTypes, "Id", "ArtistType", id);
+
+                IEnumerable<ArtistSubTypeModel> subTypes = db.ArtistSubTypes.ToList().Where(x => x.ArtistTypeId == id);
+                ViewData["ArtistSubTypes"] = new SelectList(subTypes, "Id", "ArtistSubType");
+            }
+        }
+
         //
         // GET: /Artist/
 
         public ViewResult Index()
         {
+            List<ArtistModel> artists = db.Artists.ToList();
+            LoadDropDowns(null);
+            
             return View(db.Artists.ToList());
         }
 
@@ -27,6 +49,7 @@ namespace Web.Controllers
         public ViewResult Details(int id)
         {
             ArtistModel artistmodel = db.Artists.Find(id);
+            LoadDropDowns(null);
             return View(artistmodel);
         }
 
@@ -35,6 +58,7 @@ namespace Web.Controllers
 
         public ActionResult Create()
         {
+            LoadDropDowns(null);
             return View();
         } 
 
@@ -51,6 +75,7 @@ namespace Web.Controllers
                 return RedirectToAction("Index");  
             }
 
+            LoadDropDowns(null);
             return View(artistmodel);
         }
         
@@ -60,6 +85,7 @@ namespace Web.Controllers
         public ActionResult Edit(int id)
         {
             ArtistModel artistmodel = db.Artists.Find(id);
+            LoadDropDowns(id);
             return View(artistmodel);
         }
 
@@ -75,6 +101,8 @@ namespace Web.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+
+            LoadDropDowns(artistmodel.Id);
             return View(artistmodel);
         }
 

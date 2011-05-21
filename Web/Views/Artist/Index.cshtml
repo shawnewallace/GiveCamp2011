@@ -14,6 +14,12 @@
         <th>
             FirstName
         </th>
+        <th>
+            Artist Type
+        </th>
+        <th>
+            Artist Subtype
+        </th>
         <th></th>
     </tr>
 
@@ -21,6 +27,12 @@
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ArtistType.ArtistType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ArtistSubType.ArtistSubType)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
