@@ -11,15 +11,16 @@
     <div class="page">
         <header>
             <div id="title">
-                <h1>My MVC Application</h1>
+                <h1>Gallery 202/Westerville Artists Unite</h1>
             </div>
             <div id="logindisplay">
                 @Html.Partial("_LogOnPartial")
             </div>
             <nav>
                 <ul id="menu">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Admin Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Artists", "Index", "Artist")</li>
+                    <li>@Html.ActionLink("Venues", "Index", "Venue")</li>
                 </ul>
             </nav>
         </header>

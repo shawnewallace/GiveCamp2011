@@ -33,7 +33,8 @@ namespace Web
 
         protected void Application_Start()
         {
-            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<ColumbusGiveCamp2011Context>());
+            Database.SetInitializer<ColumbusGiveCamp2011Context>(new ColumbusGiveCamp2011Initializer());
+            //System.Data.Entity.Database.SetInitializer<ColumbusGiveCamp2011Context>(null);
 
             AreaRegistration.RegisterAllAreas();
 

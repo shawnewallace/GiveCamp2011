@@ -8,14 +8,12 @@ using System.Web.Mvc;
 using Web.Models;
 
 namespace Web.Controllers
-{ 
-    public class ArtistController : Controller
+{
+    public class ArtistController : ColumbusGiveCamp2011ControllerBase
     {
-        private ColumbusGiveCamp2011Context db = new ColumbusGiveCamp2011Context();
-
         private void LoadDropDowns(int? id)
         {
-            List<ArtistTypeModel> artistTypes = db.ArtistTypes.ToList();
+            List<ArtistTypeModel> artistTypes = Db.ArtistTypes.ToList();
 
             if (artistTypes.Count < 1)
             {
@@ -27,7 +25,7 @@ namespace Web.Controllers
                 if (!id.HasValue) id = artistTypes[0].Id;
                 ViewData["ArtistTypes"] = new SelectList(artistTypes, "Id", "ArtistType", id);
 
-                IEnumerable<ArtistSubTypeModel> subTypes = db.ArtistSubTypes.ToList().Where(x => x.ArtistTypeId == id);
+                IEnumerable<ArtistSubTypeModel> subTypes = Db.ArtistSubTypes.ToList().Where(x => x.ArtistTypeId == id);
                 ViewData["ArtistSubTypes"] = new SelectList(subTypes, "Id", "ArtistSubType");
             }
         }
@@ -37,10 +35,10 @@ namespace Web.Controllers
 
         public ViewResult Index()
         {
-            List<ArtistModel> artists = db.Artists.ToList();
+            List<ArtistModel> artists = Db.Artists.ToList();
             LoadDropDowns(null);
             
-            return View(db.Artists.ToList());
+            return View(Db.Artists.ToList());
         }
 
         //
@@ -48,7 +46,7 @@ namespace Web.Controllers
 
         public ViewResult Details(int id)
         {
-            ArtistModel artistmodel = db.Artists.Find(id);
+            ArtistModel artistmodel = Db.Artists.Find(id);
             LoadDropDowns(null);
             return View(artistmodel);
         }
@@ -70,8 +68,8 @@ namespace Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Artists.Add(artistmodel);
-                db.SaveChanges();
+                Db.Artists.Add(artistmodel);
+                Db.SaveChanges();
                 return RedirectToAction("Index");  
             }
 
@@ -84,7 +82,7 @@ namespace Web.Controllers
  
         public ActionResult Edit(int id)
         {
-            ArtistModel artistmodel = db.Artists.Find(id);
+            ArtistModel artistmodel = Db.Artists.Find(id);
             LoadDropDowns(id);
             return View(artistmodel);
         }
@@ -97,8 +95,8 @@ namespace Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(artistmodel).State = EntityState.Modified;
-                db.SaveChanges();
+                Db.Entry(artistmodel).State = EntityState.Modified;
+                Db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
@@ -111,7 +109,7 @@ namespace Web.Controllers
  
         public ActionResult Delete(int id)
         {
-            ArtistModel artistmodel = db.Artists.Find(id);
+            ArtistModel artistmodel = Db.Artists.Find(id);
             return View(artistmodel);
         }
 
@@ -121,15 +119,15 @@ namespace Web.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {            
-            ArtistModel artistmodel = db.Artists.Find(id);
-            db.Artists.Remove(artistmodel);
-            db.SaveChanges();
+            ArtistModel artistmodel = Db.Artists.Find(id);
+            Db.Artists.Remove(artistmodel);
+            Db.SaveChanges();
             return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)
         {
-            db.Dispose();
+            Db.Dispose();
             base.Dispose(disposing);
         }
     }
