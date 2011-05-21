@@ -6,6 +6,7 @@ using Web.Models;
 
 namespace Web.Controllers
 {
+    [Authorize]
     public class VenueController : ColumbusGiveCamp2011ControllerBase
     {
         public ViewResult Index()
