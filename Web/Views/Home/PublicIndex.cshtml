@@ -1,8 +1,159 @@
-﻿
-@{
-    ViewBag.Title = "Westerville Artists Unite";
-    Layout = "~/Views/Shared/_PublicLayout.cshtml";
+﻿@{
+	ViewBag.Title = "Westerville Artists Unite";
+	Layout = "~/Views/Shared/_PublicLayout.cshtml";
 }
-<h2>
-    Public Index</h2>
-    <div>@{Html.RenderAction("CoverFlow", "Artist");}</div>
+<h2>Artist &amp; Venue Listings</h2>
+<div>
+	@{Html.RenderAction("CoverFlow", "Artist");}
+</div>
+<p class="small">You can search for artists and venues in Westerville. Blaa, blaa blaaa....</p>
+<section id="search">
+	<h3>Search</h3>
+	<div id="search-box">
+		<div class="clear-fix">
+			<label for="query">Search Artists and Venues</label>
+			<input type="text" id="artist-venue-query" name="query" placeholder="search for artists and venues" />
+			<a href="#">Go</a>
+		</div>
+	</div>
+</section>
+<section id="browse">
+	<h3>Browse Artists</h3>
+	<ul id="artists-category-list">
+		<li><a href="#">Visual</a>
+			<ul>
+				<li><a href="#">Oils</a></li>
+				<li><a href="#">Acrylics</a></li>
+				<li><a href="#">Watercolor</a></li>
+				<li><a href="#">Pastel</a></li>
+				<li><a href="#">Sculpture</a></li>
+				<li><a href="#">Teacher</a></li>
+				<li><a href="#">Public Art</a></li>
+			</ul>
+		</li>
+		<li><a href="#">Literature</a>
+			<ul>
+				<li><a href="#">Poetry</a></li>
+				<li><a href="#">Novelty</a></li>
+				<li><a href="#">Teacher</a></li>
+			</ul>
+		</li>
+		<li><a href="#">Theatre</a>
+			<ul>
+				<li><a href="#">Actor</a></li>
+				<li><a href="#">Sound Design</a></li>
+				<li><a href="#">Backdrop</a></li>
+				<li><a href="#">Teacher</a></li>
+			</ul>
+		</li>
+		<li><a href="#">Music</a>
+			<ul>
+				<li><a href="#">Compose</a></li>
+				<li><a href="#">Orchestra</a></li>
+				<li><a href="#">Teacher</a></li>
+			</ul>
+		</li>
+	</ul>
+	<div style="clear: both;">
+	</div>
+</section>
+<section id="results">
+	<div class="demo">
+		<p id="result-description"></p>
+	</div>
+	<ul>
+		<li>
+			<h3><a href="#">Artist One</a></h3>
+			<a href="#">Artist</a>
+			<p>Blaa blaa blaa</p>
+		</li>
+		<li>
+			<h3><a href="#">Artist Two</a></h3>
+			<a href="#">Artist</a>
+			<p>Blaa blaa blaa</p>
+		</li>
+		<li>
+			<h3><a href="#">Venue Name</a></h3>
+			<a href="#" class="venue">Venue</a>
+			<p>Blaa blaa blaa</p>
+		</li>
+	</ul>
+</section>
+<script type="text/javascript">
+	$(document).ready(function () {
+		$("'[placeholder]'").focus(function () {
+			var input = $(this);
+			if (input.val() == input.attr("'placeholder'")) {
+				input.val("''");
+				input.removeClass("'placeholder'");
+			}
+		}).blur(function () {
+			var input = $(this);
+			if (input.val() == "''" || input.val() == input.attr("'placeholder'")) {
+				input.addClass("'placeholder'");
+				input.val(input.attr("'placeholder'"));
+			}
+		}).blur();
+
+	})
+	
+	
+</script>
+<script type="text/javascript">
+	$(function () {
+		var results = [
+			{
+				value: "1",
+				label: "John J",
+				desc: "Artist"
+			},
+			{
+				value: "2",
+				label: "The Old Theater",
+				desc: "Venue"
+			},
+			{
+				value: "3",
+				label: "Jenny Slick",
+				desc: "Artist"
+			},
+			{
+				value: "4",
+				label: "Doc D",
+				desc: "Artist"
+			},
+			{
+				value: "5",
+				label: "Otterbein Theater",
+				desc: "Venue"
+			},
+			{
+				value: "6",
+				label: "State St Saloon",
+				desc: "Venue"
+			}
+		];
+
+		$("#artist-venue-query").autocomplete({
+			minLength: 1,
+			source: results,
+			focus: function (event, ui) {
+				$("#artist-venue-query").val(ui.item.label);
+				return false;
+			},
+			select: function (event, ui) {
+				$("#artist-venue-query").val(ui.item.label);
+				$("#result-id").val(ui.item.value);
+				$("#result-description").html(ui.item.desc);
+
+				return false;
+			}
+		})
+		.data("autocomplete")._renderItem = function (ul, item) {
+			return $("<li class='search-result'></li>")
+				.data("item.autocomplete", item)
+				.append("<a href='/Artist/Details/" + item.id + "'>" + item.label + "<span class='result-type'>" + item.desc + "</span>" + "</a>")
+				.appendTo(ul);
+		};
+	});
+</script>
