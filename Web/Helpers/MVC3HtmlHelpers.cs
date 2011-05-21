@@ -136,5 +136,20 @@ namespace System.Web.Mvc
 
         //    return htmlHelper.DatePicker(inputName, value);
         //}
+
+        // Extension method
+        public static MvcHtmlString ActionImage(this HtmlHelper html, string imagePath)
+        {
+            var url = new UrlHelper(html.ViewContext.RequestContext);
+
+            // build the <img> tag
+            var imgBuilder = new TagBuilder("img");
+            imgBuilder.MergeAttribute("src", url.Content(imagePath));
+            imgBuilder.MergeAttribute("alt", string.Empty);
+            string imgHtml = imgBuilder.ToString(TagRenderMode.SelfClosing);
+
+            return MvcHtmlString.Create(imgHtml);
+        }
+
     }
 }

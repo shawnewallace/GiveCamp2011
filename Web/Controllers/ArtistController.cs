@@ -34,6 +34,11 @@ namespace Web.Controllers
             }
         }
 
+        public PartialViewResult CoverFlow()
+        {
+            return PartialView("_CoverFlow", GetAllApprovedArt());
+        }
+
         //
         // GET: /Artist/
 

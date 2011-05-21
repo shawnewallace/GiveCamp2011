@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Web.Models;
+using Web.Data;
 
 namespace Web.Controllers
 {
@@ -15,5 +16,7 @@ namespace Web.Controllers
             set { _db = value; }
         }
         private IColumbusGiveCamp2011Context _db;
+
+        public IEnumerable<string> GetAllApprovedArt() { return ImageService.GetCoverFlowArt();}
     }
 }

@@ -1,6 +1,8 @@
-﻿@{
+﻿
+@{
     ViewBag.Title = "Westerville Artists Unite";
     Layout = "~/Views/Shared/_PublicLayout.cshtml";
 }
-
-<h2>Public Index</h2>
+<h2>
+    Public Index</h2>
+    <div>@{Html.RenderAction("CoverFlow", "Artist");}</div>
