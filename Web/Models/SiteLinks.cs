@@ -13,6 +13,7 @@ namespace Web.Models
         public string Destination { get; set; }
         [Required]
         public string Name { get; set; }
-        public bool testing { get; set; }
+        public virtual  SiteModel siteModel { get; set; }
+        
     }
 }

@@ -9,7 +9,7 @@ using Web.Models;
 
 namespace Web.Controllers
 {
-    [Authorize]
+    [Authorize(Roles="Admin")]
     public class ArtistTypeController : ColumbusGiveCamp2011ControllerBase
     {
         //

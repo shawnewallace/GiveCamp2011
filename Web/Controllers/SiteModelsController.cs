@@ -31,14 +31,14 @@ namespace Web.Controllers
 
         public ViewResult Details(int id)
         {
-            SiteModel sitemodel = Db.SiteModels.Single(x => x.Id == id);
+            SiteModel sitemodel = Db.SiteModels.Include("siteLinks").Single(x => x.Id == id);
             return View(sitemodel);
         }
 
         //
         // GET: /SiteModels/Create
 
-        public ActionResult Create()
+        public ViewResult Create()
         {
             return View();
         } 
@@ -61,8 +61,8 @@ namespace Web.Controllers
         
         //
         // GET: /SiteModels/Edit/5
- 
-        public ActionResult Edit(int id)
+
+        public ViewResult Edit(int id)
         {
             SiteModel sitemodel = Db.SiteModels.Include("siteLinks").Single(x => x.Id == id);
             return View(sitemodel);
@@ -103,5 +103,38 @@ namespace Web.Controllers
             Db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        [HttpPost]
+        public ActionResult DeleteLink(int id)
+        {
+            SiteLink siteLink = Db.SiteLinks.Single(x => x.Id == id);
+            Db.SiteLinks.Remove(siteLink);
+            Db.SaveChanges();
+            return Content("");
+        }
+
+        [HttpPost]
+        public ActionResult Save(SiteModel sitemodel)
+        {
+
+            foreach (var item in sitemodel.siteLinks)
+            {
+                if (Db.SiteLinks.Count(f => f.Id == item.Id) == 0)
+                {                    
+                    item.siteModel = Db.SiteModels.Single(f => f.Id == sitemodel.Id);   
+                    Db.SiteLinks.Add(item);
+                    Db.SaveChanges();
+                }
+                else
+                {
+                    Db.Entry(item).State = EntityState.Modified;
+                    Db.SaveChanges();
+                }
+            }
+            
+            return Content("");
+        
+        }
+
     }
 }
