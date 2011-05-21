@@ -233,6 +233,25 @@ table th {
 
 /* MISC  
 ----------------------------------------------------------*/
+.imageList{}
+.imageAdmin{
+    display:inline-block;
+    text-align: center
+}
+.imageAdmin img{
+    display:block; width:200px;
+}
+
+.imageAdmin .approveLink
+{
+    color: green;
+}
+
+.imageAdmin .rejectLink
+{
+    color: red;
+}
+
 .clear {
     clear: both;
 }

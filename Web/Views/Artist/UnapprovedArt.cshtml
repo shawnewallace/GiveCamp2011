@@ -1,0 +1,19 @@
+﻿@model IEnumerable<string>
+
+@{
+    ViewBag.Title = "UnapprovedArt";
+}
+
+<h2>Unapproved Art</h2>
+
+<div class="imageList">
+    @foreach (var image in Model)
+    {    
+        <div class="imageAdmin">
+            <img src="@image" alt="unapproved image" />
+            @Html.ActionLink("Approve", "ApproveImage", "Artist", new {imageToApprove=image}, new { @class="approveLink" })
+            &nbsp;|&nbsp;
+            @Html.ActionLink("Reject", "RejectImage", "Artist", new { imageToReject = image }, new { @class="rejectLink" })
+        </div>
+    }
+</div>
