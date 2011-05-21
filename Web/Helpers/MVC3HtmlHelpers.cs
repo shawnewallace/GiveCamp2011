@@ -105,8 +105,8 @@ namespace System.Web.Mvc
 
         public static IHtmlString ReadOrEditFor<TModel, TProperty>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, bool enabled) where TModel : class
         {
-
-            return enabled ? htmlHelper.EditorFor(expression) : htmlHelper.DisplayFor(expression);
+            
+            return enabled ? MvcHtmlString.Create(htmlHelper.EditorFor(expression).ToString() + htmlHelper.ValidationMessageFor(expression).ToString()) : htmlHelper.DisplayFor(expression);
         }
 
         public static IHtmlString DatePicker(this HtmlHelper html, string name)
