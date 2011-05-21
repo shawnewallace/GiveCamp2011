@@ -90,7 +90,6 @@ namespace Web.UI.Tests.Controllers.VenueControllerTests
         {
             //Arrange
             string searchString = "Street";
-            //string venue1 = @"{""Id"":1,""Name"":""Test Venue 1"",""Address"":""123 Test Way"",""City"":""Somewhere"",""State"":""Ohio"",""Zip"":""44444-5555"",""PhoneNumber"":""1115551234""}";
             string venue2 = @"{""Id"":2,""Name"":""Another Venue"",""Address"":""456 Another Street"",""City"":""Westerville"",""State"":""Ohio"",""Zip"":""55555-4444"",""PhoneNumber"":""2225554321""}";
             string _expected = string.Format("{{\"Venues\":[{0}],\"Count\":1}}", venue2);
 

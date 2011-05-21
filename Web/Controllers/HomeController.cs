@@ -8,7 +8,7 @@ namespace Web.Controllers
 {
     public class HomeController : Controller
     {
-        [Authorize]
+        [Authorize(Roles="Admin")]
         public ActionResult Index()
         {
             ViewBag.Message = "Welcome to Gallery 202/Westerville Artists Unit Administration!";

@@ -9,6 +9,7 @@ using Web.Models;
 
 namespace Web.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class ArtistController : ColumbusGiveCamp2011ControllerBase
     {
         private void LoadDropDowns(int? artistTypeId, int? artistSubTypeId)
@@ -57,7 +58,6 @@ namespace Web.Controllers
 
         //
         // GET: /Artist/Create
-
         public ActionResult Create()
         {
             LoadDropDowns(null, null);
@@ -83,7 +83,6 @@ namespace Web.Controllers
         
         //
         // GET: /Artist/Edit/5
- 
         public ActionResult Edit(int id)
         {
             ArtistModel artistmodel = Db.Artists.Find(id);
@@ -110,7 +109,7 @@ namespace Web.Controllers
 
         //
         // GET: /Artist/Delete/5
- 
+
         public ActionResult Delete(int id)
         {
             ArtistModel artistmodel = Db.Artists.Find(id);

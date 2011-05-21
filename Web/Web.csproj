@@ -185,6 +185,7 @@
     <Compile Include="Models\ArtistSubTypeModel.cs" />
     <Compile Include="Models\ArtistTypeModel.cs" />
     <Compile Include="Models\ColumbusGiveCamp2011Context.cs" />
+    <Compile Include="Models\CustomRoleProvider.cs" />
     <Compile Include="Models\SiteLinks.cs" />
     <Compile Include="Models\SiteModel.cs" />
     <Compile Include="Models\VenueModel.cs" />

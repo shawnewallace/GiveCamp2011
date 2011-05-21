@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace Web.Controllers
 {
-    [Authorize]
+    [Authorize(Roles="Admin")]
     public class VenueController : ColumbusGiveCamp2011ControllerBase
     {
         public ViewResult Index()
@@ -36,7 +36,6 @@ namespace Web.Controllers
 
         //
         // GET: /Venue/Create
-
         public ActionResult Create()
         {
             return View();
@@ -60,7 +59,6 @@ namespace Web.Controllers
 
         //
         // GET: /Venue/Edit/5
-
         public ActionResult Edit(int id)
         {
             VenueModel model = Db.Venues.Find(id);
@@ -69,7 +67,6 @@ namespace Web.Controllers
 
         //
         // POST: /Venue/Edit/5
-
         [HttpPost]
         public ActionResult Edit(VenueModel model)
         {
@@ -84,7 +81,6 @@ namespace Web.Controllers
 
         //
         // GET: /Venue/Delete/5
-
         public ActionResult Delete(int id)
         {
             VenueModel model = Db.Venues.Find(id);
