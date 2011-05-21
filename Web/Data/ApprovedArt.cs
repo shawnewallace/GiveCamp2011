@@ -22,7 +22,7 @@ namespace Web.Data
 
         private const string ART_FORMAT =  "Artist_{0}_Image_{1}.{3}";
         private const string IMAGE_FILE_CAPTURE_EXPRESSION = @"Artist_(\d+)_Image_(.+)\.png";
-        private const string IMAGE_FILE_EXPRESSION = "Artist_*_Image_*.png";
+        private const string IMAGE_FILE_EXPRESSION = "*png";
         private const byte PREFERRED_COVERFLOW_WIDTH = 86;
 
         //private static Dictionary<string, List<string>> _coverFlowCache;
@@ -47,14 +47,18 @@ namespace Web.Data
                 (filePath) => string.Format(COVER_FLOW_WEB_DIRECTORY, Path.GetFileName(filePath)));
         }
 
+        public static Image GetResizedImage(string file)
+        {
+            Image incoming = Bitmap.FromFile(file);
+            int prefHeight =
+                (int)Math.Floor((ImageService.PREFERRED_COVERFLOW_WIDTH / (double)incoming.Width) * incoming.Height);
+            return ResizeImage(incoming, ImageService.PREFERRED_COVERFLOW_WIDTH, prefHeight);
+        }
+
 
         public static void StoreCoverFlowImage(string file)
         {
-            Image incoming = Bitmap.FromFile(file);
-            int prefHeight =  
-                (int)Math.Floor((double)(ImageService.PREFERRED_COVERFLOW_WIDTH/incoming.Width)*incoming.Height);
-            Image coverFlow = ResizeImage(incoming, ImageService.PREFERRED_COVERFLOW_WIDTH, prefHeight);
-            coverFlow.Save(GetFullCoverFlowPath()+Path.GetFileNameWithoutExtension(file) + ".png");
+            GetResizedImage(file).Save(GetFullCoverFlowPath()+Path.GetFileNameWithoutExtension(file) + ".png");
         }
 
         //public static void PrepareCoverFlowCache()
