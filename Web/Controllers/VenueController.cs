@@ -10,7 +10,10 @@ namespace Web.Controllers
     {
         public ViewResult Index()
         {
-            var model = Db.Venues.Select(v => v).ToList();
+            var model = Db.Venues
+                .Select(v => v)
+                .OrderBy(v => v.Name)
+                .ToList();
 
             return View("Index", model);
         }

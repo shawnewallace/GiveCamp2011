@@ -1,0 +1,41 @@
+﻿@model List<Web.Models.VenueModel>
+
+@{
+    ViewBag.Title = "Venues Administration List";
+}
+
+<h2>Venues</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<table>
+    <tr>
+        <th>Venue</th>
+        <th>Address</th>
+        <th>Phone Number</th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>@Html.DisplayFor(modelItem => item.Name)</td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address)<br />
+            @Html.DisplayFor(modelItem => item.City)
+            ,&nbsp;
+            @Html.DisplayFor(modelItem => item.State)
+            &nbsp;
+            @Html.DisplayFor(modelItem => item.Zip)
+        </td>
+        <td>@Html.DisplayFor(modelItem => item.PhoneNumber)</td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
