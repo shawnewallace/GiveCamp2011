@@ -64,16 +64,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
-    <Compile Include="Controllers\SiteModelControllerTests\EditTests.cs" />
-    <Compile Include="Controllers\SiteModelControllerTests\DetailsTests.cs" />
-=======
     <Compile Include="Controllers\ArtistControllerTests\FindTests.cs" />
     <Compile Include="Controllers\VenueControllerTests\FakeArtistSet.cs" />
     <Content Include="Controllers\SiteModelControllerTests\DetailsTests.cs.txt" />
     <Content Include="Controllers\SiteModelControllerTests\FakeColumbusGiveCamp2011Context.cs.txt" />
     <Content Include="Controllers\SiteModelControllerTests\FakeDbSet.cs.txt" />
->>>>>>> 3536f65b7ccec5a6b3b11e8b6c97f7cdfbee102e
     <Compile Include="Controllers\SiteModelControllerTests\FakeSiteModelSet.cs" />
     <Compile Include="Controllers\SiteModelControllerTests\IndexTests.cs" />
     <Compile Include="Controllers\VenueControllerTests\DetailsTests.cs" />
