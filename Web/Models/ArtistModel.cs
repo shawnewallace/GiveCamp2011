@@ -55,5 +55,4 @@ namespace Web.Models
 
         public string Comments { get; set; }
     }
-
 }
