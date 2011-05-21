@@ -5,6 +5,8 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Lib.Common;
+using Telerik.Web.Mvc;
 using Web.Models;
 
 namespace Web.Controllers
@@ -34,20 +36,23 @@ namespace Web.Controllers
             }
         }
 
+        private IQueryable<ArtistModel> _artists;
+        private IQueryable<ArtistModel> Artists
+        {
+            get { return  _artists ?? Db.Artists.AsQueryable(); }
+        }
         //
         // GET: /Artist/
 
         public ViewResult Index()
         {
-            List<ArtistModel> artists = Db.Artists.ToList();
+            //List<ArtistModel> artists = Db.Artists.ToList();
             LoadDropDowns(null, null);
-            
-            return View(Db.Artists.ToList());
+
+            return View(Artists);
         }
 
-        //
         // GET: /Artist/Details/5
-
         public ViewResult Details(int id)
         {
             ArtistModel artistmodel = Db.Artists.Find(id);
@@ -57,16 +62,15 @@ namespace Web.Controllers
 
         //
         // GET: /Artist/Create
-
         public ActionResult Create()
         {
+            //ViewData["MonthList"] = (new ArtistModel()).Dob.Month.ToSelectList();
             LoadDropDowns(null, null);
             return View();
         } 
 
         //
         // POST: /Artist/Create
-
         [HttpPost]
         public ActionResult Create(ArtistModel artistmodel)
         {
@@ -74,16 +78,15 @@ namespace Web.Controllers
             {
                 Db.Artists.Add(artistmodel);
                 Db.SaveChanges();
-                return RedirectToAction("Index");  
+                return RedirectToAction("Index");
             }
 
             LoadDropDowns(null, null);
             return View(artistmodel);
         }
-        
+
         //
         // GET: /Artist/Edit/5
- 
         public ActionResult Edit(int id)
         {
             ArtistModel artistmodel = Db.Artists.Find(id);
@@ -110,11 +113,14 @@ namespace Web.Controllers
 
         //
         // GET: /Artist/Delete/5
- 
+
         public ActionResult Delete(int id)
         {
             ArtistModel artistmodel = Db.Artists.Find(id);
-            return View(artistmodel);
+            Db.Artists.Remove(artistmodel);
+            Db.SaveChanges();
+            return RedirectToAction("Index");
+            //return View(artistmodel);
         }
 
         //
@@ -134,5 +140,7 @@ namespace Web.Controllers
             Db.Dispose();
             base.Dispose(disposing);
         }
+
+
     }
 }
