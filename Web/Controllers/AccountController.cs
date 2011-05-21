@@ -20,6 +20,11 @@ namespace Web.Controllers
             return View();
         }
 
+        public ActionResult PublicLogOn()
+        {
+            return View();
+        }
+
         //
         // POST: /Account/LogOn
 
