@@ -60,7 +60,7 @@ namespace Web.Controllers
         public ActionResult Edit(int id)
         {
             ArtistModel artistmodel = db.Artists.Find(id);
-            return View(artistmodel);
+            return View("Create", artistmodel);
         }
 
         //

@@ -1,19 +1,16 @@
 ﻿@model Web.Models.ArtistModel
-
 @{
     ViewBag.Title = "Create";
 }
-
-<h2>Create</h2>
-
+<h2>
+    Create</h2>
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
-
-@using (Html.BeginForm()) {
+@using (Html.BeginForm())
+{
     @Html.ValidationSummary(true)
     <fieldset>
         <legend>ArtistModel</legend>
-
         <div class="editor-label">
             @Html.LabelFor(model => model.FirstName)
         </div>
@@ -21,7 +18,6 @@
             @Html.EditorFor(model => model.FirstName.Data)
             @Html.ValidationMessageFor(model => model.FirstName)
         </div>
-
         <div class="editor-label">
             @Html.LabelFor(model => model.LastName)
         </div>
@@ -29,7 +25,6 @@
             @Html.EditorFor(model => model.LastName.Data)
             @Html.ValidationMessageFor(model => model.LastName)
         </div>
-
         <div class="editor-label">
             @Html.LabelFor(model => model.Address1)
         </div>
@@ -37,7 +32,6 @@
             @Html.EditorFor(model => model.Address1)
             @Html.ValidationMessageFor(model => model.Address1)
         </div>
-
         <div class="editor-label">
             @Html.LabelFor(model => model.Address2)
         </div>
@@ -45,7 +39,6 @@
             @Html.EditorFor(model => model.Address2)
             @Html.ValidationMessageFor(model => model.Address2)
         </div>
-
         <div class="editor-label">
             @Html.LabelFor(model => model.City)
         </div>
@@ -53,7 +46,13 @@
             @Html.EditorFor(model => model.City)
             @Html.ValidationMessageFor(model => model.City)
         </div>
-
+        <div class="editor-label">
+            @Html.LabelFor(model => model.State)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.State)
+            @Html.ValidationMessageFor(model => model.State)
+        </div>
         <div class="editor-label">
             @Html.LabelFor(model => model.Zip)
         </div>
@@ -61,7 +60,6 @@
             @Html.EditorFor(model => model.Zip)
             @Html.ValidationMessageFor(model => model.Zip)
         </div>
-
         <div class="editor-label">
             @Html.LabelFor(model => model.Phone)
         </div>
@@ -69,7 +67,6 @@
             @Html.EditorFor(model => model.Phone)
             @Html.ValidationMessageFor(model => model.Phone)
         </div>
-
         <div class="editor-label">
             @Html.LabelFor(model => model.CellPhone)
         </div>
@@ -77,7 +74,6 @@
             @Html.EditorFor(model => model.CellPhone)
             @Html.ValidationMessageFor(model => model.CellPhone)
         </div>
-
         <div class="editor-label">
             @Html.LabelFor(model => model.Email)
         </div>
@@ -85,7 +81,6 @@
             @Html.EditorFor(model => model.Email)
             @Html.ValidationMessageFor(model => model.Email)
         </div>
-        
         <div class="editor-label">
             @Html.LabelFor(model => model.Dob)
         </div>
@@ -94,8 +89,6 @@
             @*@Html.DatePickerFor(model => model.Dob)*@
             @Html.ValidationMessageFor(model => model.Dob)
         </div>
-        
-        @Html.ViewContext.RouteData.GetRequiredString("Action")
         <div class="editor-label">
             @Html.LabelFor(model => model.Website)
         </div>
@@ -103,7 +96,6 @@
             @Html.EditorFor(model => model.Website)
             @Html.ValidationMessageFor(model => model.Website)
         </div>
-
         <div class="editor-label">
             @Html.LabelFor(model => model.Twitter)
         </div>
@@ -111,7 +103,6 @@
             @Html.EditorFor(model => model.Twitter)
             @Html.ValidationMessageFor(model => model.Twitter)
         </div>
-
         <div class="editor-label">
             @Html.LabelFor(model => model.Facebook)
         </div>
@@ -119,13 +110,85 @@
             @Html.EditorFor(model => model.Facebook)
             @Html.ValidationMessageFor(model => model.Facebook)
         </div>
+        @{
+            var action = Html.ViewContext.RouteData.GetRequiredString("action");
+            bool questionaireWrite = action.ToLower().Equals("create");
+            
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ResidentOfWesterville)
+            </div>
+            <div class="editor-field">
+                @Html.ReadOrEditFor(model => model.ResidentOfWesterville, questionaireWrite)
+            </div>
+            
+            <div class="editor-label">
+                @Html.LabelFor(model => model.WorkInWesterville)
+            </div>
+            <div class="editor-field">
+                @Html.ReadOrEditFor(model => model.WorkInWesterville, questionaireWrite)
+            </div>
 
+            <div class="editor-label">
+                @Html.LabelFor(model => model.BelongToGroups)
+            </div>
+            <div class="editor-field">
+                @Html.ReadOrEditFor(model => model.BelongToGroups, questionaireWrite)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Groups)
+            </div>
+            <div class="editor-field">
+                @Html.ReadOrEditFor(model => model.Groups, questionaireWrite)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Awards)
+            </div>
+            <div class="editor-field">
+                @Html.ReadOrEditFor(model => model.Awards, questionaireWrite)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.AttendSchoolInWesterville)
+            </div>
+            <div class="editor-field">
+                @Html.ReadOrEditFor(model => model.AttendSchoolInWesterville, questionaireWrite)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Schools)
+            </div>
+            <div class="editor-field">
+                @Html.ReadOrEditFor(model => model.Schools, questionaireWrite)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Schools)
+            </div>
+            <div class="editor-field">
+                @Html.ReadOrEditFor(model => model.Schools, questionaireWrite)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ImageProvided)
+            </div>
+            <div class="editor-field">
+                @Html.ReadOrEditFor(model => model.ImageProvided, questionaireWrite)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Comments)
+            </div>
+            <div class="editor-field">
+                @Html.ReadOrEditFor(model => model.Comments, questionaireWrite)
+            </div>
+        }
         <p>
             <input type="submit" value="Create" />
         </p>
     </fieldset>
 }
-
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
