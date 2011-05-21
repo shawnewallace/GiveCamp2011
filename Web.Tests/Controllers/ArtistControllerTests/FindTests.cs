@@ -26,7 +26,8 @@ namespace Web.UI.Tests.Controllers.ArtistControllerTests
                                  {
                                      new ArtistModel
                                          {
-                                             FirstName =  "FirstName",
+
+                                             FirstName = "FirstName",
                                              LastName = "LastName"
                                          },
                                      new ArtistModel
