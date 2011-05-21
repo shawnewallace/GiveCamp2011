@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<VisualState xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ShowCheckBoxes="false">
+  <TopNode>[0-1000]C:\Users\Cobalt\Desktop\GiveCamp\ColumbusGiveCamp2011.sln</TopNode>
+  <SelectedNode>[0-1001]C:\Users\Cobalt\Desktop\GiveCamp\Web\bin\Web.dll</SelectedNode>
+  <ExcludeCategories>false</ExcludeCategories>
+  <Nodes>
+    <Node UniqueName="[0-1000]C:\Users\Cobalt\Desktop\GiveCamp\ColumbusGiveCamp2011.sln" Expanded="true" />
+    <Node UniqueName="[0-1013]C:\Users\Cobalt\Desktop\GiveCamp\Web.Tests\bin\Debug\Web.UI.Tests.dll" Expanded="true" />
+    <Node UniqueName="[0-1014]Web" Expanded="true" />
+    <Node UniqueName="[0-1015]Web.UI" Expanded="true" />
+    <Node UniqueName="[0-1016]Web.UI.Tests" Expanded="true" />
+    <Node UniqueName="[0-1017]Web.UI.Tests.Controllers" Expanded="true" />
+    <Node UniqueName="[0-1019]Web.UI.Tests.Controllers.ArtistControllerTests" Expanded="true" />
+    <Node UniqueName="[0-1018]Web.UI.Tests.Controllers.SiteModelControllerTests" Expanded="true" />
+    <Node UniqueName="[0-1002]Web.UI.Tests.Controllers.SiteModelControllerTests.IndexTests" Expanded="true" />
+    <Node UniqueName="[0-1020]Web.UI.Tests.Controllers.VenueControllerTests" Expanded="true" />
+    <Node UniqueName="[0-1165]C:\Users\Cobalt\Desktop\GiveCamp\Unit.Tests\bin\Debug\Unit.Tests.dll" Expanded="true" />
+    <Node UniqueName="[0-1166]Unit" Expanded="true" />
+    <Node UniqueName="[0-1167]Unit.Tests" Expanded="true" />
+    <Node UniqueName="[0-1168]Unit.Tests.Common" Expanded="true" />
+    <Node UniqueName="[0-1169]Unit.Tests.Common.StringExtensionTests" Expanded="true" />
+  </Nodes>
+</VisualState>

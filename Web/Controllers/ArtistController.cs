@@ -10,6 +10,7 @@ using Web.Models;
 
 namespace Web.Controllers
 {
+    [Authorize(Roles="Admin")]
     public class ArtistController : ColumbusGiveCamp2011ControllerBase
     {
         private void LoadDropDowns(int? artistTypeId, int? artistSubTypeId)
@@ -35,11 +36,7 @@ namespace Web.Controllers
             }
         }
 
-        public PartialViewResult CoverFlow()
-        {
-            return PartialView("_CoverFlow", GetAllCoverFlowArt());
-        }
-
+       
         public ViewResult UnapprovedArt()
         {
             return View(GetUnapprovedArt());
