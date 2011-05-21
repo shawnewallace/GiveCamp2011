@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using System.Web.Mvc;
 using Lib.Infrastructure;
 
 namespace Lib.Common {
@@ -93,5 +95,34 @@ namespace Lib.Common {
 				return null;
 			}
 		}
+
+        public static SelectList ToSelectList<TEnum>(this TEnum enumObj)
+        {
+            var values = from TEnum e in Enum.GetValues(typeof(TEnum))
+                         select new { ID = e, Name = e.ToString() };
+
+            return new SelectList(values, "Id", "Name", enumObj);
+        }
+
+        public static SelectList ToDropDownList<TEnum>(this TEnum enumObj)
+        {
+            var values = from TEnum e in Enum.GetValues(typeof(TEnum))
+                         select new { Value = e, Text = e.ToString() };
+
+            return new SelectList(values, "Value", "Text", enumObj);
+        }
+
+
+        public static JsonResult ToJsonList<TEnum>(this TEnum enumObj)
+        {
+            var jsonResult = new JsonResult
+            {
+                Data = (from TEnum e in Enum.GetValues(typeof(TEnum))
+                        select new { Value = e, Text = e.ToString(), Selected = e.Equals(enumObj) }).ToList(),
+                JsonRequestBehavior = JsonRequestBehavior.AllowGet
+            };
+            return jsonResult;
+        }
+
 	}
 }

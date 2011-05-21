@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
+using Web.Helpers;
 
 namespace Web.Models
 {
@@ -23,9 +25,32 @@ namespace Web.Models
         public bool Enabled { get; set; }
     }
 
-    public class DateEntry
+    public class Birthday
     {
-        public DateTime Data { get; set; }
-        public bool Enabled { get; set; }
+        public int Day { get; set; }
+        public Month Month { get; set; }
+
+        public Birthday()
+        {
+            Day = 1;
+            Month = Month.January;
+        }
+    }
+
+    public enum Month
+    {
+        NotSet = 0,
+        January,
+        February,
+        March,
+        April,
+        May,
+        June,
+        July,
+        August,
+        September,
+        October,
+        November,
+        December
     }
 }

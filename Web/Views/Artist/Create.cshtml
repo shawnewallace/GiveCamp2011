@@ -1,5 +1,4 @@
 @model Web.Models.ArtistModel
-
 @{
 	ViewBag.Title = "Create";
 }
@@ -9,6 +8,165 @@
 <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
 @using (Html.BeginForm())
 {
+<<<<<<< HEAD
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>ArtistModel</legend>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FirstName)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.FirstName)
+            @Html.ValidationMessageFor(model => model.FirstName)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.LastName)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.LastName)
+            @Html.ValidationMessageFor(model => model.LastName)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Address1)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.Address1.Data)
+            @Html.Label("Include on Website?")
+            @Html.CheckBoxFor(model => model.Address1.Enabled)
+            @Html.ValidationMessageFor(model => model.Address1)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Address2)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.Address2.Data)
+            @Html.Label("Include on Website?")
+            @Html.CheckBoxFor(model => model.Address2.Enabled)
+            @Html.ValidationMessageFor(model => model.Address2)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.City)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.City.Data)
+            @Html.Label("Include on Website?")
+            @Html.CheckBoxFor(model => model.City.Enabled)
+            @Html.ValidationMessageFor(model => model.City)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.State)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.State.Data)
+            @Html.Label("Include on Website?")
+            @Html.CheckBoxFor(model => model.State.Enabled)
+            @Html.ValidationMessageFor(model => model.State)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Zip)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.Zip.Data)
+            @Html.Label("Include on Website?")
+            @Html.CheckBoxFor(model => model.Zip.Enabled)
+            @Html.ValidationMessageFor(model => model.Zip)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Phone)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.Phone.Data)
+            @Html.Label("Include on Website?")
+            @Html.CheckBoxFor(model => model.Phone.Enabled)
+            @Html.ValidationMessageFor(model => model.Phone)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CellPhone)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.CellPhone.Data)
+            @Html.Label("Include on Website?")
+            @Html.CheckBoxFor(model => model.CellPhone.Enabled)
+            @Html.ValidationMessageFor(model => model.CellPhone)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Email)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.Email.Data)
+            @Html.Label("Include on Website?")
+            @Html.CheckBoxFor(model => model.Email.Enabled)
+            @Html.ValidationMessageFor(model => model.Email)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Dob)
+        </div>
+        <div class="editor-field">
+            @*@Html.Telerik().NumericTextBoxFor(model => model.Dob.Day).InputHtmlAttributes(new { style = "width: 30px;" }).Spinners(true).MinValue(0).MaxValue(31).DecimalDigits(0)*@
+            @*@Html.DropDownListFor(model => model.Dob.Month, ViewBag.MonthList as SelectList)*@
+
+            @*@Html.ValidationMessageFor(model => model.Dob)*@
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Website)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Website)
+            @Html.ValidationMessageFor(model => model.Website)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Twitter)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Twitter)
+            @Html.ValidationMessageFor(model => model.Twitter)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Facebook)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Facebook)
+            @Html.ValidationMessageFor(model => model.Facebook)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ArtistType)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.ArtistTypeId, (SelectList)ViewBag.ArtistTypes)
+            @Html.ValidationMessageFor(model => model.ArtistTypeId)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ArtistSubType)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.ArtistSubTypeId, (SelectList)ViewBag.ArtistSubTypes)
+            @Html.ValidationMessageFor(model => model.ArtistSubTypeId)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.OtherNotes)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.OtherNotes)
+            @Html.ValidationMessageFor(model => model.OtherNotes)
+        </div>
+        @{
+       var action = Html.ViewContext.RouteData.GetRequiredString("action");
+       bool questionaireWrite = action.ToLower().Equals("create");
+            
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ResidentOfWesterville)
+            </div>
+            <div class="editor-field">
+                @Html.ReadOrEditFor(model => model.ResidentOfWesterville, questionaireWrite)
+            </div>
+            
+            <div class="editor-label">
+                @Html.LabelFor(model => model.WorkInWesterville)
+            </div>
+            <div class="editor-field">
+                @Html.ReadOrEditFor(model => model.WorkInWesterville, questionaireWrite)
+            </div>
+=======
 	@Html.ValidationSummary(true)
 	<fieldset>
 		<legend>ArtistModel</legend>
@@ -150,6 +308,7 @@
 			<div class="editor-field">
 				@Html.ReadOrEditFor(model => model.WorkInWesterville, questionaireWrite)
 			</div>
+>>>>>>> 9a70e7daccb592930f3d89606a68fd5beae33a3a
 
 			<div class="editor-label">
 				@Html.LabelFor(model => model.BelongToGroups)
@@ -215,7 +374,6 @@
 <div>
 	@Html.ActionLink("Back to List", "Index")
 </div>
-
 <script type="text/javascript">
 	$.ajaxSetup({ cache: false });
 
