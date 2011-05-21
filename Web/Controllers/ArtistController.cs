@@ -11,7 +11,7 @@ namespace Web.Controllers
 {
     public class ArtistController : ColumbusGiveCamp2011ControllerBase
     {
-        private void LoadDropDowns(int? id)
+        private void LoadDropDowns(int? artistTypeId, int? artistSubTypeId)
         {
             List<ArtistTypeModel> artistTypes = Db.ArtistTypes.ToList();
 
@@ -22,11 +22,15 @@ namespace Web.Controllers
             }
             else
             {
-                if (!id.HasValue) id = artistTypes[0].Id;
-                ViewData["ArtistTypes"] = new SelectList(artistTypes, "Id", "ArtistType", id);
+                if (!artistTypeId.HasValue) artistTypeId = artistTypes[0].Id;
+                ViewData["ArtistTypes"] = new SelectList(artistTypes, "Id", "ArtistType", artistTypeId);
 
-                IEnumerable<ArtistSubTypeModel> subTypes = Db.ArtistSubTypes.ToList().Where(x => x.ArtistTypeId == id);
-                ViewData["ArtistSubTypes"] = new SelectList(subTypes, "Id", "ArtistSubType");
+                IEnumerable<ArtistSubTypeModel> subTypes = Db.ArtistSubTypes.ToList().Where(x => x.ArtistTypeId == artistTypeId);
+
+                if (artistSubTypeId.HasValue)
+                    ViewData["ArtistSubTypes"] = new SelectList(subTypes, "Id", "ArtistSubType", artistSubTypeId.Value);
+                else
+                    ViewData["ArtistSubTypes"] = new SelectList(subTypes, "Id", "ArtistSubType");
             }
         }
 
@@ -36,7 +40,7 @@ namespace Web.Controllers
         public ViewResult Index()
         {
             List<ArtistModel> artists = Db.Artists.ToList();
-            LoadDropDowns(null);
+            LoadDropDowns(null, null);
             
             return View(Db.Artists.ToList());
         }
@@ -47,7 +51,7 @@ namespace Web.Controllers
         public ViewResult Details(int id)
         {
             ArtistModel artistmodel = Db.Artists.Find(id);
-            LoadDropDowns(null);
+            LoadDropDowns(null, null);
             return View(artistmodel);
         }
 
@@ -56,7 +60,7 @@ namespace Web.Controllers
 
         public ActionResult Create()
         {
-            LoadDropDowns(null);
+            LoadDropDowns(null, null);
             return View();
         } 
 
@@ -73,7 +77,7 @@ namespace Web.Controllers
                 return RedirectToAction("Index");  
             }
 
-            LoadDropDowns(null);
+            LoadDropDowns(null, null);
             return View(artistmodel);
         }
         
@@ -83,7 +87,7 @@ namespace Web.Controllers
         public ActionResult Edit(int id)
         {
             ArtistModel artistmodel = Db.Artists.Find(id);
-            LoadDropDowns(id);
+            LoadDropDowns(artistmodel.ArtistTypeId, artistmodel.ArtistSubTypeId);
             return View(artistmodel);
         }
 
@@ -100,7 +104,7 @@ namespace Web.Controllers
                 return RedirectToAction("Index");
             }
 
-            LoadDropDowns(artistmodel.Id);
+            LoadDropDowns(artistmodel.ArtistTypeId, artistmodel.ArtistSubTypeId);
             return View(artistmodel);
         }
 
