@@ -39,11 +39,23 @@
       <HintPath>..\packages\EntityFramework.4.1.10331.0\lib\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Data.Linq" />
-    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
-    <Reference Include="System.Web.WebPages, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
-    <Reference Include="System.Web.Helpers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -53,6 +65,12 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.WebPages.Deployment, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -175,6 +193,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SiteModelsController.cs" />
     <Compile Include="Controllers\VenueController.cs" />
+    <Compile Include="Data\ApprovedArt.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -506,6 +525,74 @@
     <Content Include="Content\2011.1.315\Windows7\slider-vs-right.gif" />
     <Content Include="Content\2011.1.315\Windows7\sprite-vertical.png" />
     <Content Include="Content\2011.1.315\Windows7\sprite.png" />
+    <Content Include="Content\CoverFlow\beerdog.jpg" />
+    <Content Include="Content\CoverFlow\comearoundsunshine.jpg" />
+    <Content Include="Content\CoverFlow\Felix.jpg" />
+    <Content Include="Content\CoverFlow\felix4610.jpg" />
+    <Content Include="Content\CoverFlow\hurley.jpg" />
+    <Content Include="Content\CoverFlow\jeffwatch.jpg" />
+    <Content Include="Content\CoverFlow\plasticbeach.jpg" />
+    <Content Include="Content\CoverFlow\Seagull-Stealing-Chips.gif" />
+    <Content Include="Content\jqueryuicoverflow-ii\external\images\button_bg.png" />
+    <Content Include="Content\jqueryuicoverflow-ii\external\images\datepicker.gif" />
+    <Content Include="Content\jqueryuicoverflow-ii\external\images\icon_sprite.png" />
+    <Content Include="Content\jqueryuicoverflow-ii\external\images\progress_bar.gif" />
+    <Content Include="Content\jqueryuicoverflow-ii\external\images\slider_handles.png" />
+    <Content Include="Content\jqueryuicoverflow-ii\external\images\slider_h_bg.gif" />
+    <Content Include="Content\jqueryuicoverflow-ii\external\images\slider_v_bg.gif" />
+    <Content Include="Content\jqueryuicoverflow-ii\external\images\tab_bg.gif" />
+    <Content Include="Content\jqueryuicoverflow-ii\external\images\the_gradient.gif" />
+    <Content Include="Content\jqueryuicoverflow-ii\external\images\ui-bg_diagonals-thick_18_b81900_40x40.png" />
+    <Content Include="Content\jqueryuicoverflow-ii\external\images\ui-bg_diagonals-thick_20_666666_40x40.png" />
+    <Content Include="Content\jqueryuicoverflow-ii\external\images\ui-bg_flat_10_000000_40x100.png" />
+    <Content Include="Content\jqueryuicoverflow-ii\external\images\ui-bg_glass_100_f6f6f6_1x400.png" />
+    <Content Include="Content\jqueryuicoverflow-ii\external\images\ui-bg_glass_100_fdf5ce_1x400.png" />
+    <Content Include="Content\jqueryuicoverflow-ii\external\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\jqueryuicoverflow-ii\external\images\ui-bg_gloss-wave_35_f6a828_500x100.png" />
+    <Content Include="Content\jqueryuicoverflow-ii\external\images\ui-bg_highlight-soft_100_eeeeee_1x100.png" />
+    <Content Include="Content\jqueryuicoverflow-ii\external\images\ui-bg_highlight-soft_75_ffe45c_1x100.png" />
+    <Content Include="Content\jqueryuicoverflow-ii\external\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\jqueryuicoverflow-ii\external\images\ui-icons_228ef1_256x240.png" />
+    <Content Include="Content\jqueryuicoverflow-ii\external\images\ui-icons_ef8c08_256x240.png" />
+    <Content Include="Content\jqueryuicoverflow-ii\external\images\ui-icons_ffd27a_256x240.png" />
+    <Content Include="Content\jqueryuicoverflow-ii\external\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\jqueryuicoverflow-ii\external\jquery-1.4.4.min.js" />
+    <Content Include="Content\jqueryuicoverflow-ii\external\jquery-ui-1.8.5.custom.css" />
+    <Content Include="Content\jqueryuicoverflow-ii\external\jquery-ui-1.8.6.js" />
+    <Content Include="Content\jqueryuicoverflow-ii\external\jquery.mousewheel.min.js" />
+    <Content Include="Content\jqueryuicoverflow-ii\external\sylvester.js" />
+    <Content Include="Content\jqueryuicoverflow-ii\external\transformie.js" />
+    <Content Include="Content\jqueryuicoverflow-ii\ui.coverflow.js" />
+    <Content Include="Content\jqueryuicoverflow-ii\__MACOSX\._ui.coverflow.js" />
+    <Content Include="Content\jqueryuicoverflow-ii\__MACOSX\external\._jquery-1.4.4.min.js" />
+    <Content Include="Content\jqueryuicoverflow-ii\__MACOSX\external\._jquery-ui-1.8.5.custom.css" />
+    <Content Include="Content\jqueryuicoverflow-ii\__MACOSX\external\._jquery-ui-1.8.6.js" />
+    <Content Include="Content\jqueryuicoverflow-ii\__MACOSX\external\._jquery.mousewheel.min.js" />
+    <Content Include="Content\jqueryuicoverflow-ii\__MACOSX\external\._sylvester.js" />
+    <Content Include="Content\jqueryuicoverflow-ii\__MACOSX\external\._transformie.js" />
+    <Content Include="Content\jqueryuicoverflow-ii\__MACOSX\external\images\._button_bg.png" />
+    <Content Include="Content\jqueryuicoverflow-ii\__MACOSX\external\images\._datepicker.gif" />
+    <Content Include="Content\jqueryuicoverflow-ii\__MACOSX\external\images\._icon_sprite.png" />
+    <Content Include="Content\jqueryuicoverflow-ii\__MACOSX\external\images\._progress_bar.gif" />
+    <Content Include="Content\jqueryuicoverflow-ii\__MACOSX\external\images\._slider_handles.png" />
+    <Content Include="Content\jqueryuicoverflow-ii\__MACOSX\external\images\._slider_h_bg.gif" />
+    <Content Include="Content\jqueryuicoverflow-ii\__MACOSX\external\images\._slider_v_bg.gif" />
+    <Content Include="Content\jqueryuicoverflow-ii\__MACOSX\external\images\._tab_bg.gif" />
+    <Content Include="Content\jqueryuicoverflow-ii\__MACOSX\external\images\._the_gradient.gif" />
+    <Content Include="Content\jqueryuicoverflow-ii\__MACOSX\external\images\._ui-bg_diagonals-thick_18_b81900_40x40.png" />
+    <Content Include="Content\jqueryuicoverflow-ii\__MACOSX\external\images\._ui-bg_diagonals-thick_20_666666_40x40.png" />
+    <Content Include="Content\jqueryuicoverflow-ii\__MACOSX\external\images\._ui-bg_flat_10_000000_40x100.png" />
+    <Content Include="Content\jqueryuicoverflow-ii\__MACOSX\external\images\._ui-bg_glass_100_f6f6f6_1x400.png" />
+    <Content Include="Content\jqueryuicoverflow-ii\__MACOSX\external\images\._ui-bg_glass_100_fdf5ce_1x400.png" />
+    <Content Include="Content\jqueryuicoverflow-ii\__MACOSX\external\images\._ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\jqueryuicoverflow-ii\__MACOSX\external\images\._ui-bg_gloss-wave_35_f6a828_500x100.png" />
+    <Content Include="Content\jqueryuicoverflow-ii\__MACOSX\external\images\._ui-bg_highlight-soft_100_eeeeee_1x100.png" />
+    <Content Include="Content\jqueryuicoverflow-ii\__MACOSX\external\images\._ui-bg_highlight-soft_75_ffe45c_1x100.png" />
+    <Content Include="Content\jqueryuicoverflow-ii\__MACOSX\external\images\._ui-icons_222222_256x240.png" />
+    <Content Include="Content\jqueryuicoverflow-ii\__MACOSX\external\images\._ui-icons_228ef1_256x240.png" />
+    <Content Include="Content\jqueryuicoverflow-ii\__MACOSX\external\images\._ui-icons_ef8c08_256x240.png" />
+    <Content Include="Content\jqueryuicoverflow-ii\__MACOSX\external\images\._ui-icons_ffd27a_256x240.png" />
+    <Content Include="Content\jqueryuicoverflow-ii\__MACOSX\external\images\._ui-icons_ffffff_256x240.png" />
     <Content Include="Content\Public.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -577,6 +664,7 @@
     <Content Include="Scripts\knockout-1.2.0.js" />
     <Content Include="Scripts\modernizr-1.7.js" />
     <Content Include="Scripts\modernizr-1.7.min.js" />
+    <Content Include="Content\CoverFlow.css" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -610,7 +698,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Approved\" />
     <Folder Include="Content\images\" />
+    <Folder Include="Content\Unapproved\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -789,6 +879,16 @@
     <Content Include="Views\Account\PublicLogOn.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Content\jqueryuicoverflow-ii\external\.DS_Store" />
+    <None Include="Content\jqueryuicoverflow-ii\README" />
+    <None Include="Content\jqueryuicoverflow-ii\__MACOSX\._README" />
+    <None Include="Content\jqueryuicoverflow-ii\__MACOSX\external\._.DS_Store" />
+    <None Include="Content\jqueryuicoverflow-ii\__MACOSX\external\._images" />
+    <Content Include="Views\Artist\_CoverFlow.cshtml" />
+    <ProjectReference Include="..\Lib\Lib.csproj">
+      <Project>{68C74FE6-AC90-4435-A28E-972F247F25E3}</Project>
+      <Name>Lib</Name>
+    </ProjectReference>
     <Content Include="Views\SiteModels\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>

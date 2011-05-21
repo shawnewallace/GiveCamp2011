@@ -5,6 +5,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Lib.Common;
 using Web.Models;
 
 namespace Web.Controllers
@@ -35,6 +36,11 @@ namespace Web.Controllers
             }
         }
 
+        public PartialViewResult CoverFlow()
+        {
+            return PartialView("_CoverFlow", GetAllCoverFlowArt());
+        }
+
         //
         // GET: /Artist/
 
@@ -42,7 +48,7 @@ namespace Web.Controllers
         {
             List<ArtistModel> artists = Db.Artists.ToList();
             LoadDropDowns(null, null);
-            
+
             return View(Db.Artists.ToList());
         }
 
@@ -62,7 +68,7 @@ namespace Web.Controllers
         {
             LoadDropDowns(null, null);
             return View();
-        } 
+        }
 
         //
         // POST: /Artist/Create
@@ -74,15 +80,16 @@ namespace Web.Controllers
             {
                 Db.Artists.Add(artistmodel);
                 Db.SaveChanges();
-                return RedirectToAction("Index");  
+                return RedirectToAction("Index");
             }
 
             LoadDropDowns(null, null);
             return View(artistmodel);
         }
-        
+
         //
         // GET: /Artist/Edit/5
+
         public ActionResult Edit(int id)
         {
             ArtistModel artistmodel = Db.Artists.Find(id);
@@ -121,7 +128,7 @@ namespace Web.Controllers
 
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
-        {            
+        {
             ArtistModel artistmodel = Db.Artists.Find(id);
             Db.Artists.Remove(artistmodel);
             Db.SaveChanges();
@@ -132,6 +139,41 @@ namespace Web.Controllers
         {
             Db.Dispose();
             base.Dispose(disposing);
+        }
+
+        public JsonResult Find(string searchTerms = "")
+        {
+            //firstname
+            //lastname
+            //type
+            //category
+
+            var terms = searchTerms.Split(' ');
+            var artists = Db.Artists.AsEnumerable();
+            var results = new List<ArtistModel>();
+
+            foreach (var term in terms)
+            {
+                results.AddRange(
+                    
+                    Db.Artists.Where(a => a.FirstName.Data.Contains(term)
+                        || a.LastName.Data.Contains(term)
+                        || a.ArtistType.ArtistType.Contains(term)
+                        || a.ArtistSubType.ArtistSubType.Contains(term)
+                    ).ToList()
+
+                    );
+            }
+
+            results = results.Select(r => r).Distinct().ToList();
+
+            int count = results.Count();
+
+            return Json(new
+            {
+                Artists = results,
+                Count = count
+            }, JsonRequestBehavior.AllowGet);
         }
     }
 }

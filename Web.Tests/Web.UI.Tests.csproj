@@ -64,6 +64,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\ArtistControllerTests\FindTests.cs" />
+    <Compile Include="Controllers\VenueControllerTests\FakeArtistSet.cs" />
     <Content Include="Controllers\SiteModelControllerTests\DetailsTests.cs.txt" />
     <Content Include="Controllers\SiteModelControllerTests\FakeColumbusGiveCamp2011Context.cs.txt" />
     <Content Include="Controllers\SiteModelControllerTests\FakeDbSet.cs.txt" />
