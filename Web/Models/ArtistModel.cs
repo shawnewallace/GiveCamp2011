@@ -11,8 +11,8 @@ namespace Web.Models
     {
         public ArtistModel()
         {
-            FirstName = new TextEntry();
-            LastName = new TextEntry();
+            FirstName = String.Empty;
+            LastName = String.Empty;
             Address1 = new TextEntry();
             Address2 = new TextEntry();
             City = new TextEntry();
@@ -21,7 +21,7 @@ namespace Web.Models
             Phone = new TextEntry();
             CellPhone = new TextEntry();
             Email = new TextEntry();
-            Dob = new DateEntry();
+            Dob = new Birthday();
             Website = new TextEntry();
             Twitter = new TextEntry();
             Facebook = new TextEntry();
@@ -29,8 +29,8 @@ namespace Web.Models
 
         public int Id { get; set; }
         
-        public TextEntry FirstName { get; set; }
-        public TextEntry LastName { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
         public TextEntry Address1 { get; set; }
         public TextEntry Address2 { get; set; }
         public TextEntry City { get; set; }
@@ -39,7 +39,7 @@ namespace Web.Models
         public TextEntry Phone { get; set; }
         public TextEntry CellPhone { get; set; }
         public TextEntry Email { get; set; }
-        public DateEntry Dob { get; set; }
+        public Birthday Dob { get; set; }
 
         public TextEntry Website { get; set; }
         public TextEntry Twitter { get; set; }

@@ -36,6 +36,11 @@ namespace Web.Controllers
             }
         }
 
+        private IQueryable<ArtistModel> _artists;
+        private IQueryable<ArtistModel> Artists
+        {
+            get { return  _artists ?? Db.Artists.AsQueryable(); }
+        }
        
         public ViewResult UnapprovedArt()
         {
@@ -61,15 +66,13 @@ namespace Web.Controllers
 
         public ViewResult Index()
         {
-            List<ArtistModel> artists = Db.Artists.ToList();
+            //List<ArtistModel> artists = Db.Artists.ToList();
             LoadDropDowns(null, null);
 
             return View(Db.Artists.ToList());
         }
 
-        //
         // GET: /Artist/Details/5
-
         public ViewResult Details(int id)
         {
             ArtistModel artistmodel = Db.Artists.Find(id);
@@ -81,13 +84,13 @@ namespace Web.Controllers
         // GET: /Artist/Create
         public ActionResult Create()
         {
+            //ViewData["MonthList"] = (new ArtistModel()).Dob.Month.ToSelectList();
             LoadDropDowns(null, null);
             return View();
         }
 
         //
         // POST: /Artist/Create
-
         [HttpPost]
         public ActionResult Create(ArtistModel artistmodel)
         {
@@ -104,7 +107,6 @@ namespace Web.Controllers
 
         //
         // GET: /Artist/Edit/5
-
         public ActionResult Edit(int id)
         {
             ArtistModel artistmodel = Db.Artists.Find(id);
@@ -135,7 +137,10 @@ namespace Web.Controllers
         public ActionResult Delete(int id)
         {
             ArtistModel artistmodel = Db.Artists.Find(id);
-            return View(artistmodel);
+            Db.Artists.Remove(artistmodel);
+            Db.SaveChanges();
+            return RedirectToAction("Index");
+            //return View(artistmodel);
         }
 
         //
@@ -171,8 +176,8 @@ namespace Web.Controllers
             {
                 results.AddRange(
                     
-                    Db.Artists.Where(a => a.FirstName.Data.Contains(term)
-                        || a.LastName.Data.Contains(term)
+                    Db.Artists.Where(a => a.FirstName.Contains(term)
+                        || a.LastName.Contains(term)
                         || a.ArtistType.ArtistType.Contains(term)
                         || a.ArtistSubType.ArtistSubType.Contains(term)
                     ).ToList()

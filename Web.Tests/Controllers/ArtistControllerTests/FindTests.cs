@@ -26,13 +26,13 @@ namespace Web.UI.Tests.Controllers.ArtistControllerTests
                                  {
                                      new ArtistModel
                                          {
-                                             FirstName = new TextEntry{ Data = "FirstName", Enabled = true },
-                                             LastName = new TextEntry{ Data = "LastName", Enabled = true }
+                                             FirstName =  "FirstName",
+                                             LastName = "LastName"
                                          },
                                      new ArtistModel
                                          {
-                                             FirstName = new TextEntry{ Data = "NewFirstName", Enabled = true },
-                                             LastName = new TextEntry{ Data = "NewLastName", Enabled = true }
+                                             FirstName = "NewFirstName",
+                                             LastName = "NewLastName"
                                          }
                                  }
                 }
