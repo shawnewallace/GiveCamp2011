@@ -18,7 +18,7 @@
         public SearchResult(ArtistModel model)
         {
             Id = model.Id;
-            Name = string.Format("{0}, {1}", model.LastName.Data, model.FirstName.Data);
+            Name = string.Format("{0}, {1}", model.LastName, model.FirstName);
             Bio = model.Biography;
             Type = SearchResultType.Artist.ToString();
         }
