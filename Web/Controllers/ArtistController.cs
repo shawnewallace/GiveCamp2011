@@ -88,7 +88,7 @@ namespace Web.Controllers
         {
             ArtistModel artistmodel = Db.Artists.Find(id);
             LoadDropDowns(artistmodel.ArtistTypeId, artistmodel.ArtistSubTypeId);
-            return View(artistmodel);
+            return View("Create", artistmodel);
         }
 
         //

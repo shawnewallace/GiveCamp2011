@@ -178,12 +178,15 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\Constants.cs" />
+    <Compile Include="Helpers\MVC3HtmlHelpers.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\ArtistModel.cs" />
     <Compile Include="Models\ArtistSubTypeModel.cs" />
     <Compile Include="Models\ArtistTypeModel.cs" />
     <Compile Include="Models\ColumbusGiveCamp2011Context.cs" />
     <Compile Include="Models\VenueModel.cs" />
+    <Compile Include="Models\Entry.cs" />
+    <Compile Include="Models\School.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -610,9 +613,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Artist\Create.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Artist\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Artist\Delete.cshtml" />
