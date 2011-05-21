@@ -19,7 +19,7 @@ namespace Web.Models
             Phone = new TextEntry();
             CellPhone = new TextEntry();
             Email = new TextEntry();
-            Dob = new DateEntry();
+            Dob = new Birthday();
             Website = new TextEntry();
             Twitter = new TextEntry();
             Facebook = new TextEntry();
@@ -37,7 +37,7 @@ namespace Web.Models
         public TextEntry Phone { get; set; }
         public TextEntry CellPhone { get; set; }
         public TextEntry Email { get; set; }
-        public DateEntry Dob { get; set; }
+        public Birthday Dob { get; set; }
 
         public TextEntry Website { get; set; }
         public TextEntry Twitter { get; set; }

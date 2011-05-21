@@ -5,21 +5,18 @@ using System.Web;
 
 namespace Web.Models
 {
-    [Complex]
     public class TextEntry
     {
         public string Data { get; set; }
         public bool Enabled { get; set; }
     }
 
-    //[Complex]
-    //public class UriEntry
-    //{
-    //    public Uri Data { get; set; }
-    //    public bool Enabled { get; set; }
-    //}
+    public class UriEntry
+    {
+        public Uri Data { get; set; }
+        public bool Enabled { get; set; }
+    }
 
-    [Complex]
     public class DateEntry
     {
         public DateTime Data { get; set; }

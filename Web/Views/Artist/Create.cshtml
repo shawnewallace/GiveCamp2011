@@ -85,15 +85,17 @@
             @Html.EditorFor(model => model.Email)
             @Html.ValidationMessageFor(model => model.Email)
         </div>
-
+        
         <div class="editor-label">
             @Html.LabelFor(model => model.Dob)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Dob)
+            @*@Html.DatePicker("date",DateTime.Now)*@
+            @*@Html.DatePickerFor(model => model.Dob)*@
             @Html.ValidationMessageFor(model => model.Dob)
         </div>
-
+        
+        @Html.ViewContext.RouteData.GetRequiredString("Action")
         <div class="editor-label">
             @Html.LabelFor(model => model.Website)
         </div>
