@@ -11,6 +11,7 @@ using Web.Models;
 
 namespace Web.Controllers
 {
+<<<<<<< HEAD
     [Authorize(Roles="Admin")]
     public class ArtistController : ColumbusGiveCamp2011ControllerBase
     {
@@ -200,4 +201,5 @@ namespace Web.Controllers
         }
 
     }
+
 }
