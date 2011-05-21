@@ -3,6 +3,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Web.Models;
+using System.Collections.Generic;
 
 namespace Web.Controllers
 {
@@ -106,6 +107,33 @@ namespace Web.Controllers
         {
             Db.Dispose();
             base.Dispose(disposing);
+        }
+
+        public JsonResult Find(string searchTerms = "")
+        {
+            var terms = searchTerms.Split(' ');
+            var venues = Db.Venues.AsEnumerable<VenueModel>();
+
+            if (searchTerms != string.Empty)
+            {
+                List<VenueModel> result = new List<VenueModel>();
+
+                foreach (var term in terms)
+                {
+                    venues = venues.Where(v => v.Name.Contains(term)
+                        || v.Address.Contains(term));
+                    result.AddRange(venues);
+                }
+                venues = result;
+            }
+
+            int count = venues.Count();
+
+            return Json(new
+            {
+                Venues = venues.Select(v => v).Distinct(),
+                Count = count
+            },JsonRequestBehavior.AllowGet);
         }
     }
 }

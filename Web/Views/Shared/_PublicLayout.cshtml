@@ -10,6 +10,7 @@
 <body>
     <div>
         <header>
+            @HttpContext.Current.ApplicationInstance.Server.MapPath("/")
             @Html.ActionLink("Admin", "Index", "Home")
             @Html.ActionLink("Login/Register", "PublicLogOn", "Account")
         </header>
