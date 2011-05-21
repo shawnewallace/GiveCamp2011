@@ -187,6 +187,7 @@
     </Compile>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ArtistController.cs" />
+    <Compile Include="Controllers\ArtistPublicController.cs" />
     <Compile Include="Controllers\ArtistSubTypeController.cs" />
     <Compile Include="Controllers\ArtistTypeController.cs" />
     <Compile Include="Controllers\ColumbusGiveCamp2011ControllerBase.cs" />
@@ -884,7 +885,11 @@
     <None Include="Content\jqueryuicoverflow-ii\__MACOSX\._README" />
     <None Include="Content\jqueryuicoverflow-ii\__MACOSX\external\._.DS_Store" />
     <None Include="Content\jqueryuicoverflow-ii\__MACOSX\external\._images" />
-    <Content Include="Views\Artist\_CoverFlow.cshtml" />
+    <Content Include="Views\ArtistPublic\_CoverFlow.cshtml" />
+    <Content Include="Views\Artist\UnapprovedArt.cshtml" />
+    <Content Include="Views\Shared\_PublicLayout.cshtml">
+      <SubType>Code</SubType>
+    </Content>
     <ProjectReference Include="..\Lib\Lib.csproj">
       <Project>{68C74FE6-AC90-4435-A28E-972F247F25E3}</Project>
       <Name>Lib</Name>

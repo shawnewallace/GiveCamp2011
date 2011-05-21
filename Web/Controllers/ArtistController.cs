@@ -10,7 +10,7 @@ using Web.Models;
 
 namespace Web.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles="Admin")]
     public class ArtistController : ColumbusGiveCamp2011ControllerBase
     {
         private void LoadDropDowns(int? artistTypeId, int? artistSubTypeId)
@@ -36,9 +36,24 @@ namespace Web.Controllers
             }
         }
 
-        public PartialViewResult CoverFlow()
+       
+        public ViewResult UnapprovedArt()
         {
-            return PartialView("_CoverFlow", GetAllCoverFlowArt());
+            return View(GetUnapprovedArt());
+        }
+
+        public ViewResult ApproveImage(string imageToApprove)
+        {
+            ApproveSubmittedImage(imageToApprove);
+
+            return View("UnapprovedArt", GetUnapprovedArt());
+        }
+
+        public ViewResult RejectImage(string imageToReject)
+        {
+            RejectSubmittedImage(imageToReject);
+
+            return View("UnapprovedArt", GetUnapprovedArt());
         }
 
         //
