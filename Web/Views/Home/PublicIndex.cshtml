@@ -144,10 +144,9 @@
 			select: function (event, ui) {
 				$("#artist-venue-query").val(ui.item.label);
 				$("#result-id").val(ui.item.value);
-				$("#result-description").html(ui.item.desc);
-
 				return false;
-			}
+			},
+			position: { my: "left top", at: "left bottom" }
 		})
 		.data("autocomplete")._renderItem = function (ul, item) {
 			return $("<li class='search-result'></li>")
