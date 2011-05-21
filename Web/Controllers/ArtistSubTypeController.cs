@@ -11,17 +11,15 @@ using Web.Models;
 namespace Web.Controllers
 {
     [Authorize]
-    public class ArtistSubTypeController : Controller
+    public class ArtistSubTypeController : ColumbusGiveCamp2011ControllerBase
     {
-        private ColumbusGiveCamp2011Context db = new ColumbusGiveCamp2011Context();
-
         //
         // GET: /ArtistSubType/
 
         public ViewResult Index()
         {
-            List<ArtistSubTypeModel> models = db.ArtistSubTypes.ToList();
-            db.ArtistTypes.Load();
+            List<ArtistSubTypeModel> models = Db.ArtistSubTypes.ToList();
+            Db.ArtistTypes.Load();
 
             return View(models);
         }
@@ -31,8 +29,8 @@ namespace Web.Controllers
 
         public ViewResult Details(int id)
         {
-            ArtistSubTypeModel artistsubtypemodel = db.ArtistSubTypes.Find(id);
-            db.ArtistTypes.Load();
+            ArtistSubTypeModel artistsubtypemodel = Db.ArtistSubTypes.Find(id);
+            Db.ArtistTypes.Load();
             return View(artistsubtypemodel);
         }
 
@@ -41,7 +39,7 @@ namespace Web.Controllers
 
         public ActionResult Create()
         {
-            ViewData["ArtistTypes"] = new SelectList(db.ArtistTypes.ToList(), "Id", "ArtistType");
+            ViewData["ArtistTypes"] = new SelectList(Db.ArtistTypes.ToList(), "Id", "ArtistType");
             return View();
         }
 
@@ -53,11 +51,11 @@ namespace Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.ArtistSubTypes.Add(artistsubtypemodel);
-                db.SaveChanges();
+                Db.ArtistSubTypes.Add(artistsubtypemodel);
+                Db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewData["ArtistTypes"] = new SelectList(db.ArtistTypes.ToList(), "Id", "ArtistType");
+            ViewData["ArtistTypes"] = new SelectList(Db.ArtistTypes.ToList(), "Id", "ArtistType");
             return View(artistsubtypemodel);
         }
 
@@ -66,8 +64,8 @@ namespace Web.Controllers
 
         public ActionResult Edit(int id)
         {
-            ArtistSubTypeModel artistsubtypemodel = db.ArtistSubTypes.Find(id);
-            ViewData["ArtistTypes"] = new SelectList(db.ArtistTypes.ToList(), "Id", "ArtistType", artistsubtypemodel.ArtistTypeId);
+            ArtistSubTypeModel artistsubtypemodel = Db.ArtistSubTypes.Find(id);
+            ViewData["ArtistTypes"] = new SelectList(Db.ArtistTypes.ToList(), "Id", "ArtistType", artistsubtypemodel.ArtistTypeId);
             return View(artistsubtypemodel);
         }
 
@@ -79,22 +77,22 @@ namespace Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(artistsubtypemodel).State = EntityState.Modified;
+                Db.Entry(artistsubtypemodel).State = EntityState.Modified;
 
-                foreach (ArtistModel artist in db.Artists.ToList())
+                foreach (ArtistModel artist in Db.Artists.ToList())
                 {
                     if (artist.ArtistSubTypeId == artistsubtypemodel.Id && artist.ArtistTypeId != artistsubtypemodel.ArtistTypeId)
                     {
                         artist.ArtistTypeId = artistsubtypemodel.ArtistTypeId;
-                        db.Entry(artist).State = EntityState.Modified;
+                        Db.Entry(artist).State = EntityState.Modified;
                     }
                 }
                 
-                db.SaveChanges();
+                Db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewData["ArtistTypes"] = new SelectList(db.ArtistTypes.ToList(), "Id", "ArtistType", artistsubtypemodel.ArtistTypeId);
+            ViewData["ArtistTypes"] = new SelectList(Db.ArtistTypes.ToList(), "Id", "ArtistType", artistsubtypemodel.ArtistTypeId);
             return View(artistsubtypemodel);
         }
 
@@ -103,7 +101,7 @@ namespace Web.Controllers
 
         public ActionResult Delete(int id)
         {
-            ArtistSubTypeModel artistsubtypemodel = db.ArtistSubTypes.Find(id);
+            ArtistSubTypeModel artistsubtypemodel = Db.ArtistSubTypes.Find(id);
             return View(artistsubtypemodel);
         }
 
@@ -113,15 +111,15 @@ namespace Web.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
-            ArtistSubTypeModel artistsubtypemodel = db.ArtistSubTypes.Find(id);
-            db.ArtistSubTypes.Remove(artistsubtypemodel);
-            db.SaveChanges();
+            ArtistSubTypeModel artistsubtypemodel = Db.ArtistSubTypes.Find(id);
+            Db.ArtistSubTypes.Remove(artistsubtypemodel);
+            Db.SaveChanges();
             return RedirectToAction("Index");
         }
 
         public ContentResult AjaxGet(int id)
         {
-            IEnumerable<ArtistSubTypeModel> artistSubTypes = db.ArtistSubTypes.ToList().Where(x => x.ArtistTypeId == id);
+            IEnumerable<ArtistSubTypeModel> artistSubTypes = Db.ArtistSubTypes.ToList().Where(x => x.ArtistTypeId == id);
             StringBuilder sb = new StringBuilder();
 
             foreach (ArtistSubTypeModel artistSubType in artistSubTypes)
@@ -134,7 +132,7 @@ namespace Web.Controllers
 
         protected override void Dispose(bool disposing)
         {
-            db.Dispose();
+            Db.Dispose();
             base.Dispose(disposing);
         }
     }

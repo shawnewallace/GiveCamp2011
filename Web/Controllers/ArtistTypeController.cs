@@ -10,16 +10,14 @@ using Web.Models;
 namespace Web.Controllers
 {
     [Authorize]
-    public class ArtistTypeController : Controller
+    public class ArtistTypeController : ColumbusGiveCamp2011ControllerBase
     {
-        private ColumbusGiveCamp2011Context db = new ColumbusGiveCamp2011Context();
-
         //
         // GET: /ArtistType/
 
         public ViewResult Index()
         {
-            return View(db.ArtistTypes.ToList());
+            return View(Db.ArtistTypes.ToList());
         }
 
         //
@@ -27,7 +25,7 @@ namespace Web.Controllers
 
         public ViewResult Details(int id)
         {
-            ArtistTypeModel artisttypemodel = db.ArtistTypes.Find(id);
+            ArtistTypeModel artisttypemodel = Db.ArtistTypes.Find(id);
             return View(artisttypemodel);
         }
 
@@ -47,8 +45,8 @@ namespace Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.ArtistTypes.Add(artisttypemodel);
-                db.SaveChanges();
+                Db.ArtistTypes.Add(artisttypemodel);
+                Db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(artisttypemodel);
@@ -59,7 +57,7 @@ namespace Web.Controllers
 
         public ActionResult Edit(int id)
         {
-            ArtistTypeModel artisttypemodel = db.ArtistTypes.Find(id);
+            ArtistTypeModel artisttypemodel = Db.ArtistTypes.Find(id);
             return View(artisttypemodel);
         }
 
@@ -71,8 +69,8 @@ namespace Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(artisttypemodel).State = EntityState.Modified;
-                db.SaveChanges();
+                Db.Entry(artisttypemodel).State = EntityState.Modified;
+                Db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(artisttypemodel);
@@ -83,7 +81,7 @@ namespace Web.Controllers
 
         public ActionResult Delete(int id)
         {
-            ArtistTypeModel artisttypemodel = db.ArtistTypes.Find(id);
+            ArtistTypeModel artisttypemodel = Db.ArtistTypes.Find(id);
             return View(artisttypemodel);
         }
 
@@ -93,15 +91,15 @@ namespace Web.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
-            ArtistTypeModel artisttypemodel = db.ArtistTypes.Find(id);
-            db.ArtistTypes.Remove(artisttypemodel);
-            db.SaveChanges();
+            ArtistTypeModel artisttypemodel = Db.ArtistTypes.Find(id);
+            Db.ArtistTypes.Remove(artisttypemodel);
+            Db.SaveChanges();
             return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)
         {
-            db.Dispose();
+            Db.Dispose();
             base.Dispose(disposing);
         }
     }
