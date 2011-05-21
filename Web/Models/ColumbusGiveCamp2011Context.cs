@@ -13,6 +13,7 @@ namespace Web.Models
 		IDbSet<VenueModel> Venues { get; set; }
 		IDbSet<ArtistTypeModel> ArtistTypes { get; set; }
 		IDbSet<ArtistSubTypeModel> ArtistSubTypes { get; set; }
+        IDbSet<SiteModel> SiteModels { get; set; } 
 		int SaveChanges();
 		DbEntityEntry Entry(object entity);
 		void Dispose();
@@ -24,7 +25,7 @@ namespace Web.Models
 		public IDbSet<VenueModel> Venues { get; set; }
 		public IDbSet<ArtistTypeModel> ArtistTypes { get; set; }
 		public IDbSet<ArtistSubTypeModel> ArtistSubTypes { get; set; }
-
+        public IDbSet<SiteModel> SiteModels { get; set; } 
 		protected override void OnModelCreating(DbModelBuilder modelBuilder)
 		{
 		}
