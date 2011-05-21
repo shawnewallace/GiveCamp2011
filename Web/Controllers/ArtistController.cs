@@ -6,6 +6,10 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Lib.Common;
+<<<<<<< HEAD
+using Telerik.Web.Mvc;
+=======
+>>>>>>> 9a70e7daccb592930f3d89606a68fd5beae33a3a
 using Web.Models;
 
 namespace Web.Controllers
@@ -36,6 +40,13 @@ namespace Web.Controllers
             }
         }
 
+<<<<<<< HEAD
+        private IQueryable<ArtistModel> _artists;
+        private IQueryable<ArtistModel> Artists
+        {
+            get { return  _artists ?? Db.Artists.AsQueryable(); }
+        }
+=======
        
         public ViewResult UnapprovedArt()
         {
@@ -56,20 +67,23 @@ namespace Web.Controllers
             return View("UnapprovedArt", GetUnapprovedArt());
         }
 
+>>>>>>> 9a70e7daccb592930f3d89606a68fd5beae33a3a
         //
         // GET: /Artist/
 
         public ViewResult Index()
         {
-            List<ArtistModel> artists = Db.Artists.ToList();
+            //List<ArtistModel> artists = Db.Artists.ToList();
             LoadDropDowns(null, null);
 
+<<<<<<< HEAD
+            return View(Artists);
+=======
             return View(Db.Artists.ToList());
+>>>>>>> 9a70e7daccb592930f3d89606a68fd5beae33a3a
         }
 
-        //
         // GET: /Artist/Details/5
-
         public ViewResult Details(int id)
         {
             ArtistModel artistmodel = Db.Artists.Find(id);
@@ -81,13 +95,13 @@ namespace Web.Controllers
         // GET: /Artist/Create
         public ActionResult Create()
         {
+            //ViewData["MonthList"] = (new ArtistModel()).Dob.Month.ToSelectList();
             LoadDropDowns(null, null);
             return View();
         }
 
         //
         // POST: /Artist/Create
-
         [HttpPost]
         public ActionResult Create(ArtistModel artistmodel)
         {
@@ -104,7 +118,10 @@ namespace Web.Controllers
 
         //
         // GET: /Artist/Edit/5
+<<<<<<< HEAD
+=======
 
+>>>>>>> 9a70e7daccb592930f3d89606a68fd5beae33a3a
         public ActionResult Edit(int id)
         {
             ArtistModel artistmodel = Db.Artists.Find(id);
@@ -135,7 +152,10 @@ namespace Web.Controllers
         public ActionResult Delete(int id)
         {
             ArtistModel artistmodel = Db.Artists.Find(id);
-            return View(artistmodel);
+            Db.Artists.Remove(artistmodel);
+            Db.SaveChanges();
+            return RedirectToAction("Index");
+            //return View(artistmodel);
         }
 
         //
@@ -156,6 +176,9 @@ namespace Web.Controllers
             base.Dispose(disposing);
         }
 
+<<<<<<< HEAD
+
+=======
         public JsonResult Find(string searchTerms = "")
         {
             //firstname
@@ -190,5 +213,6 @@ namespace Web.Controllers
                 Count = count
             }, JsonRequestBehavior.AllowGet);
         }
+>>>>>>> 9a70e7daccb592930f3d89606a68fd5beae33a3a
     }
 }

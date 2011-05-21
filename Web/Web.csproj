@@ -192,6 +192,8 @@
     <Compile Include="Controllers\ArtistTypeController.cs" />
     <Compile Include="Controllers\ColumbusGiveCamp2011ControllerBase.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Models\SearchResult.cs" />
+    <Compile Include="Models\SearchResultType.cs" />
     <Compile Include="Controllers\SiteModelsController.cs" />
     <Compile Include="Controllers\VenueController.cs" />
     <Compile Include="Data\ApprovedArt.cs" />
@@ -534,6 +536,7 @@
     <Content Include="Content\CoverFlow\jeffwatch.jpg" />
     <Content Include="Content\CoverFlow\plasticbeach.jpg" />
     <Content Include="Content\CoverFlow\Seagull-Stealing-Chips.gif" />
+    <Content Include="Content\global.css" />
     <Content Include="Content\jqueryuicoverflow-ii\external\images\button_bg.png" />
     <Content Include="Content\jqueryuicoverflow-ii\external\images\datepicker.gif" />
     <Content Include="Content\jqueryuicoverflow-ii\external\images\icon_sprite.png" />

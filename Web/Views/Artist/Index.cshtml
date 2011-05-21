@@ -35,28 +35,8 @@
         <th>
             Other Notes
         </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.FirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ArtistType.ArtistType)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ArtistSubType.ArtistSubType)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.OtherNotes)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
+        <th>
+        </th>
     </tr>
     @foreach (var item in Model)
     {
@@ -67,10 +47,10 @@
                 @Html.ActionLink("Delete", "Delete", new { id = item.Id })
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.FirstName.Data)
+                @Html.DisplayFor(modelItem => item.FirstName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.LastName.Data)
+                @Html.DisplayFor(modelItem => item.LastName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Email.Data)
@@ -87,6 +67,49 @@
             <td>
                 @Html.DisplayFor(modelItem => item.ArtistSubType.ArtistSubType)
             </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OtherNotes)
+            </td>
         </tr>
     }
 </table>
+
+@*@(Html.Telerik().Grid<Web.Models.ArtistModel>()
+            .Name("ArtistsGrid")
+            .DataKeys(keys => { keys.Add(o => o.Id); })
+            .ToolBar(commands => commands.Custom().Text("Add Artist").Action("Create","Artist"))
+            .DataBinding(dataBinding =>
+            {
+                dataBinding.Ajax()
+                    .Select("GridCreate", "Artist")
+                    //.Insert("Create", "Artist")
+                    .Update("GridEdit", "Artist")
+                    .Delete("Delete", "Artist");
+            })
+            .Columns(columns =>
+            {
+                columns.Bound(o => o.Id).Width(100).Hidden().ReadOnly();
+                columns.Bound(o => o.LastName).Width(200);
+                columns.Bound(o => o.FirstName).Width(200);
+                columns.Bound(o => o.Email.Data);
+                columns.Bound(o => o.Dob.Day);
+                columns.Bound(o => o.Dob.Month);
+                columns.Bound(o => o.CellPhone.Data);
+                columns.Bound(o => o.Website.Data);
+                //columns.Command(commands =>commands.Select()).Width(180).Title("Select");
+                
+                //columns.Bound(o => o.ArtistType.ArtistType);
+                //columns.Bound(o => o.ArtistSubType.ArtistSubType);
+                //columns.Bound(o => o.OtherNotes);
+                columns.Command(commands =>
+                {
+                    commands.Edit().ButtonType(GridButtonType.Text);
+                    commands.Delete().ButtonType(GridButtonType.Text);
+                }).Width(180).Title("Commands");
+
+            })
+            .Scrollable(scrolling => scrolling.Enabled(true))
+            .Sortable(sorting => sorting.Enabled(true))
+            .Pageable(paging => paging.Enabled(true))
+            .Footer(true)
+)*@
