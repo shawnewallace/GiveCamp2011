@@ -77,5 +77,7 @@ namespace Web.Models
             get { return _artistSubType.Entity; }
             internal set { _artistSubType.Entity = value; ArtistSubTypeId = value.Id; }
         }
+
+        public string Biography { get; set; }
     }
 }
