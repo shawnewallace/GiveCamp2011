@@ -779,7 +779,7 @@
     <Content Include="Views\ArtistType\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Shared\_PublicLayout.cshtml" />
+    <Content Include="Views\ArtistType\_PublicLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\PublicIndex.cshtml" />
@@ -804,6 +804,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\SiteModels\_CreateOrEdit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SiteModels\Show.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

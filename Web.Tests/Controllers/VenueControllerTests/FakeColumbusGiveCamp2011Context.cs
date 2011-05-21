@@ -18,6 +18,7 @@ namespace Web.UI.Tests.Controllers.VenueControllerTests
         public IDbSet<ArtistTypeModel> ArtistTypes { get; set; }
         public IDbSet<ArtistSubTypeModel> ArtistSubTypes { get; set; }
         public IDbSet<SiteModel> SiteModels { get; set; }
+        public IDbSet<SiteLink> SiteLinks { get; set; }
         public int SaveChanges()
         {
             throw new NotImplementedException();
