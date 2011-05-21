@@ -1,4 +1,6 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using Web.Models;
 
 namespace Web.UI.Tests.Controllers.VenueControllerTests
@@ -12,5 +14,19 @@ namespace Web.UI.Tests.Controllers.VenueControllerTests
 
         public IDbSet<ArtistModel> Artists { get; set; }
         public IDbSet<VenueModel> Venues { get; set; }
+        public int SaveChanges()
+        {
+            throw new NotImplementedException();
+        }
+
+        public DbEntityEntry Entry(object entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Dispose()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

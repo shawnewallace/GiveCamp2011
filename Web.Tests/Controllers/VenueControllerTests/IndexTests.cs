@@ -20,7 +20,7 @@ namespace Web.UI.Tests.Controllers.VenueControllerTests
         {
             _controller = new VenueController
             {
-                db = new FakeColumbusGiveCamp2011Context
+                Db = new FakeColumbusGiveCamp2011Context
                          {
                              Venues = new FakeVenueSet
                                  {
