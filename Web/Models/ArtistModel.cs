@@ -36,5 +36,4 @@ namespace Web.Models
 
         public Entry<string> Comments { get; set; }
     }
-
 }
