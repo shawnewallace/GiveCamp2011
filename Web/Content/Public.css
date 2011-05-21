@@ -1,10 +1,41 @@
-﻿body ul {
-	text-align: left;
-}
+﻿body ul { text-align: left; }
 
-section.browse { clear: both; }
+section#search { margin-top: 5px; padding: 10px; clear: both; }
+
+section#search h3, section#search label, span.hide { display: none; }
+
+section#search #search-box { border-top: 1px solid #ccc; border-left: 1px solid #ccc; border-bottom: 1px solid #999; border-right: 1px solid #999; font-size: 18px; padding: 5px; width: 500px; }
+
+section#search #search-box input { border: none; display: block; float: left; font-size: 18px; width: 420px; }
+
+section#search a { background: #77ad40; color: #fff; display: block; float: right; font-size: 16px; padding: 3px 10px 3px; text-decoration: none; }
+
+section#browse { margin-top: 10px; padding: 10px; clear: both; }
+
+section#browse h3 { font-size: 18px; }
+
+section#browse ul { font-size: 18px; padding: 10px; }
+
+section#browse ul li { display: block; float: left; width: 140px; }
+
+section#browse ul li ul { font-size: 14px; }
+
+section#browse ul li ul li { display: block; float: none; width: auto; }
+
+section#browse { clear: both; }
+
+section#results ul { padding: 10px; }
+
+section#results ul li { padding: 10px 0; }
+
+section#results ul li h3 { font-size: 16px; }
+
+section#results ul li h3 a { background: #f1f19f; border-bottom: 1px dotted #000; color: #000; padding: 0 3px; text-decoration: none; }
+
+section#results ul li a.venue { color: #4694c5; }
+
+
+
 li.search-result { border-bottom: solid 1px blue; height: 30px; }
-.result-type { display: block; float: right; height: 30px; width: 30px; }
-#result-description { margin: 0; padding: 0; }
-
+span.result-type { display: block; float: right; height: 30px; width: 30px; }
 .ui-autocomplete { border: solid 1px green; }
