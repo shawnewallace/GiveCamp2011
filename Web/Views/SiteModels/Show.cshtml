@@ -1,0 +1,7 @@
+﻿@model Web.Models.SiteModel
+<div class="display-field">
+    @foreach (var item in Model.siteLinks)
+    {
+        <a href="@item.Destination">@item.Name</a>
+    }
+</div>

@@ -6,7 +6,7 @@
     @Html.LabelFor(model => model.Name)
 </div>
 <div class="editor-field">
-    @Html.EditorFor(model => model.Name)
+    @Html.TextBoxFor(model => model.Name, new { data_bind = "value: name" })
     @Html.ValidationMessageFor(model => model.Name)
 </div>
 
@@ -14,7 +14,7 @@
     @Html.LabelFor(model => model.Address)
 </div>
 <div class="editor-field">
-    @Html.EditorFor(model => model.Address)
+    @Html.TextBoxFor(model => model.Address, new { data_bind = "value: Address" })
     @Html.ValidationMessageFor(model => model.Address)
 </div>
 
@@ -22,7 +22,7 @@
     @Html.LabelFor(model => model.City)
 </div>
 <div class="editor-field">
-    @Html.EditorFor(model => model.City)
+    @Html.TextBoxFor(model => model.City, new { data_bind = "value: City" })    
     @Html.ValidationMessageFor(model => model.City)
 </div>
 
