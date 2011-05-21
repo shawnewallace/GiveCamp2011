@@ -23,5 +23,13 @@ namespace Web.UI.Tests.Controllers.VenueControllerTests
         {
             var result = _controller.Index();
         }
+
+        [Test]
+        public void renders_index_view()
+        {
+            var result = _controller.Index();
+
+            Assert.That(result.ViewName == "Index");
+        }
     }
 }
