@@ -10,6 +10,7 @@ using Web.Models;
 
 namespace Web.Controllers
 {
+    [Authorize]
     public class ArtistSubTypeController : Controller
     {
         private ColumbusGiveCamp2011Context db = new ColumbusGiveCamp2011Context();
