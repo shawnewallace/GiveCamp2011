@@ -58,24 +58,11 @@
 	</div>
 </section>
 <section id="results">
-	<div class="demo">
-		<p id="result-description"></p>
-	</div>
 	<ul>
 		<li>
-			<h3><a href="#">Artist One</a></h3>
-			<a href="#">Artist</a>
-			<p>Blaa blaa blaa</p>
-		</li>
-		<li>
-			<h3><a href="#">Artist Two</a></h3>
-			<a href="#">Artist</a>
-			<p>Blaa blaa blaa</p>
-		</li>
-		<li>
-			<h3><a href="#">Venue Name</a></h3>
-			<a href="#" class="venue">Venue</a>
-			<p>Blaa blaa blaa</p>
+			<h3><a id="result-name" href="">John Smith</a></h3>
+			<p id="result-type">Artist</p>
+			<p id="result-bio">Blaa blaa blaa</p>
 		</li>
 	</ul>
 </section>
@@ -105,53 +92,56 @@
 			{
 				value: "1",
 				label: "John J",
-				desc: "Artist"
+				type: "Artist"
 			},
 			{
 				value: "2",
 				label: "The Old Theater",
-				desc: "Venue"
+				type: "Venue"
 			},
 			{
 				value: "3",
 				label: "Jenny Slick",
-				desc: "Artist"
+				type: "Artist"
 			},
 			{
 				value: "4",
 				label: "Doc D",
-				desc: "Artist"
+				type: "Artist"
 			},
 			{
 				value: "5",
 				label: "Otterbein Theater",
-				desc: "Venue"
+				type: "Venue"
 			},
 			{
 				value: "6",
 				label: "State St Saloon",
-				desc: "Venue"
+				type: "Venue"
 			}
 		];
 
 		$("#artist-venue-query").autocomplete({
 			minLength: 1,
+			//source: "/Home/Search/",
 			source: results,
 			focus: function (event, ui) {
 				$("#artist-venue-query").val(ui.item.label);
 				return false;
 			},
-			select: function (event, ui) {
-				$("#artist-venue-query").val(ui.item.label);
-				$("#result-id").val(ui.item.value);
+			position: { my: "left top", at: "left bottom" },
+			select: function( event, ui ) {
+				$( "#artist-venue-query" ).val( ui.item.label );
+				$( "#result-id" ).val( ui.item.value );
+				$( "#result-type" ).html( ui.item.type );
+				$( "#result-bio" ).html( ui.item.bio );
+
 				return false;
-			},
-			position: { my: "left top", at: "left bottom" }
 		})
 		.data("autocomplete")._renderItem = function (ul, item) {
 			return $("<li class='search-result'></li>")
 				.data("item.autocomplete", item)
-				.append("<a href='/Artist/Details/" + item.id + "'>" + item.label + "<span class='result-type'>" + item.desc + "</span>" + "</a>")
+				.append("<a href='/Artist/Details/" + item.id + "' />" + item.label + "<span class='result-type'>" + item.type + "</span>")
 				.appendTo(ul);
 		};
 	});
