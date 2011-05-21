@@ -21,7 +21,7 @@ namespace Web.UI.Tests.Controllers.VenueControllerTests
 
         public virtual T Find(params object[] keyValues)
         {
-            throw new NotImplementedException("Derive from FakeDbSet<T> and override Find");
+            return _data.FirstOrDefault<T>();
         }
 
         T IDbSet<T>.Add(T entity)
