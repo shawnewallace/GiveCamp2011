@@ -13,13 +13,22 @@ namespace Web.UI.Tests.Controllers.VenueControllerTests
     public class IndexTests
     {
         private VenueController _controller;
-        private ViewResult result;
+        private ViewResult _result;
 
         [SetUp]
         public void Setup()
         {
-            _controller = new VenueController();
-            result = _controller.Index();
+            _controller = new VenueController
+            {
+                db = new FakeColumbusGiveCamp2011Context
+                         {
+                             Venues = new FakeVenueSet
+                                 {
+                                     new VenueModel()
+                                 }
+                         }
+            };
+            _result = _controller.Index();
         }
 
         [Test]
@@ -30,14 +39,13 @@ namespace Web.UI.Tests.Controllers.VenueControllerTests
         [Test]
         public void renders_index_view()
         {
-            Assert.AreEqual("Index",result.ViewName);
+            Assert.AreEqual("Index", _result.ViewName);
         }
 
         [Test]
         public void index_view_should_have_list_of_venues()
         {
-            var venueList = result.ViewBag.VenueList;
-            var x = result.Model;
+            var x = _result.Model;
 
             Assert.That(x.GetType() == typeof(List<VenueModel>));
         }

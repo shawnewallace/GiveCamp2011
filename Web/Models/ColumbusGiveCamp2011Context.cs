@@ -6,8 +6,15 @@ using System.Web;
 
 namespace Web.Models
 {
-    public class ColumbusGiveCamp2011Context : DbContext
+    public interface IColumbusGiveCamp2011Context
     {
-        public DbSet<ArtistModel> Artists { get; set; }
+        IDbSet<ArtistModel> Artists { get; set; }
+        IDbSet<VenueModel> Venues { get; set; }
+    }
+
+    public class ColumbusGiveCamp2011Context : DbContext, IColumbusGiveCamp2011Context
+    {
+        public IDbSet<ArtistModel> Artists { get; set; }
+        public IDbSet<VenueModel> Venues { get; set; }
     }
 }
