@@ -1,0 +1,16 @@
+﻿@model int
+
+<fieldset>
+    <legend>Unapproved Art</legend>
+    @foreach (var item in Web.Data.ImageService.GetUnapprovedArt().Where(f => f.Contains(String.Format("/{0:00000}_", Model))))
+    { 
+                <img src="@item" alt="Alternate Text" />
+    }
+</fieldset>
+<fieldset>
+    <legend>Approved Art</legend>
+    @foreach (var item in Web.Data.ImageService.GetApprovedArt().Where(f => f.Contains(String.Format("/{0:00000}_", Model))))
+    {
+        <img src="@item" />
+    }
+</fieldset>

@@ -890,6 +890,7 @@
     <Content Include="Views\Shared\_PublicLayout.cshtml">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="Views\Shared\ArtUpload.cshtml" />
     <ProjectReference Include="..\Lib\Lib.csproj">
       <Project>{68C74FE6-AC90-4435-A28E-972F247F25E3}</Project>
       <Name>Lib</Name>
