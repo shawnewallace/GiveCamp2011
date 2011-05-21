@@ -5,23 +5,27 @@ using System.Web;
 
 namespace Web.Models
 {
-    public class Entry<TData>
+    //public class Entry<TData>
+    //{
+    //    public TData Data { get; set; }
+    //    public bool Enabled { get; set; }
+    //}
+
+    public class TextEntry
     {
-        public TData Data { get; set; }
+        public string Data { get; set; }
         public bool Enabled { get; set; }
     }
 
-    //[Complex]
-    //public class UriEntry
-    //{
-    //    public Uri Data { get; set; }
-    //    public bool Enabled { get; set; }
-    //}
+    public class UriEntry
+    {
+        public Uri Data { get; set; }
+        public bool Enabled { get; set; }
+    }
 
-    //[Complex]
-    //public class DateEntry
-    //{
-    //    public DateTime Data { get; set; }
-    //    public bool Enabled { get; set; }
-    //}
+    public class DateEntry
+    {
+        public DateTime Data { get; set; }
+        public bool Enabled { get; set; }
+    }
 }
