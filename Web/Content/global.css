@@ -19,7 +19,7 @@ input.placeholder { color: #ccc; }
 
 h2 { font-size: 20px; font-weight: bold; margin: 0 10px; }
 
-div#wrapper { background: #fff; border: 1px solid #ccc; margin: 0 auto; width: 960px; text-align: left; }
+div#wrapper { background: #fff; border: 1px solid #ccc; margin: 0 auto; width: 960px; text-align: left; overflow: hidden; }
 
 div#content { padding: 10px; }
 
