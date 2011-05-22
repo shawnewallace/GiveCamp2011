@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
@@ -9,7 +8,7 @@ using Web.Models;
 
 namespace Web.Controllers
 {
-    [Authorize(Roles="Admin")]
+    [Authorize(Roles = "Admin")]
     public class ArtistTypeController : ColumbusGiveCamp2011ControllerBase
     {
         //
@@ -27,6 +26,31 @@ namespace Web.Controllers
         {
             ArtistTypeModel artisttypemodel = Db.ArtistTypes.Find(id);
             return View(artisttypemodel);
+        }
+
+        public PartialViewResult GetCategoryTree()
+        {
+            var model = Db
+                .ArtistTypes
+                .OrderBy(t => t.ArtistType)
+                .Select(t =>
+                   new BagResult
+                   {
+                       Id = t.Id,
+                       Name = t.ArtistType
+                   }).ToList();
+
+            model.ForEach(m => m.Children = Db.ArtistSubTypes
+                       .Where(a => a.ArtistTypeId == m.Id)
+                       .OrderBy(a => a.ArtistSubType)
+                       .Select(a =>
+                           new BagResult
+                           {
+                               Id = a.Id,
+                               Name = a.ArtistSubType
+                           }).ToList());
+
+            return PartialView("_CategoryTree", model);
         }
 
         //

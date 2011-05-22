@@ -64,18 +64,5 @@ namespace Web.UI.Tests
         //
         #endregion
 
-
-        /// <summary>
-        ///A test for StoreCoverFlowImage
-        ///</summary>
-        // TODO: Ensure that the UrlToTest attribute specifies a URL to an ASP.NET page (for example,
-        // http://.../Default.aspx). This is necessary for the unit test to be executed on the web server,
-        // whether you are testing a page, web service, or a WCF service.
-        [TestMethod()]
-        public void StoreCoverFlowImageTest()
-        {
-            string file = "../../../Web.Tests/beerdog.jpg"; // TODO: Initialize to an appropriate value
-            Assert.IsTrue(ImageService.GetResizedImage(file).Width == 86);
-        }
     }
 }
