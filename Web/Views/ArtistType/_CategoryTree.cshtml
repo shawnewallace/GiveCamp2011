@@ -5,11 +5,11 @@
     @foreach (var item in Model)
     {
         <li>
-            <a href="#" data-typeId="@item.Id">@item.Name</a>
+            <a href="/Home/SearchType/@item.Id" data-typeId="@item.Id">@item.Name</a>
             <ul>
                 @foreach (var subItem in item.Children)
                 {
-                    <li><a href="#" data-subTypeId="@subItem.Id">@subItem.Name</a></li>
+                    <li><a href="/Home/SearchCategory/@subItem.Id" data-subTypeId="@subItem.Id">@subItem.Name</a></li>
                 }
             </ul>
         </li>    
