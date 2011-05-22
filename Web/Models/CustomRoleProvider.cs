@@ -11,8 +11,8 @@ namespace Web.Models
         public override string[] GetRolesForUser(string username)
         {
             string adminName = System.Configuration.ConfigurationManager.AppSettings["adminUserName"];
-               
-            if (username == adminName || username == "shawnwallace")
+
+            if (username == adminName || username == "shawnwallace" || username == "aabragan")
             {
                 return new string[] { "Admin" };
             }
