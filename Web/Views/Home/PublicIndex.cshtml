@@ -18,7 +18,7 @@
 	</div>
 </section>
 <section id="browse">
-    @{ Html.RenderAction("GetCategoryTree", "ArtistType"); }
+	@{ Html.RenderAction("GetCategoryTree", "ArtistType"); }
 	<div style="clear: both;">
 	</div>
 </section>
@@ -40,7 +40,6 @@
 		}).blur();
 
 		$("#artist-venue-button").click(function () {
-			//$('#browse').show();
 			$('#results').empty();
 			$.getJSON("/Home/Search?term=" + $("#artist-venue-query").val(), function (data) {
 				$.each(data.Results, function (i, item) {
@@ -73,33 +72,66 @@
 
 		function populateArtistTypes(item) {
 			var content = "";
-			content += "<ul><li><h3><a href='/Artist/Details/" + item.Id + "'>" + item.Name + "</a></h3>";
+			content += "<ul><li><h3><a href='/ArtistPublic/Profile/" + item.Id + "'>" + item.Name + "</a></h3>";
 			content += "<p>" + item.Type + "</p>";
 			content += "<p>" + item.Bio + "</p></li></ul>";
 			$('#results').append(content);
 		}
 
+		//		$("#artist-venue-query").autocomplete({
+		//			minLength: 1,
+		//			source: "/Home/Search/",
+		//			focus: function (event, ui) {
+		//				$("#artist-venue-query").val(ui.item.Name);
+		//				return false;
+		//			},
+		//			open: function (event, ui) {
+		//				$('ul.ui-autocomplete').css('width', '500px');
+		//			}
+		//		})
+		//		.data("autocomplete")._renderItem = function (ul, item) {
+		//			return $("<li class='search-result'></li>")
+		//				.data("item.autocomplete", item)
+		//				.append("<a href='/Artist/Details/" + item.Id + "'>" + item.Name + "<span class='result-type'>" + item.Type + "</span></a>")
+		//				.appendTo(ul);
+		//		};
+
 		$("#artist-venue-query").autocomplete({
 			minLength: 1,
-			source: "/Home/Search/",
+			source: function (request, response) {
+				$.getJSON("/Home/Search/term=" + request.term, function (data) {
+					if (data.Results.length > 0) {
+						var a = $.map(data.Results, function (item) { return { value: item.Id, label: item.Name, type: item.Type} })
+
+						response(a);
+					}
+					else {
+						return alert("No Results found");
+					}
+				});
+			},
 			focus: function (event, ui) {
-				$("#artist-venue-query").val(ui.item.Name);
+				$("#artist-venue-query").val(ui.item.label);
 				return false;
 			},
+			open: function (event, ui) {
+				$('ul.ui-autocomplete').css('width', '500px');
+			},
 			select: function (event, ui) {
-				$("#artist-venue-query").val(ui.item.Name);
-				$("#result-id").val(ui.item.Id);
-				$("#result-name").html(ui.item.Name);
-				$("#result-type").html(ui.item.Type);
-				$("#result-bio").html(ui.item.Bio);
+				$("#artist-venue-query").val(ui.item.label);
+				$("#artist-venue-button").click();
 				return false;
 			}
 		})
 		.data("autocomplete")._renderItem = function (ul, item) {
 			return $("<li class='search-result'></li>")
 				.data("item.autocomplete", item)
-				.append("<a href='/Artist/Details/" + item.Id + "' />" + item.Name + "<span class='result-type'>" + item.Type + "</span>")
+				.append("<a href='/Artist/Details/" + item.value + "'>" + item.label + "<span class='result-type'>" + item.type + "</span></a>")
 				.appendTo(ul);
 		};
+
+
+
+
 	});
 </script>
