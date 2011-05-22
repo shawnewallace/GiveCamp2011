@@ -1,4 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Data.Linq;
+using System.Data.Linq.Mapping;
 using Web.Helpers;
 
 namespace Web.Models

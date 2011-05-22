@@ -8,12 +8,11 @@ using Web.Models;
 
 namespace Web.Controllers
 {
-    [Authorize(Roles = "Admin")]
     public class ArtistTypeController : ColumbusGiveCamp2011ControllerBase
     {
         //
         // GET: /ArtistType/
-
+        [Authorize(Roles = "Admin")]
         public ViewResult Index()
         {
             return View(Db.ArtistTypes.ToList());
@@ -21,7 +20,7 @@ namespace Web.Controllers
 
         //
         // GET: /ArtistType/Details/5
-
+        [Authorize(Roles = "Admin")]
         public ViewResult Details(int id)
         {
             ArtistTypeModel artisttypemodel = Db.ArtistTypes.Find(id);
@@ -55,7 +54,7 @@ namespace Web.Controllers
 
         //
         // GET: /ArtistType/Create
-
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             return View();
@@ -65,6 +64,7 @@ namespace Web.Controllers
         // POST: /ArtistType/Create
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create(ArtistTypeModel artisttypemodel)
         {
             if (ModelState.IsValid)
@@ -78,7 +78,7 @@ namespace Web.Controllers
 
         //
         // GET: /ArtistType/Edit/5
-
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int id)
         {
             ArtistTypeModel artisttypemodel = Db.ArtistTypes.Find(id);
@@ -89,6 +89,7 @@ namespace Web.Controllers
         // POST: /ArtistType/Edit/5
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(ArtistTypeModel artisttypemodel)
         {
             if (ModelState.IsValid)
@@ -102,7 +103,7 @@ namespace Web.Controllers
 
         //
         // GET: /ArtistType/Delete/5
-
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id)
         {
             ArtistTypeModel artisttypemodel = Db.ArtistTypes.Find(id);
@@ -111,7 +112,7 @@ namespace Web.Controllers
 
         //
         // POST: /Artist/Delete/5
-
+        [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
