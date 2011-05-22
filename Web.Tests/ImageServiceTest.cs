@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting.Web;
+using System.Drawing;
 
 namespace Web.UI.Tests
 {
@@ -64,5 +65,19 @@ namespace Web.UI.Tests
         //
         #endregion
 
+        /// <summary>
+        ///A test for StoreCoverFlowImage
+        ///</summary>
+        // TODO: Ensure that the UrlToTest attribute specifies a URL to an ASP.NET page (for example,
+        // http://.../Default.aspx). This is necessary for the unit test to be executed on the web server,
+        // whether you are testing a page, web service, or a WCF service.
+        //[TestMethod()]
+        //public void AwesomeTest()
+        //{
+        //    string file = "../../../Web.Tests/beerdog.jpg"; // TODO: Initialize to an appropriate value
+        //    Image result = ImageService.GetResizedImage(file);
+        //    Assert.IsTrue(result.Width == ImageService.PREFERRED_COVERFLOW_WIDTH || 
+        //        result.Height == ImageService.MAX_COVERFLOW_HEIGHT);
+        //}
     }
 }

@@ -11,199 +11,195 @@ using Web.Models;
 
 namespace Web.Controllers
 {
-	[Authorize(Roles = "Admin")]
-	public class ArtistController : ColumbusGiveCamp2011ControllerBase
-	{
-		private void LoadDropDowns(int? artistTypeId, int? artistSubTypeId)
-		{
-			List<ArtistTypeModel> artistTypes = Db.ArtistTypes.ToList();
 
-			if (artistTypes.Count < 1)
-			{
-				ViewData["ArtistTypes"] = new SelectList(new List<ArtistTypeModel>());
-				ViewData["ArtistSubTypes"] = new SelectList(new List<ArtistSubTypeModel>());
-			}
-			else
-			{
-				if (!artistTypeId.HasValue) artistTypeId = artistTypes[0].Id;
-				ViewData["ArtistTypes"] = new SelectList(artistTypes, "Id", "ArtistType", artistTypeId);
+    [Authorize(Roles="Admin")]
+    public class ArtistController : ColumbusGiveCamp2011ControllerBase
+    {
+        private void LoadDropDowns(int? artistTypeId, int? artistSubTypeId)
+        {
+            List<ArtistTypeModel> artistTypes = Db.ArtistTypes.ToList();
 
-				IEnumerable<ArtistSubTypeModel> subTypes = Db.ArtistSubTypes.ToList().Where(x => x.ArtistTypeId == artistTypeId);
+            if (artistTypes.Count < 1)
+            {
+                ViewData["ArtistTypes"] = new SelectList(new List<ArtistTypeModel>());
+                ViewData["ArtistSubTypes"] = new SelectList(new List<ArtistSubTypeModel>());
+            }
+            else
+            {
+                if (!artistTypeId.HasValue) artistTypeId = artistTypes[0].Id;
+                ViewData["ArtistTypes"] = new SelectList(artistTypes, "Id", "ArtistType", artistTypeId);
 
-				if (artistSubTypeId.HasValue)
-					ViewData["ArtistSubTypes"] = new SelectList(subTypes, "Id", "ArtistSubType", artistSubTypeId.Value);
-				else
-					ViewData["ArtistSubTypes"] = new SelectList(subTypes, "Id", "ArtistSubType");
-			}
-		}
+                IEnumerable<ArtistSubTypeModel> subTypes = Db.ArtistSubTypes.ToList().Where(x => x.ArtistTypeId == artistTypeId);
 
-		private IQueryable<ArtistModel> _artists;
-		private IQueryable<ArtistModel> Artists
-		{
-			get { return _artists ?? Db.Artists.AsQueryable(); }
-		}
+                if (artistSubTypeId.HasValue)
+                    ViewData["ArtistSubTypes"] = new SelectList(subTypes, "Id", "ArtistSubType", artistSubTypeId.Value);
+                else
+                    ViewData["ArtistSubTypes"] = new SelectList(subTypes, "Id", "ArtistSubType");
+            }
+        }
 
+        private IQueryable<ArtistModel> _artists;
+        private IQueryable<ArtistModel> Artists
+        {
+            get { return  _artists ?? Db.Artists.AsQueryable(); }
+        }
+       
+        public ViewResult UnapprovedArt()
+        {
+            return View(GetUnapprovedArt());
+        }
 
-		public ViewResult UnapprovedArt()
-		{
-			return View(GetUnapprovedArt());
-		}
+        public ViewResult ApproveImage(string imageToApprove)
+        {
+            ApproveSubmittedImage(imageToApprove);
 
-		public ViewResult ApproveImage(string imageToApprove)
-		{
-			ApproveSubmittedImage(imageToApprove);
+            return View("UnapprovedArt", GetUnapprovedArt());
+        }
 
-			return View("UnapprovedArt", GetUnapprovedArt());
-		}
+        public ViewResult RejectImage(string imageToReject)
+        {
+            RejectSubmittedImage(imageToReject);
 
-		public ViewResult RejectImage(string imageToReject)
-		{
-			RejectSubmittedImage(imageToReject);
+            return View("UnapprovedArt", GetUnapprovedArt());
+        }
 
-			return View("UnapprovedArt", GetUnapprovedArt());
-		}
+        //
+        // GET: /Artist/
 
+        public ViewResult Index()
+        {
+            //List<ArtistModel> artists = Db.Artists.ToList();
+            LoadDropDowns(null, null);
 
-		//
-		// GET: /Artist/
+            return View(Artists);
+        }
 
-		public ViewResult Index()
-		{
-			//List<ArtistModel> artists = Db.Artists.ToList();
-			LoadDropDowns(null, null);
+        // GET: /Artist/Details/5
+        public ViewResult Details(int id)
+        {
+            ArtistModel artistmodel = Db.Artists.Find(id);
+            LoadDropDowns(null, null);
+            return View(artistmodel);
+        }
 
+        //
+        // GET: /Artist/Create
+        public ActionResult Create()
+        {
+            //ViewData["MonthList"] = (new ArtistModel()).Dob.Month.ToSelectList();
+            LoadDropDowns(null, null);
+            return View();
+        }
 
-			return View(Artists);
+        //
+        // POST: /Artist/Create
+        [HttpPost]
+        public ActionResult Create(ArtistModel artistmodel)
+        {
+            if (ModelState.IsValid)
+            {
+                Db.Artists.Add(artistmodel);
+                Db.SaveChanges();
+                return RedirectToAction("Index");
+            }
 
-			return View(Db.Artists.ToList());
+            LoadDropDowns(null, null);
+            return View(artistmodel);
+        }
 
-		}
+        //
+        // GET: /Artist/Edit/5
 
-		// GET: /Artist/Details/5
-		public ViewResult Details(int id)
-		{
-			ArtistModel artistmodel = Db.Artists.Find(id);
-			LoadDropDowns(null, null);
-			return View(artistmodel);
-		}
+        public ActionResult Edit(int id)
+        {
+            ArtistModel artistmodel = Db.Artists.Find(id);
+            LoadDropDowns(artistmodel.ArtistTypeId, artistmodel.ArtistSubTypeId);
+            return View("Create", artistmodel);
+        }
 
-		//
-		// GET: /Artist/Create
-		public ActionResult Create()
-		{
-			ViewData["MonthList"] = (new ArtistModel()).Dob.Month.ToSelectList();
-			LoadDropDowns(null, null);
-			return View();
-		}
+        //
+        // POST: /Artist/Edit/5
 
-		//
-		// POST: /Artist/Create
-		[HttpPost]
-		public ActionResult Create(ArtistModel artistmodel)
-		{
-			if (ModelState.IsValid)
-			{
-				Db.Artists.Add(artistmodel);
-				Db.SaveChanges();
-				return RedirectToAction("Index");
-			}
+        [HttpPost]
+        public ActionResult Edit(ArtistModel artistmodel)
+        {
+            if (ModelState.IsValid)
+            {
+                Db.Entry(artistmodel).State = EntityState.Modified;
+                Db.SaveChanges();
+                return RedirectToAction("Index");
+            }
 
-			LoadDropDowns(null, null);
-			return View(artistmodel);
-		}
+            LoadDropDowns(artistmodel.ArtistTypeId, artistmodel.ArtistSubTypeId);
+            return View(artistmodel);
+        }
 
-		//
-		// GET: /Artist/Edit/5
+        //
+        // GET: /Artist/Delete/5
 
-		public ActionResult Edit(int id)
-		{
-			ArtistModel artistmodel = Db.Artists.Find(id);
-			LoadDropDowns(artistmodel.ArtistTypeId, artistmodel.ArtistSubTypeId);
-			return View("Create", artistmodel);
-		}
+        public ActionResult Delete(int id)
+        {
+            ArtistModel artistmodel = Db.Artists.Find(id);
+            Db.Artists.Remove(artistmodel);
+            Db.SaveChanges();
+            return RedirectToAction("Index");
+            //return View(artistmodel);
+        }
 
-		//
-		// POST: /Artist/Edit/5
+        //
+        // POST: /Artist/Delete/5
 
-		[HttpPost]
-		public ActionResult Edit(ArtistModel artistmodel)
-		{
-			if (ModelState.IsValid)
-			{
-				Db.Entry(artistmodel).State = EntityState.Modified;
-				Db.SaveChanges();
-				return RedirectToAction("Index");
-			}
+        [HttpPost, ActionName("Delete")]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            ArtistModel artistmodel = Db.Artists.Find(id);
+            Db.Artists.Remove(artistmodel);
+            Db.SaveChanges();
+            return RedirectToAction("Index");
+        }
 
-			LoadDropDowns(artistmodel.ArtistTypeId, artistmodel.ArtistSubTypeId);
-			return View(artistmodel);
-		}
-
-		//
-		// GET: /Artist/Delete/5
-
-		public ActionResult Delete(int id)
-		{
-			ArtistModel artistmodel = Db.Artists.Find(id);
-			Db.Artists.Remove(artistmodel);
-			Db.SaveChanges();
-			return RedirectToAction("Index");
-			//return View(artistmodel);
-		}
-
-		//
-		// POST: /Artist/Delete/5
-
-		[HttpPost, ActionName("Delete")]
-		public ActionResult DeleteConfirmed(int id)
-		{
-			ArtistModel artistmodel = Db.Artists.Find(id);
-			Db.Artists.Remove(artistmodel);
-			Db.SaveChanges();
-			return RedirectToAction("Index");
-		}
-
-		protected override void Dispose(bool disposing)
-		{
-			Db.Dispose();
-			base.Dispose(disposing);
-		}
+        protected override void Dispose(bool disposing)
+        {
+            Db.Dispose();
+            base.Dispose(disposing);
+        }
 
 
-		public JsonResult Find(string searchTerms = "")
-		{
-			//firstname
-			//lastname
-			//type
-			//category
+        public JsonResult Find(string searchTerms = "")
+        {
+            //firstname
+            //lastname
+            //type
+            //category
 
-			var terms = searchTerms.Split(' ');
-			var artists = Db.Artists.AsEnumerable();
-			var results = new List<ArtistModel>();
+            var terms = searchTerms.Split(' ');
+            var artists = Db.Artists.AsEnumerable();
+            var results = new List<ArtistModel>();
 
-			foreach (var term in terms)
-			{
-				results.AddRange(
+            foreach (var term in terms)
+            {
+                results.AddRange(
+                    
+                    Db.Artists.Where(a => a.FirstName.Contains(term)
+                        || a.LastName.Contains(term)
+                        || a.ArtistType.ArtistType.Contains(term)
+                        || a.ArtistSubType.ArtistSubType.Contains(term)
+                    ).ToList()
 
-					Db.Artists.Where(a => a.FirstName.Contains(term)
-						|| a.LastName.Contains(term)
-						|| a.ArtistType.ArtistType.Contains(term)
-						|| a.ArtistSubType.ArtistSubType.Contains(term)
-					).ToList()
+                    );
+            }
 
-					);
-			}
+            results = results.Select(r => r).Distinct().ToList();
 
-			results = results.Select(r => r).Distinct().ToList();
+            int count = results.Count();
 
-			int count = results.Count();
+            return Json(new
+            {
+                Artists = results,
+                Count = count
+            }, JsonRequestBehavior.AllowGet);
+        }
 
-			return Json(new
-			{
-				Artists = results,
-				Count = count
-			}, JsonRequestBehavior.AllowGet);
-		}
+    }
 
-	}
 }

@@ -194,6 +194,7 @@
     <Compile Include="Controllers\ColumbusGiveCamp2011ControllerBase.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Models\ProfileModel.cs" />
+    <Compile Include="Controllers\UploadController.cs" />
     <Compile Include="Models\SearchResult.cs" />
     <Compile Include="Models\SearchResultType.cs" />
     <Compile Include="Controllers\SiteModelsController.cs" />

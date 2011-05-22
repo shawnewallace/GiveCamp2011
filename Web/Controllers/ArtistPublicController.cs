@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Web.Models;
 
 namespace Web.Controllers
 {
@@ -16,6 +17,17 @@ namespace Web.Controllers
             return PartialView("_CoverFlow", GetAllCoverFlowArt());
         }
 
+        public ViewResult Profile(int id)
+        {
+            var x = Db.Artists
+                .Where(a => a.Id == id)
+                .Select(a => new ProfileModel
+                                 {
+                                     Address = (a.Address1.Enabled ? a.Address1.Data : "")
 
+                                 });
+
+            return View();
+        }
     }
 }
