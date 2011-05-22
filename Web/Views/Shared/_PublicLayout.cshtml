@@ -40,9 +40,7 @@
 					<li id="login">
 						@Html.ActionLink("Login/Register", "PublicLogOn", "Account")
 					</li>
-					<li>Gallery 202 Co-Op<br />
-						38 North State Street<br />
-						Westerville, Ohio 43081</li>
+					<li>@{Html.RenderAction("PublicDetails", "SiteModels");}</li>
 				</ul>
 			</footer>
 		</div>
