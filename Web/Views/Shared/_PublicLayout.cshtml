@@ -37,9 +37,7 @@
 						<!-- End of StatCounter Code -->
 					</li>
 					<li id="admin">@Html.ActionLink("Admin", "Index", "Home")</li>
-					<li id="login">
-						@Html.ActionLink("Login/Register", "PublicLogOn", "Account")
-					</li>
+					<li id="login">@Html.ActionLink("Login/Register", "PublicLogOn", "Account")</li>
 					<li>@{Html.RenderAction("PublicDetails", "SiteModels");}</li>
 				</ul>
 			</footer>

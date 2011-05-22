@@ -88,39 +88,6 @@
 </script>
 <script type="text/javascript">
 	$(function () {
-		var results = [
-			{
-				value: "1",
-				label: "John J",
-				type: "Artist"
-			},
-			{
-				value: "2",
-				label: "The Old Theater",
-				type: "Venue"
-			},
-			{
-				value: "3",
-				label: "Jenny Slick",
-				type: "Artist"
-			},
-			{
-				value: "4",
-				label: "Doc D",
-				type: "Artist"
-			},
-			{
-				value: "5",
-				label: "Otterbein Theater",
-				type: "Venue"
-			},
-			{
-				value: "6",
-				label: "State St Saloon",
-				type: "Venue"
-			}
-		];
-
 		$("#artist-venue-query").autocomplete({
 			minLength: 1,
 			source: "/Home/Search/",
@@ -128,16 +95,17 @@
 			focus: function (event, ui) {
 				$("#artist-venue-query").val(ui.item.name);
 				return false;
-			},
-			select: function (event, ui) {
-				$("#artist-venue-query").val(ui.item.name);
-				$("#result-id").val(ui.item.id);
-				$("#result-name").html(ui.item.name);
-				$("#result-type").html(ui.item.type);
-				$("#result-bio").html(ui.item.bio);
-
-				return false;
 			}
+//			,
+//			select: function (event, ui) {
+//				$("#artist-venue-query").val(ui.item.name);
+//				$("#result-id").val(ui.item.id);
+//				$("#result-name").html(ui.item.name);
+//				$("#result-type").html(ui.item.type);
+//				$("#result-bio").html(ui.item.bio);
+
+//				return false;
+//			}
 		})
 		.data("autocomplete")._renderItem = function (ul, item) {
 			return $("<li class='search-result'></li>")
