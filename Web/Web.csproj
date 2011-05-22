@@ -896,6 +896,9 @@
     <Content Include="Views\Shared\ArtUpload.cshtml" />
     <Content Include="Views\SiteModels\_PublicDetails.cshtml" />
     <Content Include="Views\ArtistType\_CategoryTree.cshtml" />
+    <Content Include="Views\Venue\VenueAlreadyDefined.cshtml" />
+    <Content Include="Views\Venue\NotYourVenue.cshtml" />
+    <Content Include="Views\Venue\NotRegistered.cshtml" />
     <ProjectReference Include="..\Lib\Lib.csproj">
       <Project>{68C74FE6-AC90-4435-A28E-972F247F25E3}</Project>
       <Name>Lib</Name>

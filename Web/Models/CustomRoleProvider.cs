@@ -12,7 +12,7 @@ namespace Web.Models
         {
             string adminName = System.Configuration.ConfigurationManager.AppSettings["adminUserName"];
 
-            if (username == adminName || username == "shawnwallace" || username == "ajp2" || username == "aabragan")
+            if (username == adminName || username == "shawnwallace" || username == "ajp2" || username == "aabragan" || username == "Daniel Hammond")
             {
                 return new string[] { "Admin" };
             }
