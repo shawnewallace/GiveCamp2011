@@ -359,3 +359,8 @@ div#title {
 .tri-state {
     width: 6em;
 }
+
+.restrict-size
+{
+    width: 250px;
+}

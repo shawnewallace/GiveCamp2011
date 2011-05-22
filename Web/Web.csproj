@@ -190,8 +190,10 @@
     <Compile Include="Controllers\ArtistPublicController.cs" />
     <Compile Include="Controllers\ArtistSubTypeController.cs" />
     <Compile Include="Controllers\ArtistTypeController.cs" />
+    <Compile Include="Models\BagResult.cs" />
     <Compile Include="Controllers\ColumbusGiveCamp2011ControllerBase.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\UploadController.cs" />
     <Compile Include="Models\SearchResult.cs" />
     <Compile Include="Models\SearchResultType.cs" />
     <Compile Include="Controllers\SiteModelsController.cs" />
@@ -896,6 +898,7 @@
     </Content>
     <Content Include="Views\Shared\ArtUpload.cshtml" />
     <Content Include="Views\SiteModels\_PublicDetails.cshtml" />
+    <Content Include="Views\ArtistType\_CategoryTree.cshtml" />
     <ProjectReference Include="..\Lib\Lib.csproj">
       <Project>{68C74FE6-AC90-4435-A28E-972F247F25E3}</Project>
       <Name>Lib</Name>

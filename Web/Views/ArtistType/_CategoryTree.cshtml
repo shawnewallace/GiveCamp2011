@@ -1,0 +1,17 @@
+﻿@model List<Web.Models.BagResult>
+
+<h3>Browse Artists</h3>
+<ul id="artists-category-list">
+    @foreach (var item in Model)
+    {
+        <li>
+            <a href="#" data-typeId="@item.Id">@item.Name</a>
+            <ul>
+                @foreach (var subItem in item.Children)
+                {
+                    <li><a href="#" data-subTypeId="@subItem.Id">@subItem.Id</a></li>
+                }
+            </ul>
+        </li>    
+    }
+</ul>

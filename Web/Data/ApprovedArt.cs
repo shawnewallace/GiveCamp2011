@@ -23,8 +23,8 @@ namespace Web.Data
         private const string ART_FORMAT =  "Artist_{0}_Image_{1}.{3}";
         private const string IMAGE_FILE_CAPTURE_EXPRESSION = @"Artist_(\d+)_Image_(.+)\.png";
         private const string IMAGE_FILE_EXPRESSION = "*png";
-        private const int PREFERRED_COVERFLOW_WIDTH = 200;
-        private const int MAX_COVERFLOW_HEIGHT = 300;
+        public const int PREFERRED_COVERFLOW_WIDTH = 200;
+        public const int MAX_COVERFLOW_HEIGHT = 160;
 
         //private static Dictionary<string, List<string>> _coverFlowCache;
 
@@ -114,6 +114,11 @@ namespace Web.Data
             catch (Exception)
             {
             }
+        }
+
+        public static string UnapprovedDirectory()
+        {
+            return UNAPPROVED_IMAGE_DIRECTORY;
         }
     }
 }
