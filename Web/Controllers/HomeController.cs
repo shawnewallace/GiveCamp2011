@@ -12,7 +12,7 @@ namespace Web.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
-            ViewBag.Message = "Welcome to Gallery 202/Westerville Artists Unit Administration!";
+            ViewBag.Message = "Welcome to Gallery 202/Westerville Artists Unite Administration!";
 
             return View();
         }
