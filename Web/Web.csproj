@@ -666,6 +666,8 @@
     <Content Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\js\jquery-1.5.1.min.js" />
+    <Content Include="Scripts\js\jquery-ui-1.8.13.custom.min.js" />
     <Content Include="Scripts\knockout-1.2.0.debug.js" />
     <Content Include="Scripts\knockout-1.2.0.js" />
     <Content Include="Scripts\modernizr-1.7.js" />

@@ -13,7 +13,7 @@
 		<div class="clear-fix">
 			<label for="query">Search Artists and Venues</label>
 			<input type="text" id="artist-venue-query" name="query" placeholder="search for artists and venues" />
-			<a href="#">Go</a>
+			<a id="artist-venue-button" href="#">Go</a>
 		</div>
 	</div>
 </section>
@@ -23,13 +23,7 @@
 	</div>
 </section>
 <section id="results">
-	<ul>
-		<li>
-			<h3><a id="result-name" href="">John Smith</a></h3>
-			<p id="result-type">Artist</p>
-			<p id="result-bio">Blaa blaa blaa</p>
-		</li>
-	</ul>
+	<ul></ul>
 </section>
 <script type="text/javascript">
 	$(document).ready(function () {
@@ -47,67 +41,39 @@
 			}
 		}).blur();
 
-	})
-	
-	
-</script>
-<script type="text/javascript">
-	$(function () {
-		var results = [
-			{
-				value: "1",
-				label: "John J",
-				type: "Artist"
-			},
-			{
-				value: "2",
-				label: "The Old Theater",
-				type: "Venue"
-			},
-			{
-				value: "3",
-				label: "Jenny Slick",
-				type: "Artist"
-			},
-			{
-				value: "4",
-				label: "Doc D",
-				type: "Artist"
-			},
-			{
-				value: "5",
-				label: "Otterbein Theater",
-				type: "Venue"
-			},
-			{
-				value: "6",
-				label: "State St Saloon",
-				type: "Venue"
-			}
-		];
+		$("#artist-venue-button").click(function () {
+			$.getJSON("/Home/Search?term=" + $("#artist-venue-query").val(), function (data) {
+				$.each(data.Results, function (i, item) {
+					var content = "";
+					content += "<li><h3><a href='/Artists/Details/" + item.Id + "'>" + item.Name + "</a></h3>";
+					content += "<p>" + item.Type + "</p>";
+					content += "<p>" + item.Bio + "</p>";
+					$('#results ul').append(content);
+				});
+				$('#browse').hide();
+			});
+		});
 
 		$("#artist-venue-query").autocomplete({
 			minLength: 1,
 			source: "/Home/Search/",
-			//source: results,
 			focus: function (event, ui) {
-				$("#artist-venue-query").val(ui.item.name);
+				$("#artist-venue-query").val(ui.item.Name);
 				return false;
 			},
 			select: function (event, ui) {
-				$("#artist-venue-query").val(ui.item.name);
-				$("#result-id").val(ui.item.id);
-				$("#result-name").html(ui.item.name);
-				$("#result-type").html(ui.item.type);
-				$("#result-bio").html(ui.item.bio);
-
+				$("#artist-venue-query").val(ui.item.Name);
+				$("#result-id").val(ui.item.Id);
+				$("#result-name").html(ui.item.Name);
+				$("#result-type").html(ui.item.Type);
+				$("#result-bio").html(ui.item.Bio);
 				return false;
 			}
 		})
 		.data("autocomplete")._renderItem = function (ul, item) {
 			return $("<li class='search-result'></li>")
 				.data("item.autocomplete", item)
-				.append("<a href='/Artist/Details/" + item.id + "' />" + item.name + "<span class='result-type'>" + item.type + "</span>")
+				.append("<a href='/Artist/Details/" + item.Id + "' />" + item.Name + "<span class='result-type'>" + item.Type + "</span>")
 				.appendTo(ul);
 		};
 	});
