@@ -1,14 +1,14 @@
 ﻿@model Web.Models.ProfileModel
 
 @{
-	ViewBag.Title = "ViewProfile";
-	Layout = "~/Views/Shared/_PublicLayout.cshtml";
+	ViewBag.Title = "Profile";
+	Layout = "";
 }
 
 <div id="profile">
 	<h2>@Model.Name</h2>
 	<div id="profile-main">
-		[put the images here]
+		@*TODO:[put the images here]*@
 		<h3>Bio</h3>
 		<p>@Model.Bio</p>
 		<h3>Groups</h3>
@@ -25,4 +25,5 @@
 		<div id="map">
 		</div>
 	</div>
+	<div style="clear: both;"></div>
 </div>

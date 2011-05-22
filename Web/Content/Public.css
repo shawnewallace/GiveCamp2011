@@ -38,6 +38,14 @@ section#results ul li h3 a { background: #f1f19f; border-bottom: 1px dotted #000
 
 section#results ul li a.venue { color: #4694c5; }
 
+div#profile { padding: 10px; }
+div#profile h2 { border-bottom: 3px solid #aaa; margin: 0 0 10px; }
+div#profile-main { float: left; width: 600px; }
+div#address-box { border: 1px dotted #999; float: right; padding: 5px; width: 300px; }
+div#profile h3 { border-bottom: 1px dotted #999; font-weight: bold; font-size: 14px; margin-top: 10px; }
+div#profile img { float: left; margin: 0 10px 10px 0; }
+div#profile #map { height: 300px; margin: 10px 0; width: 300px; }
+
 ul.ui-autocomplete { background: #fff; border: 1px dotted #ccc; }
 ul.ui-autocomplete li { border: none; height: 25px; padding: 5px; }
 ul.ui-autocomplete li a span.result-type { display: block; float: right; font-size: 10px; height: 30px; width: 50px; text-transform: uppercase; }
