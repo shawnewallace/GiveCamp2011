@@ -35,6 +35,7 @@ namespace Web.Controllers
 				else
 					ViewData["ArtistSubTypes"] = new SelectList(subTypes, "Id", "ArtistSubType");
 			}
+            ViewData["MonthList"] = (new ArtistModel()).Dob.Month.ToSelectList();
 		}
 
 		private IQueryable<ArtistModel> _artists;
@@ -91,7 +92,6 @@ namespace Web.Controllers
 		// GET: /Artist/Create
 		public ActionResult Create()
 		{
-			ViewData["MonthList"] = (new ArtistModel()).Dob.Month.ToSelectList();
 			LoadDropDowns(null, null);
 			return View();
 		}
