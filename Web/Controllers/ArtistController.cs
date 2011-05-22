@@ -91,7 +91,7 @@ namespace Web.Controllers
 		// GET: /Artist/Create
 		public ActionResult Create()
 		{
-			//ViewData["MonthList"] = (new ArtistModel()).Dob.Month.ToSelectList();
+			ViewData["MonthList"] = (new ArtistModel()).Dob.Month.ToSelectList();
 			LoadDropDowns(null, null);
 			return View();
 		}
