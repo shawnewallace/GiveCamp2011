@@ -15,9 +15,7 @@ a:hover, a:active { color: #000; text-decoration: none; }
 p.small { color: #666; font-size: 12px; margin: 0 10px; }
 input.placeholder { color: #ccc; }
 
-h1 { background: transparent url('/Content/images/h1_bg.gif'); border-bottom: 1px dotted #999; border-top: 10px solid #333; font-family: 'Terminal Dosis Light' , arial, serif; font-size: 36px; font-weight: bold; margin: 10px 0 20px; padding: 20px 10px 10px; }
 
-h1 span { color: #888; display: block; font-size: 18px; padding-top: 10px; }
 
 h2 { font-size: 20px; font-weight: bold; margin: 0 10px; }
 
@@ -25,6 +23,8 @@ div#wrapper { background: #fff; border: 1px solid #ccc; margin: 0 auto; width: 9
 
 div#content { padding: 10px; }
 
-#footer { border-top: 10px solid #666; font-size: 12px; padding: 5px 10px; }
+header, footer, nav, section { display: block; }
+
+footer { border-top: 10px solid #666; font-size: 12px; padding: 5px 10px; }
 
 #footer #admin, #footer #login, #footer #stats { display: inline; float: right; padding: 5px 10px; }

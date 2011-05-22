@@ -1,5 +1,9 @@
 ﻿body ul { text-align: left; }
 
+h1 { background: transparent url('/Content/images/h1_bg.gif'); border-bottom: 1px dotted #999; border-top: 10px solid #333; font-family: 'Terminal Dosis Light' , arial, serif; font-size: 36px; font-weight: bold; margin: 10px 0 20px; padding: 20px 10px 10px; }
+
+h1 span { color: #888; display: block; font-size: 18px; padding-top: 10px; }
+
 section#search { margin-top: 5px; padding: 10px; clear: both; }
 
 section#search h3, section#search label, span.hide { display: none; }

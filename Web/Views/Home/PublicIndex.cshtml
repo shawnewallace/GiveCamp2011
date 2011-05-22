@@ -4,7 +4,7 @@
 }
 <h2>Artist &amp; Venue Listings</h2>
 <div>
-	@{Html.RenderAction("CoverFlow", "ArtistPublic");}
+	
 </div>
 <p class="small">You can search for artists and venues in Westerville. Blaa, blaa blaaa....</p>
 <section id="search">
@@ -22,9 +22,7 @@
 	<div style="clear: both;">
 	</div>
 </section>
-<section id="results">
-	<ul></ul>
-</section>
+<section id="results"></section>
 <script type="text/javascript">
 	$(document).ready(function () {
 		$("'[placeholder]'").focus(function () {
@@ -42,13 +40,15 @@
 		}).blur();
 
 		$("#artist-venue-button").click(function () {
+			$('#browse').show();
+			$('#results').empty();
 			$.getJSON("/Home/Search?term=" + $("#artist-venue-query").val(), function (data) {
 				$.each(data.Results, function (i, item) {
 					var content = "";
-					content += "<li><h3><a href='/Artists/Details/" + item.Id + "'>" + item.Name + "</a></h3>";
+					content += "<ul><li><h3><a href='/Artists/Details/" + item.Id + "'>" + item.Name + "</a></h3>";
 					content += "<p>" + item.Type + "</p>";
-					content += "<p>" + item.Bio + "</p>";
-					$('#results ul').append(content);
+					content += "<p>" + item.Bio + "</p></li></ul>";
+					$('#results').append(content);
 				});
 				$('#browse').hide();
 			});
