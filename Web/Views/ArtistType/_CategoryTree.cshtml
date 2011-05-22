@@ -1,17 +1,39 @@
 ﻿@model List<Web.Models.BagResult>
-
 <h3>Browse Artists</h3>
 <ul id="artists-category-list">
-    @foreach (var item in Model)
-    {
-        <li>
-            <a href="/Home/SearchType/@item.Id" data-typeId="@item.Id">@item.Name</a>
-            <ul>
-                @foreach (var subItem in item.Children)
-                {
-                    <li><a href="/Home/SearchCategory/@subItem.Id" data-subTypeId="@subItem.Id">@subItem.Name</a></li>
-                }
-            </ul>
-        </li>    
-    }
+	@foreach (var item in Model)
+ {
+		<li><a class="artist-type" href="" data-typeId="@item.Id">@item.Name</a>
+			<ul>
+				@foreach (var subItem in item.Children)
+	{
+					<li><a class="artist-category" href="" data-subTypeId="@subItem.Id">@subItem.Name</a></li>
+	}
+			</ul>
+		</li>    
+ }
 </ul>
+<script type="text/javascript">
+	$(document).ready(function () {
+		$(".artist-type").click(function () {
+			$('#results').empty();
+			$.getJSON("/Home/SearchType/" + $(this).attr('data-typeId'), function (data) {
+				$.each(data.Results, function (i, item) {
+					populateArtistTypes(item);
+				});
+				$('#browse').hide();
+			});
+			return false;
+		});
+		$(".artist-category").click(function () {
+			$('#results').empty();
+			$.getJSON("/Home/SearchCategory/" + $(this).attr('data-subTypeId'), function (data) {
+				$.each(data.Results, function (i, item) {
+					populateArtistTypes(item);
+				});
+				$('#browse').hide();
+			});
+			return false;
+		});
+	});
+</script>

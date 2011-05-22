@@ -44,15 +44,19 @@
 			$('#results').empty();
 			$.getJSON("/Home/Search?term=" + $("#artist-venue-query").val(), function (data) {
 				$.each(data.Results, function (i, item) {
-					var content = "";
-					content += "<ul><li><h3><a href='/Artist/Details/" + item.Id + "'>" + item.Name + "</a></h3>";
-					content += "<p>" + item.Type + "</p>";
-					content += "<p>" + item.Bio + "</p></li></ul>";
-					$('#results').append(content);
+					populateArtistTypes(item);
 				});
 				$('#browse').hide();
 			});
 		});
+
+		function populateArtistTypes(item) {
+			var content = "";
+			content += "<ul><li><h3><a href='/Artist/Details/" + item.Id + "'>" + item.Name + "</a></h3>";
+			content += "<p>" + item.Type + "</p>";
+			content += "<p>" + item.Bio + "</p></li></ul>";
+			$('#results').append(content);
+		}
 
 		$("#artist-venue-query").autocomplete({
 			minLength: 1,
