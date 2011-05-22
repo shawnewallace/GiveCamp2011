@@ -24,7 +24,7 @@ namespace Web.Controllers
 
         public JsonResult Search(string term = "")
         {
-            var splitTerms = term.Split(' ');
+            var splitTerms = term.ToUpper().Split(' ');
 
             var artists = FindArtists(splitTerms);
             var venues = FindVenues(splitTerms);
@@ -42,8 +42,8 @@ namespace Web.Controllers
 
             foreach (var term in searchTerms)
             {
-                venues = venues.Where(v => v.Name.Contains(term)
-                    || v.Address.Contains(term));
+                venues = venues.Where(v => v.Name.ToUpper().Contains(term)
+                    || v.Address.ToUpper().Contains(term));
                 result.AddRange(venues);
             }
             return result;
@@ -57,10 +57,10 @@ namespace Web.Controllers
             {
                 results.AddRange(
 
-                    Db.Artists.Where(a => a.FirstName.Contains(term)
-                        || a.LastName.Contains(term)
-                        || a.ArtistType.ArtistType.Contains(term)
-                        || a.ArtistSubType.ArtistSubType.Contains(term)
+                    Db.Artists.Where(a => a.FirstName.ToUpper().Contains(term)
+                        || a.LastName.ToUpper().Contains(term)
+                        || a.ArtistType.ArtistType.ToUpper().Contains(term)
+                        || a.ArtistSubType.ArtistSubType.ToUpper().Contains(term)
                     ).ToList()
 
                     );
