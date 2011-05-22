@@ -4,7 +4,7 @@ h1 { background: transparent url('/Content/images/h1_bg.gif'); border-bottom: 1p
 
 h1 span { color: #888; display: block; font-size: 18px; padding-top: 10px; }
 
-section#search { margin-top: 5px; padding: 10px; clear: both; }
+section#search { margin-top: 5px; padding: 10px; width:500px; clear: both; }
 
 section#search h3, section#search label, span.hide { display: none; }
 
@@ -14,7 +14,7 @@ section#search #search-box input { border: none; display: block; float: left; fo
 
 section#search a { background: #77ad40; color: #fff; display: block; float: right; font-size: 16px; padding: 3px 10px 3px; text-decoration: none; }
 
-section#browse { margin-top: 10px; padding: 10px; clear: both; }
+section#browse { float:left; margin-top: 10px; padding: 10px; width:500px; }
 
 section#browse h3 { font-size: 18px; }
 
@@ -26,9 +26,7 @@ section#browse ul li ul { font-size: 14px; }
 
 section#browse ul li ul li { display: block; float: none; width: auto; }
 
-section#browse { clear: both; }
-
-section#results ul { padding: 10px; }
+section#results ul { float:left; padding: 10px; }
 
 section#results ul li { padding: 10px 0; }
 
@@ -44,6 +42,12 @@ div#profile-main { float: left; width: 600px; }
 div#address-box { border: 1px dotted #999; float: right; padding: 5px; width: 300px; }
 div#profile h3 { border-bottom: 1px dotted #999; font-weight: bold; font-size: 14px; margin-top: 10px; }
 div#profile img { float: left; margin: 0 10px 10px 0; }
+section#links { float:right; width:360px; padding:10px; margin:10px 0; }
+
+section#links ul li { padding:5px 0 0; }
+
+section#links ul li a { font-size:14px; }
+
 div#profile #map { height: 300px; margin: 10px 0; width: 300px; }
 
 ul.ui-autocomplete { background: #fff; border: 1px dotted #ccc; }
