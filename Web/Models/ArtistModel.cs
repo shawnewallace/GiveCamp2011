@@ -60,10 +60,12 @@ namespace Web.Models
          [Column] public int? ArtistTypeId { get; set; }
         [Column] public int? ArtistSubTypeId { get; set; }
         [Column] public string OtherNotes { get; set; }
+        [Column] public string UserId { get; set; }
         [Column] public int? VenueId { get; set; }
 
         internal EntityRef<ArtistTypeModel> _artistType;
         internal EntityRef<ArtistSubTypeModel> _artistSubType;
+        internal EntityRef<VenueModel> _venue;
 
         [Association(ThisKey = "ArtistTypeId", OtherKey = "Id", Storage = "_artistType")]
         public ArtistTypeModel ArtistType
@@ -77,6 +79,13 @@ namespace Web.Models
         {
             get { return _artistSubType.Entity; }
             internal set { _artistSubType.Entity = value; ArtistSubTypeId = value.Id; }
+        }
+
+        [Association(ThisKey = "VenueId", OtherKey = "Id", Storage = "_venue")]
+        public VenueModel Venue
+        {
+            get { return _venue.Entity; }
+            internal set { _venue.Entity = value; VenueId = value.Id; }
         }
 
         public string Biography { get; set; }

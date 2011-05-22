@@ -36,6 +36,7 @@ namespace Web.Controllers
                     ViewData["ArtistSubTypes"] = new SelectList(subTypes, "Id", "ArtistSubType");
             }
             ViewData["MonthList"] = (new ArtistModel()).Dob.Month.ToSelectList();
+            ViewData["Venues"] = new SelectList(Db.Venues.ToList(), "Id", "Name");
         }
 
         private IQueryable<ArtistModel> _artists;
@@ -75,7 +76,6 @@ namespace Web.Controllers
             //List<ArtistModel> artists = Db.Artists.ToList();
             LoadDropDowns(null, null);
 
-
             return View(Artists);
         }
 
@@ -89,10 +89,10 @@ namespace Web.Controllers
 
         //
         // GET: /Artist/Create
-        [Authorize(Roles = "Admin")]
+        [Authorize]
         public ActionResult Create()
         {
-            ViewData["CreateActionName"] = "Create";
+            ViewData["CreateActionName"] = User.IsInRole("Admin") ? "Create" : "CreatePublic";
             ViewData["CreateControllerName"] = "Artist";
             LoadDropDowns(null, null);
             return View();
@@ -101,64 +101,55 @@ namespace Web.Controllers
         //
         // POST: /Artist/Create
         [HttpPost]
-        [Authorize(Roles = "Admin")]
+        [Authorize]
         public ActionResult Create(ArtistModel artistmodel)
         {
             if (ModelState.IsValid)
             {
+                artistmodel.UserId = User.Identity.Name;
                 Db.Artists.Add(artistmodel);
                 Db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
             LoadDropDowns(null, null);
-            return View("Create", "_Layout", artistmodel);
+            return View("Create", User.IsInRole("Admin") ? "_Layout" : "_PublicLayout", artistmodel);
         }
 
-
-        //
-        // GET: /Artist/Create
-        public ActionResult CreatePublic()
-        {
-            ViewData["CreateActionName"] = "CreatePublic";
-            ViewData["CreateControllerName"] = "Artist";
-
-            LoadDropDowns(null, null);
-            return View("Create", "_PublicLayout");
-        }
-
-        //
-        // POST: /Artist/Create
-        [HttpPost]
-        public ActionResult CreatePublic(ArtistModel artistmodel)
-        {
-            if (ModelState.IsValid)
-            {
-                Db.Artists.Add(artistmodel);
-                Db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            LoadDropDowns(null, null);
-            return View("Create", "_PublicLayout", artistmodel);
-        }
 
         //
         // GET: /Artist/Edit/5
-
+        [Authorize]
         public ActionResult Edit(int id)
         {
             ArtistModel artistmodel = Db.Artists.Find(id);
+
+            if (
+                !User.IsInRole("Admin")
+                && artistmodel.UserId != User.Identity.Name
+            )
+            {
+                return View("NotYourArtist");
+            }
+
             LoadDropDowns(artistmodel.ArtistTypeId, artistmodel.ArtistSubTypeId);
             return View("Create", artistmodel);
         }
 
         //
         // POST: /Artist/Edit/5
-
         [HttpPost]
+        [Authorize]
         public ActionResult Edit(ArtistModel artistmodel)
         {
+            if (
+                !User.IsInRole("Admin")
+                && artistmodel.UserId != User.Identity.Name
+            )
+            {
+                return View("NotYourArtist");
+            }
+
             if (ModelState.IsValid)
             {
                 Db.Entry(artistmodel).State = EntityState.Modified;

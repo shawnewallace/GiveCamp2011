@@ -14,6 +14,7 @@ var controller = Html.ViewContext.RouteData.GetRequiredString("controller");
 
 @using (Html.BeginForm(action, "Artist"))
 {
+    @Html.HiddenFor(model => model.UserId)
     @Html.ValidationSummary(true)
     <fieldset>
         <legend>Artist Information</legend>
@@ -158,6 +159,13 @@ var controller = Html.ViewContext.RouteData.GetRequiredString("controller");
             <div class="create-field">
                 @Html.DropDownListFor(model => model.ArtistSubTypeId, ViewBag.ArtistSubTypes as SelectList)
                 @Html.ValidationMessageFor(model => model.ArtistSubTypeId)
+            </div>
+            <div class="create-label">
+                @Html.Label("Venue", "Venue:")
+            </div>
+            <div class="create-field">
+                @Html.DropDownListFor(model => model.VenueId, ViewBag.Venues as SelectList)
+                @Html.ValidationMessageFor(model => model.VenueId)
             </div>
             <div class="create-label">
                 @Html.Label("Other Notes", "Additional Notes:")
