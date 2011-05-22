@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting.Web;
+using System.Drawing;
 
 namespace Web.UI.Tests
 {
@@ -72,10 +73,12 @@ namespace Web.UI.Tests
         // http://.../Default.aspx). This is necessary for the unit test to be executed on the web server,
         // whether you are testing a page, web service, or a WCF service.
         [TestMethod()]
-        public void StoreCoverFlowImageTest()
+        public void AwesomeTest()
         {
             string file = "../../../Web.Tests/beerdog.jpg"; // TODO: Initialize to an appropriate value
-            Assert.IsTrue(ImageService.GetResizedImage(file).Width == 86);
+            Image result = ImageService.GetResizedImage(file);
+            Assert.IsTrue(result.Width == ImageService.PREFERRED_COVERFLOW_WIDTH || 
+                result.Height == ImageService.MAX_COVERFLOW_HEIGHT);
         }
     }
 }
