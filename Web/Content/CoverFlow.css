@@ -1,17 +1,21 @@
 ﻿div.wrapper {
-   height: 330px;
-   width: 798px; /*600*/
-   padding: 3px;
+   height: 200px;
+   width: 800px; /*600*/
+   padding: 10px;
    overflow: hidden;
    position: relative;
    margin: 0 auto;
 }
 #coverflow {
-   height: 300;
-   width: 866px;
-   padding: 14px;
+   width: 2600px;
+   padding: 42px;
    position: absolute;
-   top: 15px;
+   top: 0px;
    left: 0px;
-   margin-top: 16px;
+   margin-top: 40px;
+}
+#coverflow img {
+   float: left;
+   position: relative;
+   margin: -50px;
 }
