@@ -1,0 +1,28 @@
+﻿@model Web.Models.ProfileModel
+
+@{
+	ViewBag.Title = "ViewProfile";
+	Layout = "~/Views/Shared/_PublicLayout.cshtml";
+}
+
+<div id="profile">
+	<h2>@Model.Name</h2>
+	<div id="profile-main">
+		[put the images here]
+		<h3>Bio</h3>
+		<p>@Model.Bio</p>
+		<h3>Groups</h3>
+		<p>@Model.Groups</p>
+		<h3>Awards</h3>
+		<p>@Model.Awards</p>
+	</div>
+	<div id="address-box">
+		<h3>Contact Info</h3>
+		<p><a href="#">@Model.EmailAddress</a></p>
+		<p>@Model.PhoneNumber</p>
+		<p>@Model.Address</p>
+		<p>@Model.City, @Model.State @Model.ZipCode</p>
+		<div id="map">
+		</div>
+	</div>
+</div>
