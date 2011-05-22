@@ -1,10 +1,11 @@
-﻿div.wrapper {
+﻿div.flowwrapper {
    height: 200px;
    width: 800px; /*600*/
    padding: 10px;
-   overflow: hidden;
+   overflow: visible;
+    display: block;
    position: relative;
-   margin: 0 auto;
+   margin: 0 0 0 200px;
 }
 #coverflow {
    width: 2600px;
