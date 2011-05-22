@@ -32,7 +32,42 @@ namespace Web.Controllers
             var result = artists.Select(artist => new SearchResult(artist)).ToList();
             result.AddRange(venues.Select(venue => new SearchResult(venue)));
 
-            return Json(new { Results = result.OrderBy(r => r.Name).Select(r => r) }, JsonRequestBehavior.AllowGet );
+            return Json(new { Results = result.OrderBy(r => r.Name).Select(r => r) }, JsonRequestBehavior.AllowGet);
+        }
+
+
+        public JsonResult SearchType(int id)
+        {
+            var artists = (from a in Db.Artists
+                           where a.ArtistType.Id.Equals(id)
+                           orderby a.LastName
+                           orderby a.FirstName
+                           select new SearchResult
+                                      {
+                                          Id = a.Id,
+                                          Name = a.LastName +", " + a.FirstName,
+                                          Bio = a.Biography,
+                                          Type = "Artist"
+                                      });
+
+            return Json(artists, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult SearchCategory(int id)
+        {
+            var artists = (from a in Db.Artists
+                           where a.ArtistSubType.Id.Equals(id)
+                           orderby a.LastName
+                           orderby a.FirstName
+                           select new SearchResult
+                           {
+                               Id = a.Id,
+                               Name = a.LastName + ", " + a.FirstName,
+                               Bio = a.Biography,
+                               Type = "Artist"
+                           });
+
+            return Json(artists, JsonRequestBehavior.AllowGet);
         }
 
         private IEnumerable<VenueModel> FindVenues(IEnumerable<string> searchTerms)

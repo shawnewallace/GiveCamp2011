@@ -39,23 +39,6 @@ namespace Web.Controllers
         [Authorize]
         public ActionResult Create()
         {
-            if (!User.IsInRole("Admin"))
-            {
-                // ** DEBUG
-                Session["artistId"] = 1;
-                int? iArtistId = (int)Session["artistId"];
-                
-                if (iArtistId.HasValue)
-                {
-                    ArtistModel artist = Db.Artists.First(x => x.Id == iArtistId.Value);
-
-                    if (artist.VenueId.HasValue)
-                    {
-                        return View("VenueAlreadyDefined");
-                    }
-                }
-            }
-
             return View();
         }
 
@@ -65,41 +48,12 @@ namespace Web.Controllers
         [HttpPost]
         public ActionResult Create(VenueModel model)
         {
-            ArtistModel artist = null;
-
-            // ** DEBUG
-            Session["artistId"] = 1;
-            int? iArtistId = (int?)Session["artistId"];
-
-            if (!User.IsInRole("Admin"))
-            {
-                if (!iArtistId.HasValue)
-                {
-                    return View("NotRegistered");
-                }
-                else
-                {
-                    artist = Db.Artists.First(x => x.Id == iArtistId.Value);
-
-                    if (artist.VenueId.HasValue)
-                    {
-                        return View("VenueAlreadyDefined");
-                    }
-                }
-            }
-
             if (ModelState.IsValid)
             {
                 // Gotta do this first to get the identity column.
+                model.UserId = User.Identity.Name;
                 Db.Venues.Add(model);
                 Db.SaveChanges();
-
-                if (artist != null)
-                {
-                    artist.VenueId = model.Id;
-                    Db.Entry(artist).State = EntityState.Modified;
-                    Db.SaveChanges();
-                }
 
                 return RedirectToAction("Index");
             }
@@ -114,23 +68,12 @@ namespace Web.Controllers
         {
             VenueModel model = Db.Venues.Find(id);
 
-            // ** DEBUG
-            Session["artistId"] = 1;
-            int? iArtistId = (int?)Session["artistId"];
-
-            if (!User.IsInRole("Admin"))
+            if (
+                !User.IsInRole("Admin")
+                && model.UserId != User.Identity.Name
+            )
             {
-                if (!iArtistId.HasValue)
-                {
-                    return View("NotRegistered");
-                }
-
-                ArtistModel artist = Db.Artists.Find(iArtistId.Value);
-                
-                if (model.Id != artist.VenueId)
-                {
-                    return View("NotYourVenue");
-                }
+                return View("NotYourVenue");
             }
 
             return View(model);
@@ -142,23 +85,12 @@ namespace Web.Controllers
         [Authorize]
         public ActionResult Edit(VenueModel model)
         {
-            // ** DEBUG
-            Session["artistId"] = 1;
-            int? iArtistId = (int?)Session["artistId"];
-
-            if (!User.IsInRole("Admin"))
+            if (
+                !User.IsInRole("Admin")
+                && model.UserId != User.Identity.Name
+            )
             {
-                if (!iArtistId.HasValue)
-                {
-                    return View("NoVenue");
-                }
-
-                ArtistModel artist = Db.Artists.First(x => x.Id == iArtistId.Value);
-                
-                if (model.Id != artist.VenueId)
-                {
-                    return View("NotYourVenue");
-                }
+                return View("NotYourVenue");
             }
 
             if (ModelState.IsValid)
@@ -167,6 +99,7 @@ namespace Web.Controllers
                 Db.SaveChanges();
                 return RedirectToAction("Index");
             }
+
             return View(model);
         }
 
@@ -187,12 +120,6 @@ namespace Web.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             VenueModel model = Db.Venues.Find(id);
-
-            foreach (ArtistModel artist in Db.Artists.Where(x => x.VenueId == id))
-            {
-                artist.VenueId = null;
-                Db.Entry(artist).State = EntityState.Modified;
-            }
 
             Db.Venues.Remove(model);
             Db.SaveChanges();

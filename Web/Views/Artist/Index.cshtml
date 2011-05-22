@@ -12,10 +12,10 @@
         <th>
         </th>
         <th>
-            Last Name
+            First Name
         </th>
         <th>
-            First Name
+            Last Name
         </th>
         <th>
             Email Address
@@ -34,6 +34,9 @@
         </th>
         <th>
             Other Notes
+        </th>
+        <th>
+            Venue
         </th>
         <th>
         </th>
@@ -69,6 +72,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.OtherNotes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Venue.Name)
             </td>
         </tr>
     }

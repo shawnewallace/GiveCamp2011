@@ -7,6 +7,11 @@
         public string Bio { get; set; }
         public string Type { get; set; }
 
+
+        public SearchResult()
+        {
+        }
+
         public SearchResult(VenueModel model)
         {
             Id = model.Id;
