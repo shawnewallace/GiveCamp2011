@@ -50,6 +50,27 @@
 			});
 		});
 
+		$(".artist-type").click(function () {
+			$('#results').empty();
+			$.getJSON("/Home/SearchType/" + $(this).attr('data-typeId'), function (data) {
+				$.each(data, function (i, item) {
+					populateArtistTypes(item);
+				});
+				$('#browse').hide();
+			});
+			return false;
+		});
+		$(".artist-category").click(function () {
+			$('#results').empty();
+			$.getJSON("/Home/SearchCategory/" + $(this).attr('data-subTypeId'), function (data) {
+				$.each(data, function (i, item) {
+					populateArtistTypes(item);
+				});
+				$('#browse').hide();
+			});
+			return false;
+		});
+
 		function populateArtistTypes(item) {
 			var content = "";
 			content += "<ul><li><h3><a href='/Artist/Details/" + item.Id + "'>" + item.Name + "</a></h3>";
