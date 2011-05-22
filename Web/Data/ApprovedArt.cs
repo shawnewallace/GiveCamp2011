@@ -24,6 +24,7 @@ namespace Web.Data
         private const string IMAGE_FILE_CAPTURE_EXPRESSION = @"Artist_(\d+)_Image_(.+)\.png";
         private const string IMAGE_FILE_EXPRESSION = "*png";
         private const int PREFERRED_COVERFLOW_WIDTH = 200;
+        private const int MAX_COVERFLOW_HEIGHT = 300;
 
         //private static Dictionary<string, List<string>> _coverFlowCache;
 
@@ -52,6 +53,11 @@ namespace Web.Data
             Image incoming = Bitmap.FromFile(file);
             int prefHeight =
                 (int)Math.Floor((ImageService.PREFERRED_COVERFLOW_WIDTH / (double)incoming.Width) * incoming.Height);
+            if (prefHeight > ImageService.MAX_COVERFLOW_HEIGHT)
+            {
+                int prefWidth = (int)Math.Floor((ImageService.MAX_COVERFLOW_HEIGHT / (double)incoming.Height) * incoming.Width);
+                return ResizeImage(incoming, prefWidth, ImageService.MAX_COVERFLOW_HEIGHT);
+            }
             return ResizeImage(incoming, ImageService.PREFERRED_COVERFLOW_WIDTH, prefHeight);
         }
 
