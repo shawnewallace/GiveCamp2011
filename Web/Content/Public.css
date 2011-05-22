@@ -42,8 +42,9 @@ section#links ul li { padding:5px 0 0; }
 
 section#links ul li a { font-size:14px; }
 
-
+ul.ui-autocomplete { background: #fff; border: 1px dotted #ccc; }
+ul.ui-autocomplete li { border: none; height: 25px; padding: 5px; }
+ul.ui-autocomplete li a span.result-type { display: block; float: right; font-size: 10px; height: 30px; width: 50px; text-transform: uppercase; }
 
 li.search-result { border-bottom: solid 1px blue; height: 30px; }
-span.result-type { display: block; float: right; height: 30px; width: 30px; }
-.ui-autocomplete { border: solid 1px green; }
+
