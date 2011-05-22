@@ -7,12 +7,12 @@ using System.Web;
 using System.Web.Mvc;
 using Lib.Common;
 using Telerik.Web.Mvc;
+using Web.Controllers;
 using Web.Models;
 
 namespace Web.Controllers
 {
-
-    [Authorize(Roles="Admin")]
+    [Authorize(Roles = "Admin")]
     public class ArtistController : ColumbusGiveCamp2011ControllerBase
     {
         private void LoadDropDowns(int? artistTypeId, int? artistSubTypeId)
@@ -36,14 +36,16 @@ namespace Web.Controllers
                 else
                     ViewData["ArtistSubTypes"] = new SelectList(subTypes, "Id", "ArtistSubType");
             }
+            ViewData["MonthList"] = (new ArtistModel()).Dob.Month.ToSelectList();
         }
 
         private IQueryable<ArtistModel> _artists;
         private IQueryable<ArtistModel> Artists
         {
-            get { return  _artists ?? Db.Artists.AsQueryable(); }
+            get { return _artists ?? Db.Artists.AsQueryable(); }
         }
-       
+
+
         public ViewResult UnapprovedArt()
         {
             return View(GetUnapprovedArt());
@@ -63,6 +65,7 @@ namespace Web.Controllers
             return View("UnapprovedArt", GetUnapprovedArt());
         }
 
+
         //
         // GET: /Artist/
 
@@ -70,6 +73,7 @@ namespace Web.Controllers
         {
             //List<ArtistModel> artists = Db.Artists.ToList();
             LoadDropDowns(null, null);
+
 
             return View(Artists);
         }
@@ -86,7 +90,6 @@ namespace Web.Controllers
         // GET: /Artist/Create
         public ActionResult Create()
         {
-            //ViewData["MonthList"] = (new ArtistModel()).Dob.Month.ToSelectList();
             LoadDropDowns(null, null);
             return View();
         }
@@ -179,7 +182,7 @@ namespace Web.Controllers
             foreach (var term in terms)
             {
                 results.AddRange(
-                    
+
                     Db.Artists.Where(a => a.FirstName.Contains(term)
                         || a.LastName.Contains(term)
                         || a.ArtistType.ArtistType.Contains(term)
@@ -201,5 +204,4 @@ namespace Web.Controllers
         }
 
     }
-
 }
