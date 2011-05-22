@@ -6,29 +6,29 @@
     Add a New Artist</h2>
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
 @using (Html.BeginForm())
 {
-
     @Html.ValidationSummary(true)
     <fieldset>
         <legend>Artist Information</legend>
         <div class="create-left">
             <div class="create-label">
-                @Html.LabelFor(model => model.FirstName)
+                @Html.Label("FirstName", "First Name:")
             </div>
             <div class="create-field">
                 @Html.TextBoxFor(model => model.FirstName)
                 @Html.ValidationMessageFor(model => model.FirstName)
             </div>
             <div class="create-label">
-                @Html.LabelFor(model => model.LastName)
+                @Html.Label("LastName", "Last Name:")
             </div>
             <div class="create-field">
                 @Html.TextBoxFor(model => model.LastName)
                 @Html.ValidationMessageFor(model => model.LastName)
             </div>
             <div class="create-label">
-                @Html.LabelFor(model => model.Address1)
+                @Html.Label("Address1", "Address:")
             </div>
             <div class="create-field">
                 @Html.TextBoxFor(model => model.Address1.Data)
@@ -37,7 +37,7 @@
                 @Html.ValidationMessageFor(model => model.Address1)
             </div>
             <div class="create-label">
-                @Html.LabelFor(model => model.Address2)
+                @Html.Label("Address2","Address (cont.):")
             </div>
             <div class="create-field">
                 @Html.TextBoxFor(model => model.Address2.Data)
@@ -46,7 +46,7 @@
                 @Html.ValidationMessageFor(model => model.Address2)
             </div>
             <div class="create-label">
-                @Html.LabelFor(model => model.City)
+                @Html.Label("City", "City:")
             </div>
             <div class="create-field">
                 @Html.TextBoxFor(model => model.City.Data)
@@ -55,7 +55,7 @@
                 @Html.ValidationMessageFor(model => model.City)
             </div>
             <div class="create-label">
-                @Html.LabelFor(model => model.State)
+                @Html.Label("State", "State:")
             </div>
             <div class="create-field">
                 @Html.TextBoxFor(model => model.State.Data)
@@ -64,7 +64,7 @@
                 @Html.ValidationMessageFor(model => model.State)
             </div>
             <div class="create-label">
-                @Html.LabelFor(model => model.Zip)
+                @Html.Label("Zip", "Zip Code:")
             </div>
             <div class="create-field">
                 @Html.TextBoxFor(model => model.Zip.Data)
@@ -73,16 +73,16 @@
                 @Html.ValidationMessageFor(model => model.Zip)
             </div>
             <div class="create-label">
-                @Html.LabelFor(model => model.Phone)
+                @Html.Label("Phone", "Phone #:")
             </div>
             <div class="create-field">
-                @Html.TextBoxFor(model => model.Phone.Data)
+                @Html.TextBoxFor(model => model.Phone.Data, new { id = "Phone" })
                 @Html.Label("Include on Website?")
                 @Html.CheckBoxFor(model => model.Phone.Enabled)
                 @Html.ValidationMessageFor(model => model.Phone)
             </div>
             <div class="create-label">
-                @Html.LabelFor(model => model.CellPhone)
+                @Html.Label("CellPhone", "Cell Phone #:")
             </div>
             <div class="create-field">
                 @Html.TextBoxFor(model => model.CellPhone.Data)
@@ -91,7 +91,7 @@
                 @Html.ValidationMessageFor(model => model.CellPhone)
             </div>
             <div class="create-label">
-                @Html.LabelFor(model => model.Email)
+                @Html.Label("Email", "Email Address:")
             </div>
             <div class="create-field">
                 @Html.TextBoxFor(model => model.Email.Data)
@@ -100,52 +100,62 @@
                 @Html.ValidationMessageFor(model => model.Email)
             </div>
             <div class="create-label">
-                @Html.LabelFor(model => model.Dob)
+                @Html.Label("LastName", "Date of Birth (Day / Month):")
             </div>
             <div class="create-field">
                 @Html.Telerik().NumericTextBoxFor(model => model.Dob.Day).InputHtmlAttributes(new { style = "width: 30px;" }).Spinners(true).MinValue(0).MaxValue(31).DecimalDigits(0)
                 @Html.DropDownListFor(model => model.Dob.Month, ViewBag.MonthList as SelectList)
-                @*@Html.ValidationMessageFor(model => model.Dob)*@   
+                @Html.Label("Include on Website?")
+                @Html.CheckBoxFor(model => model.Dob.Enabled)
+                @Html.ValidationMessageFor(model => model.Dob.Day)
+                @Html.ValidationMessageFor(model => model.Dob.Month)
             </div>
         </div>
         <div>
             <div class="create-label">
-                @Html.LabelFor(model => model.Website)
+                @Html.Label("Website", "Website:")
             </div>
             <div class="create-field">
-                @Html.EditorFor(model => model.Website)
+                @Html.EditorFor(model => model.Website.Data)
+                @Html.Label("Include on Website?")
+                @Html.CheckBoxFor(model => model.Website.Enabled)
                 @Html.ValidationMessageFor(model => model.Website)
             </div>
             <div class="create-label">
-                @Html.LabelFor(model => model.Twitter)
+                @Html.Label("Twitter", "Twitter ID:")
             </div>
             <div class="create-field">
-                @Html.EditorFor(model => model.Twitter)
+                @Html.EditorFor(model => model.Twitter.Data)
+                @Html.Label("Include on Website?")
+                @Html.CheckBoxFor(model => model.Twitter.Enabled)
+
                 @Html.ValidationMessageFor(model => model.Twitter)
             </div>
             <div class="create-label">
-                @Html.LabelFor(model => model.Facebook)
+                @Html.Label("Facebook", "Facebook ID:")
             </div>
             <div class="create-field">
-                @Html.EditorFor(model => model.Facebook)
+                @Html.EditorFor(model => model.Facebook.Data)
+                @Html.Label("Include on Website?")
+                @Html.CheckBoxFor(model => model.Facebook.Enabled)
                 @Html.ValidationMessageFor(model => model.Facebook)
             </div>
             <div class="create-label">
-                @Html.LabelFor(model => model.ArtistType)
+                @Html.Label("ArtistType", "Artist Type:")
             </div>
             <div class="create-field">
-                @Html.DropDownListFor(model => model.ArtistTypeId, (SelectList)ViewBag.ArtistTypes)
+                @Html.DropDownListFor(model => model.ArtistTypeId, ViewBag.ArtistTypes as SelectList)
                 @Html.ValidationMessageFor(model => model.ArtistTypeId)
             </div>
             <div class="create-label">
-                @Html.LabelFor(model => model.ArtistSubType)
+                @Html.Label("ArtistSubType", "Artist Sub-Type:")
             </div>
             <div class="create-field">
-                @Html.DropDownListFor(model => model.ArtistSubTypeId, (SelectList)ViewBag.ArtistSubTypes)
+                @Html.DropDownListFor(model => model.ArtistSubTypeId, ViewBag.ArtistSubTypes as SelectList)
                 @Html.ValidationMessageFor(model => model.ArtistSubTypeId)
             </div>
             <div class="create-label">
-                @Html.LabelFor(model => model.OtherNotes)
+                @Html.Label("Other Notes", "Additional Notes:")
             </div>
             <div class="create-field">
                 @Html.EditorFor(model => model.OtherNotes)
@@ -156,20 +166,28 @@
            bool questionaireWrite = action.ToLower().Equals("create");
             
                 <div class="create-label">
-                    @Html.LabelFor(model => model.ResidentOfWesterville)
+                    @Html.Label("ResidentOfWesterville", "Resident Of Westerville:")
                 </div>
                 <div class="create-field">
                     @Html.ReadOrEditFor(model => model.ResidentOfWesterville, questionaireWrite)
                 </div>
             
                 <div class="create-label">
-                    @Html.LabelFor(model => model.WorkInWesterville)
+                    @Html.Label("WorkInWesterville", "Work In Westerville:")
                 </div>
                 <div class="create-field">
                     @Html.ReadOrEditFor(model => model.WorkInWesterville, questionaireWrite)
                 </div>
             }
         </div>
+
+        <div class="create-label">
+            @Html.Label("Biography", "Artist Biography:")
+        </div>
+        <div class="create-field">
+            @Html.Telerik().EditorFor(model => model.Biography)
+        </div>
+
         <p>
             <input type="submit" value="Create" />
         </p>

@@ -29,6 +29,7 @@ namespace Web.Models
     {
         public int Day { get; set; }
         public Month Month { get; set; }
+        public bool Enabled { get; set; }
 
         public Birthday()
         {
@@ -39,7 +40,6 @@ namespace Web.Models
 
     public enum Month
     {
-        NotSet = 0,
         January,
         February,
         March,

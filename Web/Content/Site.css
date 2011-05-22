@@ -327,8 +327,8 @@ div#title {
 
 .create-label {
     margin: 1em 0 0 0;
-    float: left;
-    padding-right: 20px;
+    /*float: left;
+    padding-right: 20px;*/
 }
 
 .display-field, 
@@ -343,10 +343,10 @@ div#title {
 
 .create-left 
 {
-    float: left; 
+    /*float: left; 
     margin-right: 150px; 
     padding-right: 75px; 
-    border-right: 2px Solid #CCCCCC;
+    border-right: 2px Solid #CCCCCC;*/
 }
 .text-box {
     width: 30em;
@@ -358,4 +358,9 @@ div#title {
 
 .tri-state {
     width: 6em;
+}
+
+.restrict-size
+{
+    width: 250px;
 }
