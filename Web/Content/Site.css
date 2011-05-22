@@ -344,6 +344,5 @@ div#title {
 
 .restrict-size
 {
-	max-height: 500px;
-	max-width: 250px;
+    width: 250px;
 }

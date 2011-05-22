@@ -192,6 +192,7 @@
     <Compile Include="Controllers\ArtistTypeController.cs" />
     <Compile Include="Controllers\ColumbusGiveCamp2011ControllerBase.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\UploadController.cs" />
     <Compile Include="Models\SearchResult.cs" />
     <Compile Include="Models\SearchResultType.cs" />
     <Compile Include="Controllers\SiteModelsController.cs" />
@@ -704,7 +705,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\Approved\" />
-    <Folder Include="Content\images\" />
     <Folder Include="Content\Unapproved\" />
   </ItemGroup>
   <ItemGroup>

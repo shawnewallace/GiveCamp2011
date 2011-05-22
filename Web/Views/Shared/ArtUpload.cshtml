@@ -1,16 +1,30 @@
 ﻿@model int
 
 <fieldset>
-    <legend>Unapproved Art</legend>
+    <p>To upload files press: </p>
+    @(Html.Telerik().Upload()
+        .Name("pictures")
+        .Multiple(true)
+        .Async(async => async
+            .Save("Save", "Upload", new RouteValueDictionary(new { artistId = @Model}))
+            .Remove("Remove", "Upload", new RouteValueDictionary(new {artistId = @Model}))
+            .AutoUpload(false)
+        )
+    )
+
+</fieldset>
+<fieldset>
+    <legend>Unapproved Art You've Submitted</legend>
+
     @foreach (var item in Web.Data.ImageService.GetUnapprovedArt().Where(f => f.Contains(String.Format("/{0:00000}_", Model))))
     { 
-                <img src="@item" alt="Alternate Text" class="restrict-size" />
+        <img src="@item" alt="Unapproved" class="restrict-size" />
     }
 </fieldset>
 <fieldset>
-    <legend>Approved Art</legend>
+    <legend>Approved Art You've Submitted</legend>
     @foreach (var item in Web.Data.ImageService.GetApprovedArt().Where(f => f.Contains(String.Format("/{0:00000}_", Model))))
     {
-        <img src="@item" class="restrict-size" />
+        <img src="@item" class="restrict-size" alt="Approved" />
     }
 </fieldset>

@@ -109,5 +109,10 @@ namespace Web.Data
             {
             }
         }
+
+        public static string UnapprovedDirectory()
+        {
+            return UNAPPROVED_IMAGE_DIRECTORY;
+        }
     }
 }

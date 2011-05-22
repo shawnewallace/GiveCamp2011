@@ -11,7 +11,7 @@ using Web.Models;
 
 namespace Web.Controllers
 {
-<<<<<<< HEAD
+
     [Authorize(Roles="Admin")]
     public class ArtistController : ColumbusGiveCamp2011ControllerBase
     {
@@ -180,8 +180,8 @@ namespace Web.Controllers
             {
                 results.AddRange(
                     
-                    Db.Artists.Where(a => a.FirstName.Data.Contains(term)
-                        || a.LastName.Data.Contains(term)
+                    Db.Artists.Where(a => a.FirstName.Contains(term)
+                        || a.LastName.Contains(term)
                         || a.ArtistType.ArtistType.Contains(term)
                         || a.ArtistSubType.ArtistSubType.Contains(term)
                     ).ToList()
