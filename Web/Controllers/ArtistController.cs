@@ -12,7 +12,6 @@ using Web.Models;
 
 namespace Web.Controllers
 {
-    [Authorize(Roles = "Admin")]
     public class ArtistController : ColumbusGiveCamp2011ControllerBase
     {
         private void LoadDropDowns(int? artistTypeId, int? artistSubTypeId)
@@ -45,12 +44,13 @@ namespace Web.Controllers
             get { return _artists ?? Db.Artists.AsQueryable(); }
         }
 
-
+        [Authorize(Roles = "Admin")]
         public ViewResult UnapprovedArt()
         {
             return View(GetUnapprovedArt());
         }
 
+        [Authorize(Roles = "Admin")]
         public ViewResult ApproveImage(string imageToApprove)
         {
             ApproveSubmittedImage(imageToApprove);
@@ -58,6 +58,7 @@ namespace Web.Controllers
             return View("UnapprovedArt", GetUnapprovedArt());
         }
 
+        [Authorize(Roles = "Admin")]
         public ViewResult RejectImage(string imageToReject)
         {
             RejectSubmittedImage(imageToReject);
@@ -88,8 +89,11 @@ namespace Web.Controllers
 
         //
         // GET: /Artist/Create
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
+            ViewData["CreateActionName"] = "Create";
+            ViewData["CreateControllerName"] = "Artist";
             LoadDropDowns(null, null);
             return View();
         }
@@ -97,6 +101,7 @@ namespace Web.Controllers
         //
         // POST: /Artist/Create
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create(ArtistModel artistmodel)
         {
             if (ModelState.IsValid)
@@ -107,7 +112,35 @@ namespace Web.Controllers
             }
 
             LoadDropDowns(null, null);
-            return View(artistmodel);
+            return View("Create", "_Layout", artistmodel);
+        }
+
+
+        //
+        // GET: /Artist/Create
+        public ActionResult CreatePublic()
+        {
+            ViewData["CreateActionName"] = "CreatePublic";
+            ViewData["CreateControllerName"] = "Artist";
+
+            LoadDropDowns(null, null);
+            return View("Create", "_PublicLayout");
+        }
+
+        //
+        // POST: /Artist/Create
+        [HttpPost]
+        public ActionResult CreatePublic(ArtistModel artistmodel)
+        {
+            if (ModelState.IsValid)
+            {
+                Db.Artists.Add(artistmodel);
+                Db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            LoadDropDowns(null, null);
+            return View("Create", "_PublicLayout", artistmodel);
         }
 
         //
@@ -139,7 +172,7 @@ namespace Web.Controllers
 
         //
         // GET: /Artist/Delete/5
-
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id)
         {
             ArtistModel artistmodel = Db.Artists.Find(id);
@@ -152,6 +185,7 @@ namespace Web.Controllers
         //
         // POST: /Artist/Delete/5
 
+        [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
@@ -160,6 +194,7 @@ namespace Web.Controllers
             Db.SaveChanges();
             return RedirectToAction("Index");
         }
+
 
         protected override void Dispose(bool disposing)
         {
