@@ -26,7 +26,12 @@
 
     <div class="display-label">Other Notes</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.OtherNotes);
+        @Html.DisplayFor(model => model.OtherNotes)
+    </div>
+
+    <div class="display-label">Venue</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Venue.Name)
     </div>
 </fieldset>
 <p>
