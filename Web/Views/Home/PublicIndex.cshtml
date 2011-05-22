@@ -18,42 +18,7 @@
 	</div>
 </section>
 <section id="browse">
-	<h3>Browse Artists</h3>
-	<ul id="artists-category-list">
-		<li><a href="#">Visual</a>
-			<ul>
-				<li><a href="#">Oils</a></li>
-				<li><a href="#">Acrylics</a></li>
-				<li><a href="#">Watercolor</a></li>
-				<li><a href="#">Pastel</a></li>
-				<li><a href="#">Sculpture</a></li>
-				<li><a href="#">Teacher</a></li>
-				<li><a href="#">Public Art</a></li>
-			</ul>
-		</li>
-		<li><a href="#">Literature</a>
-			<ul>
-				<li><a href="#">Poetry</a></li>
-				<li><a href="#">Novelty</a></li>
-				<li><a href="#">Teacher</a></li>
-			</ul>
-		</li>
-		<li><a href="#">Theatre</a>
-			<ul>
-				<li><a href="#">Actor</a></li>
-				<li><a href="#">Sound Design</a></li>
-				<li><a href="#">Backdrop</a></li>
-				<li><a href="#">Teacher</a></li>
-			</ul>
-		</li>
-		<li><a href="#">Music</a>
-			<ul>
-				<li><a href="#">Compose</a></li>
-				<li><a href="#">Orchestra</a></li>
-				<li><a href="#">Teacher</a></li>
-			</ul>
-		</li>
-	</ul>
+    @{ Html.RenderAction("GetCategoryTree", "ArtistType"); }
 	<div style="clear: both;">
 	</div>
 </section>
@@ -123,25 +88,26 @@
 
 		$("#artist-venue-query").autocomplete({
 			minLength: 1,
-			//source: "/Home/Search/",
-			source: results,
+			source: "/Home/Search/",
+			//source: results,
 			focus: function (event, ui) {
-				$("#artist-venue-query").val(ui.item.label);
+				$("#artist-venue-query").val(ui.item.name);
 				return false;
 			},
-			position: { my: "left top", at: "left bottom" },
-			select: function( event, ui ) {
-				$( "#artist-venue-query" ).val( ui.item.label );
-				$( "#result-id" ).val( ui.item.value );
-				$( "#result-type" ).html( ui.item.type );
-				$( "#result-bio" ).html( ui.item.bio );
+			select: function (event, ui) {
+				$("#artist-venue-query").val(ui.item.name);
+				$("#result-id").val(ui.item.id);
+				$("#result-name").html(ui.item.name);
+				$("#result-type").html(ui.item.type);
+				$("#result-bio").html(ui.item.bio);
 
 				return false;
+			}
 		})
 		.data("autocomplete")._renderItem = function (ul, item) {
 			return $("<li class='search-result'></li>")
 				.data("item.autocomplete", item)
-				.append("<a href='/Artist/Details/" + item.id + "' />" + item.label + "<span class='result-type'>" + item.type + "</span>")
+				.append("<a href='/Artist/Details/" + item.id + "' />" + item.name + "<span class='result-type'>" + item.type + "</span>")
 				.appendTo(ul);
 		};
 	});

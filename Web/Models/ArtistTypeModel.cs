@@ -11,5 +11,7 @@ namespace Web.Models
     {
         public int Id { get; set; }
         public string ArtistType { get; set; }
+
+        public List<ArtistSubTypeModel> ArtistSubType { get; set; }
     }
 }
