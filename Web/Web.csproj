@@ -190,6 +190,7 @@
     <Compile Include="Controllers\ArtistPublicController.cs" />
     <Compile Include="Controllers\ArtistSubTypeController.cs" />
     <Compile Include="Controllers\ArtistTypeController.cs" />
+    <Compile Include="Models\BagResult.cs" />
     <Compile Include="Controllers\ColumbusGiveCamp2011ControllerBase.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UploadController.cs" />
@@ -659,8 +660,7 @@
     <Content Include="Scripts\jquery-1.5.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.5.1.js" />
     <Content Include="Scripts\jquery-1.5.1.min.js" />
-    <Content Include="Scripts\jquery-ui-1.8.11.js" />
-    <Content Include="Scripts\jquery-ui-1.8.11.min.js" />
+    <Content Include="Scripts\jquery-ui-1.8.13.custom.min.js" />
     <Content Include="Scripts\jQuery.tmpl.js" />
     <Content Include="Scripts\jQuery.tmpl.min.js" />
     <Content Include="Scripts\jquery.validate-vsdoc.js" />
@@ -895,6 +895,8 @@
       <SubType>Code</SubType>
     </Content>
     <Content Include="Views\Shared\ArtUpload.cshtml" />
+    <Content Include="Views\SiteModels\_PublicDetails.cshtml" />
+    <Content Include="Views\ArtistType\_CategoryTree.cshtml" />
     <ProjectReference Include="..\Lib\Lib.csproj">
       <Project>{68C74FE6-AC90-4435-A28E-972F247F25E3}</Project>
       <Name>Lib</Name>
