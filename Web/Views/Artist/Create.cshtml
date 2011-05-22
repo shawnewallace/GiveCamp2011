@@ -105,6 +105,8 @@
             <div class="create-field">
                 @Html.Telerik().NumericTextBoxFor(model => model.Dob.Day).InputHtmlAttributes(new { style = "width: 30px;" }).Spinners(true).MinValue(0).MaxValue(31).DecimalDigits(0)
                 @Html.DropDownListFor(model => model.Dob.Month, ViewBag.MonthList as SelectList)
+                @Html.Label("Include on Website?")
+                @Html.CheckBoxFor(model => model.Dob.Enabled)
                 @Html.ValidationMessageFor(model => model.Dob.Day)
                 @Html.ValidationMessageFor(model => model.Dob.Month)
             </div>
@@ -114,21 +116,28 @@
                 @Html.Label("Website", "Website:")
             </div>
             <div class="create-field">
-                @Html.EditorFor(model => model.Website)
+                @Html.EditorFor(model => model.Website.Data)
+                @Html.Label("Include on Website?")
+                @Html.CheckBoxFor(model => model.Website.Enabled)
                 @Html.ValidationMessageFor(model => model.Website)
             </div>
             <div class="create-label">
                 @Html.Label("Twitter", "Twitter ID:")
             </div>
             <div class="create-field">
-                @Html.EditorFor(model => model.Twitter)
+                @Html.EditorFor(model => model.Twitter.Data)
+                @Html.Label("Include on Website?")
+                @Html.CheckBoxFor(model => model.Twitter.Enabled)
+
                 @Html.ValidationMessageFor(model => model.Twitter)
             </div>
             <div class="create-label">
                 @Html.Label("Facebook", "Facebook ID:")
             </div>
             <div class="create-field">
-                @Html.EditorFor(model => model.Facebook)
+                @Html.EditorFor(model => model.Facebook.Data)
+                @Html.Label("Include on Website?")
+                @Html.CheckBoxFor(model => model.Facebook.Enabled)
                 @Html.ValidationMessageFor(model => model.Facebook)
             </div>
             <div class="create-label">
