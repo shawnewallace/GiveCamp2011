@@ -2,7 +2,9 @@
 @{
     Layout = "";
 }
+<ul>
 @foreach (var item in @Model)
 {
-    <a href="@(item.Destination)">@(item.Name)</a>
+    <li><a href="@(item.Destination)">@(item.Name)</a></li>
 }
+</ul>

@@ -19,14 +19,13 @@
 </section>
 <section id="browse">
     @{ Html.RenderAction("GetCategoryTree", "ArtistType"); }
-    @{ Html.RenderAction("PublicLinks", "Home"); }
-	<div style="clear: both;">
-	</div>
-
-	<div style="clear: both;">
-	</div>
+    <div style="clear:both;"></div>
 </section>
 <section id="results"></section>
+<section id="links">
+    @{ Html.RenderAction("PublicLinks", "Home"); }
+</section>
+<div style="clear:both;"></div>
 <script type="text/javascript">
 	$(document).ready(function () {
 		$("'[placeholder]'").focus(function () {
