@@ -17,6 +17,11 @@ namespace Web.Controllers
             return View();
         }
 
+        public ActionResult PublicLinks()
+        {
+            return PartialView(Db.SiteLinks);
+        }
+
         public ActionResult PublicIndex()
         {
             return View();
@@ -34,7 +39,6 @@ namespace Web.Controllers
 
             return Json(new { Results = result.OrderBy(r => r.Name).Select(r => r) }, JsonRequestBehavior.AllowGet);
         }
-
 
         public JsonResult SearchType(int id)
         {

@@ -1,0 +1,8 @@
+﻿@model IEnumerable<Web.Models.SiteLink>
+@{
+    Layout = "";
+}
+@foreach (var item in @Model)
+{
+    <a href="@(item.Destination)">@(item.Name)</a>
+}

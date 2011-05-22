@@ -10,9 +10,9 @@
 
 
         //cache core component references
-        var html = $('#demo-frame div.wrapper').html();
+        var html = $('#demo-frame div.flowwrapper').html();
         var imageCaption = $('#imageCaption');
-        $('#demo-frame div.wrapper').parent().append(html).end().remove();
+        $('#demo-frame div.flowwrapper').parent().append(html).end().remove();
         $sliderCtrl = $('#slider');
         $coverflowCtrl = $('#coverflow');
         $coverflowImages = $coverflowCtrl.find('img');
@@ -210,7 +210,7 @@
 
 </script>
 <div class="demo">
-    <div class="wrapper">
+    <div class="flowwrapper">
         <div id="coverflow">
             @foreach (var file in Model)
             {

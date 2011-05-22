@@ -19,6 +19,10 @@
 </section>
 <section id="browse">
 	@{ Html.RenderAction("GetCategoryTree", "ArtistType"); }
+    @{ Html.RenderAction("PublicLinks", "Home"); }
+	<div style="clear: both;">
+	</div>
+
 	<div style="clear: both;">
 	</div>
 </section>
@@ -78,24 +82,6 @@
 			$('#results').append(content);
 		}
 
-		//		$("#artist-venue-query").autocomplete({
-		//			minLength: 1,
-		//			source: "/Home/Search/",
-		//			focus: function (event, ui) {
-		//				$("#artist-venue-query").val(ui.item.Name);
-		//				return false;
-		//			},
-		//			open: function (event, ui) {
-		//				$('ul.ui-autocomplete').css('width', '500px');
-		//			}
-		//		})
-		//		.data("autocomplete")._renderItem = function (ul, item) {
-		//			return $("<li class='search-result'></li>")
-		//				.data("item.autocomplete", item)
-		//				.append("<a href='/Artist/Details/" + item.Id + "'>" + item.Name + "<span class='result-type'>" + item.Type + "</span></a>")
-		//				.appendTo(ul);
-		//		};
-
 		$("#artist-venue-query").autocomplete({
 			minLength: 1,
 			source: function (request, response) {
@@ -129,9 +115,6 @@
 				.append("<a href='/Artist/Details/" + item.value + "'>" + item.label + "<span class='result-type'>" + item.type + "</span></a>")
 				.appendTo(ul);
 		};
-
-
-
 
 	});
 </script>
